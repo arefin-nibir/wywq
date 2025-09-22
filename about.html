@@ -32,8 +32,6 @@
             background: #000;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         a {
@@ -94,8 +92,7 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 clamp(1rem, 3vw, 2rem);
-            width: 100%;
+            padding: 0 2rem;
         }
 
         /* Hero Section */
@@ -108,66 +105,57 @@
             color: white;
             position: relative;
             overflow: hidden;
-            padding: 120px 1rem 2rem;
-            min-height: 80vh;
         }
 
         .hero-content {
             max-width: 900px;
             z-index: 2;
             position: relative;
-            width: 100%;
-            padding: 0 1rem;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 900;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             background: linear-gradient(135deg, #39FF14, #00ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.1;
             animation: heroTextReveal 1.2s ease-out;
-            text-shadow: 0 2px 8px rgba(57, 255, 20, 0.3);
         }
 
         .hero p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            margin-bottom: 2.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
             opacity: 0.9;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
             animation: heroTextReveal 1.2s ease-out 0.3s both;
-            padding: 0 0.5rem;
         }
 
         .hero-cta {
-            display: flex;
-            gap: 1rem;
+            display: inline-flex;
+            gap: 1.5rem;
             animation: heroTextReveal 1.2s ease-out 0.6s both;
             justify-content: center;
             flex-wrap: wrap;
-            width: 100%;
         }
 
         .btn-primary {
             background: var(--gradient-primary);
             color: white;
-            padding: clamp(0.8rem, 2.5vw, 1rem) clamp(1.5rem, 5vw, 2.5rem);
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            font-size: 1.05rem;
             transition: all 0.3s ease;
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
             white-space: nowrap;
-            text-decoration: none;
-            display: inline-block;
         }
 
         .btn-primary:hover {
@@ -178,15 +166,13 @@
         .btn-secondary {
             background: transparent;
             color: white;
-            padding: clamp(0.8rem, 2.5vw, 1rem) clamp(1.5rem, 5vw, 2.5rem);
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            font-size: 1.05rem;
             border: 2px solid var(--cyber-cyan);
             transition: all 0.3s ease;
             white-space: nowrap;
-            text-decoration: none;
-            display: inline-block;
         }
 
         .btn-secondary:hover {
@@ -209,37 +195,36 @@
 
         /* Section Styling */
         .section {
-            padding: clamp(4rem, 8vw, 8rem) 0;
+            padding: 8rem 0;
             position: relative;
         }
 
         .section h2 {
-            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             background: linear-gradient(135deg, #00ffff, #39FF14);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 800;
             text-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
-            line-height: 1.2;
         }
 
         /* Bio Section */
         .bio-section {
             background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
-            border-radius: 24px;
-            margin: clamp(2rem, 4vw, 4rem) auto;
+            border-radius: 32px;
+            margin: 4rem auto;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
-            padding: clamp(2rem, 5vw, 6rem) clamp(1rem, 3vw, 4rem);
+            padding: 6rem 4rem;
         }
 
         .bio-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: clamp(2rem, 4vw, 4rem);
+            gap: 4rem;
             align-items: center;
             color: white;
         }
@@ -251,8 +236,8 @@
         }
 
         .headshot {
-            width: clamp(200px, 30vw, 300px);
-            height: clamp(200px, 30vw, 300px);
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--cyber-cyan);
@@ -266,8 +251,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: clamp(220px, 32vw, 320px);
-            height: clamp(220px, 32vw, 320px);
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             background: var(--gradient-secondary);
             transform: translate(-50%, -50%);
@@ -289,30 +274,20 @@
             font-weight: 800;
             text-shadow: 0 2px 8px rgba(0, 255, 255, 0.3);
             text-align: left;
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .bio-text p {
-            font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
             line-height: 1.7;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .bio-text .btn-secondary {
-            width: fit-content;
-            margin-top: 1rem;
         }
 
         /* Timeline Section */
         .timeline-section {
-            padding: clamp(4rem, 8vw, 8rem) 0;
+            padding: 8rem 0;
         }
 
         .timeline-container {
@@ -324,10 +299,10 @@
         .timeline-container::before {
             content: '';
             position: absolute;
-            left: clamp(15px, 3vw, 50%);
+            left: 50%;
             top: 0;
             bottom: 0;
-            width: 2px;
+            width: 3px;
             background: var(--gradient-primary);
             transform: translateX(-50%);
             border-radius: 2px;
@@ -335,17 +310,25 @@
 
         .timeline-item {
             position: relative;
-            margin: clamp(2rem, 4vw, 4rem) 0;
-            width: 100%;
-            padding: clamp(0.5rem, 2vw, 2rem) 0;
+            margin: 4rem 0;
+            width: 50%;
+            padding: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
         }
 
         .timeline-dot {
             position: absolute;
-            left: clamp(10px, 2vw, 50%);
-            top: clamp(1rem, 2vw, 2rem);
-            width: clamp(14px, 2.5vw, 20px);
-            height: clamp(14px, 2.5vw, 20px);
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
             background: var(--cyber-cyan);
             border-radius: 50%;
             transform: translateX(-50%);
@@ -358,11 +341,10 @@
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
-            padding: clamp(1rem, 3vw, 2rem);
+            padding: 2rem;
             backdrop-filter: blur(20px);
             position: relative;
             transition: all 0.3s ease;
-            margin-left: clamp(35px, 6vw, 70px);
         }
 
         .timeline-content:hover {
@@ -371,79 +353,56 @@
             border-color: var(--cyber-cyan);
         }
 
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 2rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 2rem;
+        }
+
         .timeline-date {
             font-weight: 700;
             color: var(--neon-green);
             margin-bottom: 0.5rem;
-            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            font-size: 1.1rem;
         }
 
         .timeline-title {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-size: 1.4rem;
             color: var(--cyber-cyan);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             font-weight: 600;
-            line-height: 1.3;
         }
 
         .timeline-content p {
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* Timeline Image Styles */
-        .timeline-image {
-            width: 100%;
-            max-width: 300px;
-            height: 200px;
-            border-radius: 16px;
-            object-fit: cover;
-            border: 2px solid var(--cyber-cyan);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
-            display: none;
-        }
-
-        .timeline-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
-        }
-
-        .timeline-image-container {
-            margin-top: 1rem;
         }
 
         /* Expertise Section */
         .expertise-section {
-            padding: clamp(4rem, 8vw, 8rem) 0;
+            padding: 8rem 0;
         }
 
         .expertise-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 85vw, 300px), 1fr));
-            gap: clamp(1.5rem, 3vw, 2.5rem);
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
         .expertise-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
             backdrop-filter: blur(20px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             cursor: pointer;
             text-align: center;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
         }
 
         .expertise-card::before {
@@ -470,63 +429,46 @@
 
         .expertise-card h3 {
             color: var(--cyber-cyan);
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
-            line-height: 1.3;
         }
 
         .expertise-card p {
             color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
+            line-height: 1.7;
             position: relative;
             z-index: 2;
-            flex-grow: 1;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
         /* Impact Section */
         .impact-section {
-            padding: clamp(4rem, 8vw, 8rem) 0;
+            padding: 8rem 0;
             text-align: center;
-        }
-
-        .impact-section p {
-            max-width: 800px;
-            margin: 0 auto clamp(2rem, 4vw, 4rem) auto;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            line-height: 1.6;
         }
 
         .impact-list {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: clamp(0.75rem, 2vw, 2rem);
-            margin-top: 3rem;
+            gap: 2rem;
+            margin-top: 4rem;
         }
 
         .impact-item {
             background: var(--glass-bg);
             border: 2px solid var(--electric-blue);
             color: var(--cyber-cyan);
-            padding: clamp(0.8rem, 2.5vw, 1.5rem) clamp(1.2rem, 4vw, 2.5rem);
+            padding: 1.5rem 2.5rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: clamp(0.85rem, 2vw, 1rem);
+            font-size: 1rem;
             transition: all 0.3s ease;
             backdrop-filter: blur(20px);
             position: relative;
             overflow: hidden;
-            white-space: nowrap;
-            min-width: 140px;
         }
 
         .impact-item::before {
@@ -558,9 +500,9 @@
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
-            border-radius: 24px;
-            padding: clamp(2rem, 5vw, 6rem) clamp(1rem, 3vw, 4rem);
-            margin: clamp(2rem, 4vw, 4rem) auto;
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 4rem auto;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
             text-align: center;
@@ -569,34 +511,23 @@
 
         .cta-section h2 {
             color: white;
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            margin-bottom: 1.5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
             background: linear-gradient(135deg, #66ffff, #ff66ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 800;
             text-shadow: 0 2px 4px rgba(102, 255, 255, 0.3);
-            line-height: 1.2;
         }
 
         .cta-section p {
-            font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+            font-size: 1.2rem;
             opacity: 0.9;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .cta-section .btn-primary {
-            width: fit-content;
-            margin: 0 auto;
         }
 
         /* Footer */
@@ -605,85 +536,29 @@
             border-top: 1px solid var(--glass-border);
             color: white;
             text-align: center;
-            padding: clamp(2rem, 5vw, 3rem) 0;
+            padding: 3rem 0;
             backdrop-filter: blur(20px);
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
         .footer a {
             color: var(--cyber-cyan);
             transition: all 0.3s ease;
-            text-decoration: none;
         }
 
         .footer a:hover {
             text-shadow: 0 0 10px var(--cyber-cyan);
         }
 
-        /* Logo */
-        .logo {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            margin-left: -20px;
-        }
-
-        .logo-img {
-            height: 46px;
-            width: auto;
-            display: block;
-        }
-
-        /* Enhanced Mobile Responsive */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero {
-                height: auto;
-                min-height: 70vh;
-                padding: 100px 1rem 2rem;
-                text-align: center;
-            }
-
-            .hero-content {
-                padding: 0 0.5rem;
-            }
-
-            .hero h1 {
-                margin-bottom: 1rem;
-                line-height: 1.1;
-            }
-
-            .hero p {
-                padding: 0 0.25rem;
-                margin-bottom: 2rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.75rem;
-                width: 100%;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-
             .bio-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
                 text-align: center;
             }
 
             .bio-text h2 {
                 text-align: center;
-                margin-bottom: 1rem;
-            }
-
-            .bio-text p {
-                text-align: center;
-                -webkit-line-clamp: 4;
             }
 
             .timeline-container::before {
@@ -692,13 +567,12 @@
 
             .timeline-item {
                 width: 100%;
-                padding: 0.5rem 0;
+                left: 0 !important;
             }
 
-            .timeline-content {
-                margin-left: 45px !important;
+            .timeline-item .timeline-content {
+                margin-left: 3rem !important;
                 margin-right: 0 !important;
-                min-height: auto;
             }
 
             .timeline-dot {
@@ -706,221 +580,32 @@
                 transform: translateX(0);
             }
 
-            .expertise-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                margin-top: 2rem;
+            .hero h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
             }
 
-            .expertise-card {
-                padding: 1.5rem;
-                min-height: auto;
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .bio-section,
+            .cta-section {
+                padding: 4rem 2rem;
+                margin: 2rem;
             }
 
             .impact-list {
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
-            }
-
-            .impact-item {
-                width: 100%;
-                max-width: 280px;
-                white-space: normal;
-                text-align: center;
-            }
-
-            .bio-section,
-            .cta-section {
-                padding: 2rem 1.5rem;
-                margin: 2rem 0;
-                border-radius: 20px;
             }
 
             .section {
-                padding: 4rem 0;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 90px 0.5rem 1.5rem;
-                min-height: 65vh;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-                padding: 0 0.25rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .btn-primary, .btn-secondary {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.95rem;
-            }
-            
-            .section {
-                padding: 3rem 0;
-            }
-
-            .bio-section,
-            .cta-section {
-                padding: 1.5rem 1rem;
-                margin: 1.5rem 0;
-                border-radius: 16px;
-            }
-
-            .headshot {
-                width: 180px;
-                height: 180px;
-            }
-
-            .headshot-container::before {
-                width: 200px;
-                height: 200px;
-            }
-
-            .bio-text h2 {
-                font-size: 1.5rem;
-                margin-bottom: 0.75rem;
-            }
-
-            .bio-text p {
-                font-size: 0.95rem;
-                -webkit-line-clamp: 3;
-                text-align: left;
-            }
-
-            .expertise-card {
-                padding: 1.25rem;
-                border-radius: 16px;
-            }
-
-            .expertise-card h3 {
-                font-size: 1.1rem;
-            }
-
-            .expertise-card p {
-                font-size: 0.9rem;
-                -webkit-line-clamp: 3;
-            }
-
-            .timeline-content {
-                margin-left: 40px !important;
-                padding: 1rem;
-            }
-
-            .timeline-title {
-                font-size: 1.1rem;
-            }
-
-            .timeline-content p {
-                font-size: 0.9rem;
-                -webkit-line-clamp: 2;
-            }
-
-            .cta-section h2 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-            }
-
-            .cta-section p {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-                -webkit-line-clamp: 2;
-            }
-
-            .impact-section p {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .impact-item {
-                padding: 0.75rem 1.25rem;
-                font-size: 0.9rem;
-            }
-
-            .footer {
-                padding: 2rem 1rem;
-            }
-
-            .logo-img {
-                height: 38px;
-            }
-
-            /* Reduce particle animation complexity on mobile */
-            .particle {
-                animation-duration: 4s;
-            }
-
-            .particle:nth-child(odd) {
-                animation-duration: 5s;
-            }
-
-            .particle:nth-child(3n) {
-                animation-duration: 6s;
-            }
-
-            /* Show timeline images on larger mobile devices */
-            .timeline-image {
-                display: block;
-                margin-top: 1rem;
-                max-width: 250px;
-                height: 150px;
-            }
-        }
-
-        @media (max-width: 320px) {
-            .container {
-                padding: 0 0.75rem;
-            }
-
-            .hero {
-                padding: 80px 0.25rem 1rem;
-            }
-
-            .bio-section,
-            .cta-section {
-                padding: 1.25rem 0.75rem;
-                margin: 1rem 0;
-            }
-
-            .headshot {
-                width: 160px;
-                height: 160px;
-            }
-
-            .headshot-container::before {
-                width: 180px;
-                height: 180px;
-            }
-
-            .expertise-card {
-                padding: 1rem;
-            }
-
-            .timeline-content {
-                margin-left: 35px !important;
-            }
-
-            .timeline-dot {
-                left: 15px;
-                width: 12px;
-                height: 12px;
-            }
-
-            .impact-item {
-                max-width: 240px;
-                padding: 0.6rem 1rem;
+                padding: 6rem 0;
             }
         }
 
@@ -929,33 +614,60 @@
             scroll-padding-top: 100px;
         }
 
-        /* Accessibility improvements */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
+        /* Timeline Image Styles */
+        .timeline-image {
+            width: 300px;
+            height: 200px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 2px solid var(--cyber-cyan);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-            .glass-bg {
-                background: rgba(255, 255, 255, 0.2) !important;
-            }
-            
-            .glass-border {
-                border-color: rgba(255, 255, 255, 0.5) !important;
-            }
+        .timeline-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
         }
 
-        /* Focus styles for accessibility */
-        .btn-primary:focus,
-        .btn-secondary:focus,
-        .impact-item:focus {
-            outline: 2px solid var(--cyber-cyan);
-            outline-offset: 2px;
+        .timeline-item:nth-child(odd) .timeline-image-container {
+            position: absolute;
+            right: -350px;
+            top: 50%;
+            transform: translateY(-50%);
         }
+
+        .timeline-item:nth-child(even) .timeline-image-container {
+            position: absolute;
+            left: -350px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 1200px) {
+            .timeline-image-container {
+                display: none;
+            }
+        }
+        .logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: -20px;
+}
+
+.logo-img {
+    height: 46px; /* Adjust this value to match the previous text size */
+    width: auto;
+    display: block;
+}
+
+/* Adjust logo size for mobile devices */
+@media screen and (max-width: 768px) {
+    .logo-img {
+        height: 38px; /* Smaller size for mobile */
+    }
+}
     </style>
 </head>
 <body>
@@ -999,7 +711,7 @@
                 </li>
             </ul>
             <a href="contact.html" class="cta-btn">Get in Touch</a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+            <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1046,60 +758,60 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2024 - Present</div>
+                        
                         <div class="timeline-title">Founding & Leading OpenVQA Hub</div>
                         <p>Built a growing platform with 40+ engineers and 10 international advisors.</p>
                     </div>
                     <div class="timeline-image-container">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E22AQEGWnKQI59U7w/feedshare-shrink_2048_1536/B4EZjUgiUvGcA0-/0/1755911958891?e=1761177600&v=beta&t=6bYiytC6cCNYkmr1JWfRfQazTw3q_CAsFlqbdW7Kkhw" alt="OpenVQA Platform Development" loading="lazy" class="timeline-image">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E22AQEGWnKQI59U7w/feedshare-shrink_2048_1536/B4EZjUgiUvGcA0-/0/1755911958891?e=1761177600&v=beta&t=6bYiytC6cCNYkmr1JWfRfQazTw3q_CAsFlqbdW7Kkhw" alt="PhD Research" loading="lazy" class="timeline-image">
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2023 - Present</div>
+                        
                         <div class="timeline-title">Senior Researcher at Qubit Pharmaceuticals</div>
                         <p>Took a leadership role in algorithm development for real-world use cases in healthcare & chemistry.</p>
                     </div>
                     <div class="timeline-image-container">
-                        <img src="images/professor-leadership.png" alt="Leadership in Quantum Research" loading="lazy" class="timeline-image">
+                        <img src="images/professor-leadership.png" alt="Postdoctoral Research" loading="lazy" class="timeline-image">
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2021 - 2023</div>
+                        
                         <div class="timeline-title">Postdoctoral Researcher</div>
                         <p>Sorbonne Université – Applied quantum computing in chemistry and materials science.</p>
                     </div>
                     <div class="timeline-image-container">
-                        <img src="images/phenikaa-university.png" alt="Postdoctoral Research at Sorbonne" loading="lazy" class="timeline-image">
+                        <img src="images/phenikaa-university.png" alt="Senior Research" loading="lazy" class="timeline-image">
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2022</div>
+                        
                         <div class="timeline-title">Creating OpenVQE & OpenVQA</div>
                         <p>Developed open-source platforms supporting VQE (variational quantum eigensolver) for quantum chemistry & optimization.</p>
                     </div>
                     <div class="timeline-image-container">
-                        <img src="images/seminars-webinars.jpg" alt="OpenVQE Development" loading="lazy" class="timeline-image">
+                        <img src="images/seminars-webinars.jpg" alt="Dubai Workshop" loading="lazy" class="timeline-image">
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">2025</div>
+                        
                         <div class="timeline-title">Keynote Speaker</div>
                         <p>"Quantum and the Future of Computing" Seminar – Discussing NISQ advancements and quantum algorithm optimization for real-world applications.</p>
                     </div>
                     <div class="timeline-image-container">
-                        <img src="images/vsaiqc-conference.png" alt="Keynote Speech at International Conference" loading="lazy" class="timeline-image">
+                        <img src="images/vsaiqc-conference.png" alt="Keynote Speech" loading="lazy" class="timeline-image">
                     </div>
                 </div>
             </div>
@@ -1135,7 +847,7 @@
     <section class="section impact-section">
         <div class="container">
             <h2>Global Impact & Seminars</h2>
-            <p>Dr. Haidar's contributions extend worldwide through seminars, European projects, and collaborations in quantum innovation.</p>
+            <p style="max-width: 800px; margin: 0 auto 4rem; color: rgba(255, 255, 255, 0.8); font-size: 1.2rem;">Dr. Haidar's contributions extend worldwide through seminars, European projects, and collaborations in quantum innovation.</p>
             <div class="impact-list">
                 <div class="impact-item">
                     <span>Paris, France (Sorbonne Research)</span>
@@ -1179,15 +891,12 @@
         // Create dynamic particles
         function createParticles() {
             const particles = document.getElementById('particles');
-            const particleCount = window.innerWidth < 768 ? 10 : 25; // Reduced count for mobile
-            
-            // Clear existing particles
-            particles.innerHTML = '';
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                particle.style.width = Math.random() * 3 + 1 + 'px'; // Smaller particles on mobile
+                particle.style.width = Math.random() * 4 + 2 + 'px';
                 particle.style.height = particle.style.width;
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
@@ -1236,30 +945,19 @@
         // Initialize particles
         createParticles();
 
-        // Recreate particles on window resize (debounced)
-        let resizeTimeout;
+        // Recreate particles on window resize
         window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                document.getElementById('particles').innerHTML = '';
-                createParticles();
-            }, 250);
+            document.getElementById('particles').innerHTML = '';
+            createParticles();
         });
 
-        // Add loading animation with reduced motion support
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            window.addEventListener('load', () => {
-                document.body.style.opacity = '0';
-                document.body.style.transition = 'opacity 0.5s ease';
-                setTimeout(() => {
-                    document.body.style.opacity = '1';
-                }, 100);
-            });
-        }
-
-        // Touch-friendly hamburger menu
-        document.getElementById('hamburger').addEventListener('touchstart', function(e) {
-            e.preventDefault();
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
