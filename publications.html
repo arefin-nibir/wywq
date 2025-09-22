@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications & Resources - WYWQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --quantum-purple: #6A1B9A;
+            --electric-blue: #007BFF;
+            --deep-navy: #001F3F;
+            --cyber-cyan: #00D4FF;
+            --neon-green: #39FF14;
+            --gradient-primary: linear-gradient(135deg, #001F3F 0%, #6A1B9A 50%, #007BFF 100%);
+            --gradient-secondary: linear-gradient(45deg, #00D4FF, #39FF14);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Quantum Particle Background Animation */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 80%, #001F3F 0%, #000 50%), 
+                        radial-gradient(circle at 80% 20%, #6A1B9A 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #007BFF 0%, transparent 50%);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--neon-green);
+            animation-duration: 8s;
+            animation-delay: -2s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--electric-blue);
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #39FF14, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: heroTextReveal 1.2s ease-out;
+            text-shadow: 0 2px 8px rgba(57, 255, 20, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: heroTextReveal 1.2s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+            animation: heroTextReveal 1.2s ease-out 0.6s both;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--cyber-cyan);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-secondary:hover {
+            background: var(--cyber-cyan);
+            color: #000;
+            box-shadow: 0 0 30px var(--cyber-cyan);
+            transform: translateY(-3px);
+        }
+
+        @keyframes heroTextReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #00ffff, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Special styling for seminars section title */
+        .seminars-section h2 {
+            background: linear-gradient(135deg, #ff66ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(255, 102, 255, 0.3);
+        }
+
+        /* CTA section title */
+        .cta-section h2 {
+            background: linear-gradient(135deg, #00ffff, #ff66ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Publications Grid */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .paper-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .paper-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .paper-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+            border-color: var(--cyber-cyan);
+        }
+
+        .paper-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            line-height: 1.3;
+        }
+
+        .paper-card .authors {
+            color: var(--neon-green);
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .paper-card .year {
+            color: var(--electric-blue);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .paper-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .paper-card .meta {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .paper-card .link-btn {
+            background: linear-gradient(135deg, #007BFF 0%, #6A1B9A 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .paper-card .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+        }
+
+        /* Seminars Timeline */
+        .seminars-section {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 4rem 0;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+        }
+
+        .seminars-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .seminars-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-secondary);
+            transform: translateX(-50%);
+        }
+
+        .seminar-item {
+            position: relative;
+            margin: 3rem 0;
+            width: 50%;
+            padding: 1rem;
+        }
+
+        .seminar-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .seminar-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .seminar-dot {
+            position: absolute;
+            left: 50%;
+            top: 1rem;
+            width: 20px;
+            height: 20px;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.9), 0 0 20px var(--cyber-cyan);
+        }
+
+        .seminar-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .seminar-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(0, 123, 255, 0.2);
+            border-color: var(--cyber-cyan);
+        }
+
+        .seminar-item:nth-child(odd) .seminar-content {
+            margin-left: 2rem;
+        }
+
+        .seminar-item:nth-child(even) .seminar-content {
+            margin-right: 2rem;
+        }
+
+        .seminar-date {
+            font-weight: 600;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .seminar-title {
+            font-size: 1.2rem;
+            color: var(--cyber-cyan);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .seminar-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .resource-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .resource-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+            border-color: var(--cyber-cyan);
+        }
+
+        .resource-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .resource-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .resource-card .link-btn {
+            background: linear-gradient(135deg, #007BFF 0%, #6A1B9A 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .resource-card .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 4rem 0;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #00ffff, #ff66ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 255, 255, 0.3);
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .cta-btn {
+            background: white;
+            color: var(--deep-navy);
+            font-weight: 700;
+        }
+
+        .cta-section .cta-btn:hover {
+            color: var(--electric-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--glass-border);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .footer a {
+            color: var(--cyber-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 10px var(--cyber-cyan);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .publications-grid, .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .seminars-timeline::before {
+                left: 20px;
+            }
+
+            .seminar-item {
+                width: 100%;
+                left: 0 !important;
+            }
+
+            .seminar-item .seminar-content {
+                margin-left: 3rem !important;
+                margin-right: 0 !important;
+            }
+
+            .seminar-dot {
+                left: 20px;
+            }
+
+            .seminars-section, .cta-section {
+                padding: 4rem 2rem;
+                margin: 2rem 0;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .paper-card, .resource-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 6rem 0;
+            }
+            
+            .hero {
+                padding-top: 120px;
+            }
+
+            .paper-card .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Smooth scroll offset for fixed navbar */
+        html {
+            scroll-padding-top: 100px;
+        }
+        .logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: -20px;
+}
+
+.logo-img {
+    height: 46px; /* Adjust this value to match the previous text size */
+    width: auto;
+    display: block;
+}
+
+/* Adjust logo size for mobile devices */
+@media screen and (max-width: 768px) {
+    .logo-img {
+        height: 38px; /* Smaller size for mobile */
+    }
+}
+
+/* Add to your existing style section */
+.view-all-publications {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.view-all-publications .btn-primary {
+    background: linear-gradient(135deg, var(--cyber-cyan), var(--electric-blue));
+    font-size: 1.1rem;
+    padding: 1.2rem 3rem;
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+}
+
+.view-all-publications .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+}
+    </style>
+</head>
+<body>
+    <div class="quantum-bg">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" class="logo">
+                <img src="images/wywq-logo.png" alt="WYWQ Logo" class="logo-img">
+            </a></div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="about.html">About Dr. Haidar</a></li>
+                <li class="nav-item">
+                    <a href="communication.html" class="nav-link">Quantum Communication</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <span>Quantum Technologies</span>
+                    <ul class="dropdown">
+                        <li><a href="quantum.html#sensors" class="nav-link">Quantum Sensors</a></li>
+                        <li><a href="quantum.html#education" class="nav-link">Quantum Education</a></li>
+                        <li><a href="quantum.html#communication" class="nav-link">Quantum Communication</a></li>
+                        <li><a href="quantum.html#computing" class="nav-link">Quantum Computing</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="market.html">Market Insights</a></li>
+                <li class="nav-item active"><a href="publications.html">Publications</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Publications & Resources</h1>
+            <p>Explore Dr. Mohammad Haidar's groundbreaking research in quantum technologies, including over 335 citations across quantum chemistry and computing. Discover key papers, global seminars, and essential resources driving innovation at WYWQ.</p>
+            <div class="hero-cta">
+                <a href="#publications" class="btn-primary">View Publications</a>
+                <a href="#seminars" class="btn-secondary">Global Seminars</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section">
+        <div class="container">
+            <h2>Dr. Haidar's Publications</h2>
+            <div class="publications-grid">
+                <div class="paper-card">
+        <h3>Non-Iterative Disentangled Unitary Coupled-Cluster based on Lie-algebraic structure</h3>
+        <div class="authors">Mohammad Haidar, et al.</div>
+        <div class="year">2025</div>
+        <p>Novel approach to unitary coupled-cluster theory using Lie-algebraic structures, providing efficient non-iterative implementation for quantum chemistry calculations...</p>
+        <div class="meta">
+            <span>Citations: Recent Publication</span>
+            <span>Journal: Quantum Science and Technology</span>
+        </div>
+        <a href="https://doi.org/10.1088/2058-9565/adb3c5" target="_blank" class="link-btn">Read Paper</a>
+    </div>
+
+    <div class="paper-card">
+        <h3>Extension of the Trotterized Unitary Coupled Cluster to Triple Excitations</h3>
+        <div class="authors">Mohammad Haidar, et al.</div>
+        <div class="year">2024</div>
+        <p>Comprehensive extension of the Trotterized UCC method to include triple excitations, enhancing accuracy in quantum chemistry simulations...</p>
+        <div class="meta">
+            <span>Citations: High Impact</span>
+            <span>Journal: The Journal of Physical Chemistry A</span>
+        </div>
+        <a href="https://doi.org/10.1021/acs.jpca.3c01753" target="_blank" class="link-btn">Read Paper</a>
+    </div>
+
+                <div class="paper-card">
+                    <h3>Open Source Variational Quantum Eigensolver Extension of the Quantum Learning Machine</h3>
+                    <div class="authors">Mohammad Haidar, Marko J. Rančić, Thomas Ayral, et al.</div>
+                    <div class="year">2023</div>
+                    <p>Quantum Chemistry is promising for Quantum Computing. We introduce OpenVQE for VQE algorithms using Atos QLM...</p>
+                    <div class="meta">
+                        <span>Citations: 300+</span>
+                        <span>Journal: WIREs Comput Mol Sci</span>
+                    </div>
+                    <a href="https://doi.org/10.1002/wcms.1664" target="_blank" class="link-btn">Read Paper</a>
+                </div>
+
+                <div class="paper-card">
+                    <h3>Calculating the Ground-State Energy of Benzene Under Spatial Deformations</h3>
+                    <div class="authors">Mohammad Haidar, et al.</div>
+                    <div class="year">2023</div>
+                    <p>We calculate benzene's ground-state energy using VQE, estimating quantum computing feasibility for large orbitals...</p>
+                    <div class="meta">
+                        <span>Citations: Emerging</span>
+                        <span>Journal: Quantum Computing Research</span>
+                    </div>
+                    <a href="https://www.researchgate.net/publication/367044281" target="_blank" class="link-btn">Read Paper</a>
+                </div>
+
+                <div class="paper-card">
+                    <h3>Extension of the Trotterized Unitary Coupled Cluster to Triple Excitations</h3>
+                    <div class="authors">Mohammad Haidar, Marko J. Rančić, Yvon Maday, Jean-Philip Piquemal</div>
+                    <div class="year">2023</div>
+                    <p>Extending Trotterized UCC with triple excitations (UCCSDT) for better accuracy in VQE simulations...</p>
+                    <div class="meta">
+                        <span>Citations: Growing</span>
+                        <span>Journal: arXiv</span>
+                    </div>
+                    <a href="https://arxiv.org/abs/2212.12462" target="_blank" class="link-btn">Read Paper</a>
+                </div>
+
+                <div class="paper-card">
+                    <h3>NRQED Approach to Fine and Hyperfine Structure Corrections</h3>
+                    <div class="authors">Mohammad Haidar</div>
+                    <div class="year">2022</div>
+                    <p>NRQED applied to relativistic corrections in hydrogenlike atoms, confirming effective potentials...</p>
+                    <div class="meta">
+                        <span>Citations: Foundational</span>
+                        <span>Journal: Theoretical Physics</span>
+                    </div>
+                    <a href="https://www.researchgate.net/profile/Mohammad-Haidar-14" target="_blank" class="link-btn">Read Paper</a>
+                </div>
+            </div>
+            <div class="view-all-publications">
+        <a href="https://www.researchgate.net/profile/Mohammad-Haidar-14" target="_blank" class="btn-primary">
+            View All Publications on ResearchGate
+        </a>
+    </div>
+        </div>
+    </section>
+
+    <!-- Seminars Section -->
+    <section id="seminars" class="section">
+        <div class="container">
+            <div class="seminars-section">
+                <h2 style="color: white;">Global Seminars & Contributions</h2>
+                <div class="seminars-timeline">
+                    <div class="seminar-item">
+                        <div class="seminar-dot"></div>
+                        <div class="seminar-content">
+                            <div class="seminar-date">August 17-23, 2025</div>
+                            <div class="seminar-title">VSAIQC-2025, Quy Nhon, Vietnam</div>
+                            <div class="seminar-desc">Co-founder presentation on quantum advancements and variational algorithms in international computational chemistry summit.</div>
+                        </div>
+                    </div>
+                    <div class="seminar-item">
+                        <div class="seminar-dot"></div>
+                        <div class="seminar-content">
+                            <div class="seminar-date">July 4, 2025</div>
+                            <div class="seminar-title">Hybrid Event, Reims, France</div>
+                            <div class="seminar-desc">Hands-on workshops on VQE and Variational Quantum Algorithms, bridging theory with practical implementation.</div>
+                        </div>
+                    </div>
+                    <div class="seminar-item">
+                        <div class="seminar-dot"></div>
+                        <div class="seminar-content">
+                            <div class="seminar-date">April 26, 2025</div>
+                            <div class="seminar-title">ICWOQ-2025</div>
+                            <div class="seminar-desc">Keynote on wave equations, optical engineering, and quantum mechanics applications in modern technology.</div>
+                        </div>
+                    </div>
+                    <div class="seminar-item">
+                        <div class="seminar-dot"></div>
+                        <div class="seminar-content">
+                            <div class="seminar-date">2025</div>
+                            <div class="seminar-title">Quantum Innovation Summit Dubai 2025</div>
+                            <div class="seminar-desc">Strategic speaker on quantum innovations and their impact on Middle Eastern technology advancement.</div>
+                        </div>
+                    </div>
+                    <div class="seminar-item">
+                        <div class="seminar-dot"></div>
+                        <div class="seminar-content">
+                            <div class="seminar-date">2025</div>
+                            <div class="seminar-title">Quantum and the Future of Computing Conference</div>
+                            <div class="seminar-desc">Presentation as Senior Quantum Researcher on NISQ-era developments and computational breakthroughs.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section">
+        <div class="container">
+            <h2>Quantum Resources & Tools</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>OpenVQE Package</h3>
+                    <p>Open-source tools for Variational Quantum Eigensolver in quantum chemistry, providing researchers with cutting-edge computational capabilities.</p>
+                    <a href="https://github.com/OpenVQE" target="_blank" class="link-btn">Access Repository</a>
+                </div>
+                <div class="resource-card">
+                    <h3>QuantumNet Solutions</h3>
+                    <p>Co-founded platform for quantum networking and AI adoption, bridging the gap between quantum research and practical applications.</p>
+                    <a href="https://quantumnets.ai" target="_blank" class="link-btn">Explore Platform</a>
+                </div>
+                <div class="resource-card">
+                    <h3>OpenVQA Initiative</h3>
+                    <p>Founder-led initiative for quantum variational algorithms, democratizing access to advanced quantum computing methodologies.</p>
+                    <a href="https://openvqa.com" target="_blank" class="link-btn">Join Community</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Research Profile</h3>
+                    <p>Complete access to Dr. Haidar's research papers, citations, and latest developments in quantum technology advancement.</p>
+                    <a href="https://www.researchgate.net/profile/Mohammad-Haidar-14" target="_blank" class="link-btn">View Profile</a>
+                </div>
+                <div class="resource-card">
+                    <h3>OpenHybrid Platform</h3>
+                    <p>Hybrid quantum-classical computing solutions designed for next-generation computational challenges and research applications.</p>
+                    <a href="https://openhybrid.net" target="_blank" class="link-btn">Discover More</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Educational Materials</h3>
+                    <p>Comprehensive learning resources for quantum technologies, from foundational concepts to advanced implementation strategies.</p>
+                    <a href="#contact" class="link-btn">Request Access</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Collaborate on Quantum Research</h2>
+                <p>Connect with Dr. Haidar for groundbreaking research partnerships, access to cutting-edge resources, or insights into the future of quantum technology development.</p>
+                <a href="contact.html" class="cta-btn">Start Collaboration</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WYWQ. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

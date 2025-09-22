@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Communication - WYWQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --quantum-purple: #6A1B9A;
+        --electric-blue: #007BFF;
+        --deep-navy: #001F3F;
+        --cyber-cyan: #00D4FF;
+        --neon-green: #39FF14;
+        --gradient-primary: linear-gradient(135deg, #007BFF 0%, #00D4FF 100%);
+        --gradient-secondary: linear-gradient(45deg, #00D4FF, #39FF14);
+        --glass-bg: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.2);
+        /* NEW: Improved text colors for better readability */
+        --text-primary: #FFFFFF;           /* Pure white for main headings */
+        --text-secondary: #F0F4F8;         /* Very light gray for body text */
+        --text-muted: #B8C2CC;             /* Medium gray for secondary info */
+        --text-accent: #00D4FF;            /* Cyan for highlights */
+        --text-success: #39FF14;           /* Green for positive elements */
+        --text-warning: #FFD700;           /* Gold for warnings/highlights */
+        --card-bg: rgba(20, 25, 30, 0.95); /* Darker card background */
+        --card-border: rgba(0, 212, 255, 0.3); /* Cyan border */
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        background: #000;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
+    /* Quantum Particle Background Animation */
+    .quantum-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -3;
+        background: radial-gradient(circle at 20% 80%, #001F3F 0%, #000 50%), 
+                    radial-gradient(circle at 80% 20%, #6A1B9A 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, #007BFF 0%, transparent 50%);
+        opacity: 0.3;
+    }
+
+    .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .particle {
+        position: absolute;
+        background: var(--cyber-cyan);
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .particle:nth-child(odd) {
+        background: var(--neon-green);
+        animation-duration: 8s;
+        animation-delay: -2s;
+    }
+
+    .particle:nth-child(3n) {
+        background: var(--electric-blue);
+        animation-duration: 10s;
+        animation-delay: -4s;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-20px) rotate(120deg); }
+        66% { transform: translateY(20px) rotate(240deg); }
+    }
+
+    /* FIXED Hero Section - Transparent background */
+    .hero {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--text-primary);
+        overflow: hidden;
+        padding-top: 100px;
+        background: transparent;
+    }
+
+    /* FIXED Video - More visible */
+    .hero-video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 0.8;
+        min-width: 100%;
+        min-height: 100%;
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    /* FIXED: Much lighter overlay for clear video */
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, 
+            rgba(0, 31, 63, 0.15),
+            rgba(106, 27, 154, 0.1)
+        );
+        z-index: 0;
+    }
+
+    /* Even lighter when video plays */
+    .hero-video-bg.playing ~ .hero-overlay {
+        background: linear-gradient(135deg, 
+            rgba(0, 31, 63, 0.1),
+            rgba(106, 27, 154, 0.05)
+        );
+    }
+
+    /* Lighter fallback background */
+    .hero-fallback-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(0, 123, 255, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(57, 255, 20, 0.15) 0%, transparent 50%),
+            linear-gradient(135deg, rgba(0, 31, 63, 0.3), rgba(106, 27, 154, 0.2));
+        z-index: -2;
+        display: block;
+    }
+
+    .hero-fallback-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, 
+            rgba(0, 31, 63, 0.2), 
+            rgba(106, 27, 154, 0.15)
+        );
+        z-index: -1;
+    }
+
+    .hero-video-bg.playing + .hero-fallback-bg {
+        display: none !important;
+    }
+
+    .hero-content {
+        max-width: 900px;
+        z-index: 2;
+        position: relative;
+        padding: 0 2rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 900;
+        margin-bottom: 2rem;
+        background: var(--gradient-secondary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        animation: heroTextReveal 1.2s ease-out;
+        text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        color: var(--text-primary); /* Fallback */
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+        opacity: 1;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+        animation: heroTextReveal 1.2s ease-out 0.3s both;
+        text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        color: var(--text-secondary);
+    }
+
+    .hero-cta {
+        display: inline-flex;
+        gap: 1.5rem;
+        animation: heroTextReveal 1.2s ease-out 0.6s both;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #007BFF, #00D4FF);
+        color: var(--text-primary);
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.05rem;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
+        color: var(--text-primary);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: var(--text-primary);
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.05rem;
+        border: 2px solid var(--cyber-cyan);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-secondary:hover {
+        background: var(--cyber-cyan);
+        color: #000;
+        box-shadow: 0 0 30px var(--cyber-cyan);
+        transform: translateY(-3px);
+    }
+
+    @keyframes heroTextReveal {
+        from {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Section Styling */
+    .section {
+        padding: 8rem 0;
+        position: relative;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .section h2 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        text-align: center;
+        margin-bottom: 4rem;
+        background: linear-gradient(135deg, var(--cyber-cyan), var(--electric-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .section p.intro {
+        color: #F0F4F8;
+        font-size: 1.2rem;
+        line-height: 1.7;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Section Image Styling */
+    .section-image {
+        width: 100%;
+        max-width: 800px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 24px;
+        margin: 3rem auto;
+        display: block;
+        box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin: 4rem 0;
+    }
+
+    .benefit-item {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .benefit-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .benefit-item:hover::before {
+        opacity: 0.05;
+    }
+
+    .benefit-item:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0, 123, 255, 0.2);
+        border-color: var(--cyber-cyan);
+    }
+
+    .benefit-item h3 {
+        color: var(--text-accent);
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .benefit-item p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* How It Works Section */
+    .how-it-works-section {
+        background: linear-gradient(135deg, rgba(0, 31, 63, 0.95), rgba(106, 27, 154, 0.95));
+        border-radius: 32px;
+        margin: 4rem 0;
+        padding: 4rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .how-it-works-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(0,212,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(57,255,20,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    .how-it-works {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 3rem;
+        backdrop-filter: blur(20px);
+        position: relative;
+        z-index: 1;
+    }
+
+    .how-it-works h3 {
+        color: var(--text-success);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .how-it-works ol {
+        list-style: none;
+        counter-reset: step-counter;
+        position: relative;
+        z-index: 2;
+    }
+
+    .how-it-works li {
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding-left: 2rem;
+        position: relative;
+        counter-increment: step-counter;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .how-it-works li::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--gradient-primary);
+        color: var(--text-primary);
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    .how-it-works li strong {
+        color: var(--text-primary);
+    }
+
+    .qkd-diagram {
+        width: 100%;
+        max-width: 800px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 24px;
+        margin: 3rem auto;
+        display: block;
+        box-shadow: 0 20px 60px rgba(0, 123, 255, 0.3);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Applications Section */
+    .applications {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 3rem;
+        backdrop-filter: blur(20px);
+        margin: 4rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .applications::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(0,212,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(57,255,20,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+    }
+
+    .applications h3 {
+        color: var(--text-success);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .applications ul {
+        list-style: none;
+        position: relative;
+        z-index: 2;
+        columns: 2;
+        column-gap: 2rem;
+    }
+
+    .applications li {
+        margin-bottom: 1.2rem;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding-left: 2rem;
+        position: relative;
+        break-inside: avoid;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .applications li::before {
+        content: '◆';
+        position: absolute;
+        left: 0;
+        color: var(--text-accent);
+        font-size: 1.2rem;
+        top: 0;
+    }
+
+    .applications li strong {
+        color: var(--text-primary);
+    }
+
+    .applications-image {
+        width: 100%;
+        max-width: 600px;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 24px;
+        margin: 3rem auto;
+        display: block;
+        box-shadow: 0 20px 60px rgba(0, 123, 255, 0.3);
+        border: 1px solid var(--card-border);
+    }
+
+    /* Visuals Section */
+    .visuals-section {
+        padding: 8rem 0;
+    }
+
+    .visuals-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+        margin-top: 4rem;
+    }
+
+    .visual-item {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 2rem;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .visual-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .visual-item:hover::before {
+        opacity: 0.05;
+    }
+
+    .visual-item:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+        border-color: var(--cyber-cyan);
+    }
+
+    .visual-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+    }
+
+    .visual-item h3 {
+        color: var(--text-accent);
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .visual-item p {
+        color: var(--text-secondary);
+        line-height: 1.7;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Current Developments Section */
+    .developments-section {
+        padding: 8rem 0;
+    }
+
+    .developments-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-top: 4rem;
+    }
+
+    .development-item {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .development-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .development-item:hover::before {
+        opacity: 0.05;
+    }
+
+    .development-item:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0, 123, 255, 0.2);
+        border-color: var(--cyber-cyan);
+    }
+
+    .development-item h3 {
+        color: var(--text-accent);
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .development-item p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .development-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin: 1rem auto 1.5rem;
+        display: block;
+    }
+
+    /* Challenges Section */
+    .challenges-section {
+        padding: 8rem 0;
+    }
+
+    .challenges-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 4rem;
+    }
+
+    .challenge-item {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .challenge-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .challenge-item:hover::before {
+        opacity: 0.05;
+    }
+
+    .challenge-item:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0, 123, 255, 0.2);
+        border-color: var(--cyber-cyan);
+    }
+
+    .challenge-item h3 {
+        color: var(--text-success);
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .challenge-item p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .challenge-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin: 1rem auto 1.5rem;
+        display: block;
+    }
+
+    /* Publications Section */
+    .publications-section {
+        padding: 8rem 0;
+    }
+
+    .publications-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 4rem;
+    }
+
+    .publication-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 2rem;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .publication-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .publication-card:hover::before {
+        opacity: 0.05;
+    }
+
+    .publication-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+        border-color: var(--cyber-cyan);
+    }
+
+    .publication-card h3 {
+        color: var(--text-primary);
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .publication-card .authors {
+        color: var(--text-success);
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .publication-card .year {
+        color: var(--text-accent);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .publication-card p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        flex-grow: 1;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .publication-card a {
+        color: var(--text-accent);
+        text-decoration: none;
+        font-weight: 500;
+        text-shadow: none;
+    }
+
+    .publication-card a:hover {
+        text-decoration: underline;
+        color: var(--text-warning);
+    }
+
+    .publication-card .link-btn {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        background: linear-gradient(135deg, var(--cyber-cyan), var(--electric-blue));
+        color: white !important; /* Force white text color */
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        border: none;
+        position: relative;
+        z-index: 3; /* Ensure button is clickable */
+    }
+
+    .publication-card .link-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+        text-decoration: none !important;
+        color: white !important;
+    }
+
+    /* Add pointer events to ensure card doesn't block button */
+    .publication-card {
+        pointer-events: none; /* Disable card click events */
+    }
+
+    .publication-card > * {
+        pointer-events: auto; /* Re-enable click events for card contents */
+    }
+
+    .footer-citation {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1rem;
+        background: var(--card-bg);
+        border-radius: 8px;
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+    }
+
+    .footer-citation a {
+        color: var(--text-accent);
+        text-shadow: none;
+    }
+
+    .footer-citation a:hover {
+        color: var(--text-warning);
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, rgba(0, 31, 63, 0.95), rgba(106, 27, 154, 0.95));
+        border-radius: 32px;
+        padding: 6rem 4rem;
+        margin: 4rem auto;
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(20px);
+        text-align: center;
+        color: var(--text-primary);
+        position: relative;
+        overflow: hidden;
+        max-width: 800px;
+    }
+
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+        opacity: 0.3;
+    }
+
+    .cta-section h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, #00ffff, #39FF14);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    text-shadow: 0 2px 8px rgba(0, 255, 255, 0.3);
+}
+    .cta-section p {
+        font-size: 1.2rem;
+        opacity: 1;
+        margin-bottom: 3rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+        position: relative;
+        z-index: 2;
+        color: var(--text-secondary);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Footer */
+    .footer {
+        background: rgba(0, 0, 0, 0.8);
+        color: var(--text-muted);
+        text-align: center;
+        padding: 2rem 0;
+        border-top: 1px solid var(--card-border);
+    }
+
+    .footer a {
+        color: var(--text-accent);
+        text-decoration: none;
+        text-shadow: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+        color: var(--text-warning);
+    }
+
+    /* Logo styling */
+    .logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        margin-left: -20px;
+    }
+
+    .logo-img {
+        height: 46px;
+        width: auto;
+        display: block;
+    }
+
+    /* Navigation improvements */
+    .navbar a {
+        color: var(--text-primary) !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar a:hover {
+        color: var(--text-accent) !important;
+    }
+
+    .nav-item.active a {
+        color: var(--text-success) !important;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .benefits-grid, .developments-grid, .challenges-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .applications ul {
+            columns: 1;
+            column-gap: 0;
+        }
+
+        .how-it-works {
+            padding: 2rem;
+        }
+
+        .visuals-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .publications-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .section-image, .qkd-diagram, .applications-image, .development-image, .challenge-image, .publication-image {
+            height: 250px;
+            margin: 2rem auto;
+        }
+
+        .hero {
+            padding-top: 120px;
+        }
+
+        .hero-cta {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 38px;
+        }
+
+        /* Increase text sizes for mobile readability */
+        .hero p {
+            font-size: 1.15rem;
+        }
+
+        .section p.intro {
+            font-size: 1.1rem;
+        }
+
+        .benefit-item p, .development-item p, .challenge-item p {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero p {
+            font-size: 1.1rem;
+            padding: 0 1rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-image, .qkd-diagram, .applications-image, .development-image, .challenge-image, .publication-image {
+            height: 200px;
+        }
+
+        /* Enhanced mobile shadows for better contrast */
+        .benefit-item, .development-item, .challenge-item, .publication-card {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    /* Smooth scroll offset for fixed navbar */
+    html {
+        scroll-padding-top: 100px;
+    }
+</style>
+</head>
+<body>
+    <div class="quantum-bg">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/wywq-logo.png" alt="WYWQ Logo" class="logo-img">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">About Dr. Haidar</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="communication.html">Quantum Communication</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <span>Quantum Technologies</span>
+                    <ul class="dropdown">
+                        <li><a href="quantum.html#sensors" class="nav-link">Quantum Sensors</a></li>
+                        <li><a href="quantum.html#education" class="nav-link">Quantum Education</a></li>
+                        <li><a href="quantum.html#communication" class="nav-link">Quantum Communication</a></li>
+                        <li><a href="quantum.html#computing" class="nav-link">Quantum Computing</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="market.html">Market Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="publications.html">Publications</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with FIXED Video Background -->
+    <section class="hero">
+        <!-- Fallback background div (shows if video fails) -->
+        <div class="hero-fallback-bg">
+            <div class="hero-fallback-overlay"></div>
+        </div>
+        
+        <!-- Video - will show if it loads -->
+        <video 
+            class="hero-video-bg" 
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            preload="metadata"
+            poster="images/quantum-fallback.jpg"
+            loading="lazy"
+            data-video-fallback="false">
+            <source src="videos/quantum-communication-bg.mp4" type="video/mp4">
+            <source src="videos/quantum-communication-bg.webm" type="video/webm">
+            <source src="videos/quantum-communication-bg.ogv" type="video/ogg">
+            <!-- Fallback content -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Overlay for text readability -->
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1>Quantum Communication</h1>
+            <p>Secure, unbreakable data transmission using quantum mechanics—transforming cybersecurity and global connectivity in the quantum era.</p>
+            <div class="hero-cta">
+                <a href="#importance" class="btn-primary">Why It Matters</a>
+                <a href="#applications" class="btn-secondary">Key Applications</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Importance Section -->
+    <section id="importance" class="section">
+        <div class="container">
+            <h2>The Importance of Quantum Communication</h2>
+            <p class="intro">Quantum communication leverages quantum mechanics to transmit and control information using qubits rather than classical bits, enabling unbreakable encryption through Quantum Key Distribution (QKD). This technology is already transitioning from laboratories to real-world applications, with networks like China's 4,600 km integrated system serving banks and governments. As quantum threats loom, quantum communication provides tap-proof data transfer essential for confidential computing, storage, and sharing.</p>
+            
+            <img src="images/imagesquantum-security-importance.webp" 
+                 alt="Quantum Security Importance" 
+                 class="section-image"
+                 loading="lazy">
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>Unbreakable Security</h3>
+                    <p>Detects eavesdropping instantly via quantum principles like superposition and entanglement, offering immunity to classical and quantum attacks.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Global Scalability</h3>
+                    <p>Supports secure networks over vast distances, integrating with fiber optics and satellites for worldwide quantum-secure infrastructure.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Competitive Edge</h3>
+                    <p>Early adopters gain advantages in high-stakes industries, with 58% of organizations anticipating major applications within 3-5 years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <div class="container">
+            <div class="how-it-works">
+                <h3>How Quantum Communication Works</h3>
+                <img src="images/Screenshot (1334).png" 
+                     alt="QKD Process Diagram" 
+                     class="qkd-diagram"
+                     loading="lazy">
+                <ol>
+                    <li><strong>Key Generation:</strong> Parties (Alice and Bob) generate and share quantum keys using QKD protocols over secure channels.</li>
+                    <li><strong>Encryption:</strong> Messages are encrypted with these keys using classical algorithms for robust data protection.</li>
+                    <li><strong>Detection:</strong> Any interception disturbs the quantum state, alerting users and invalidating the key—ensuring tamper-proof transmission.</li>
+                    <li><strong>Integration:</strong> Combines with post-quantum cryptography (PQC) for hybrid security in existing networks.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section id="applications" class="section">
+        <div class="container">
+            <h2>Key Applications & Quantum Cryptography</h2>
+            <p class="intro">Quantum communication excels in secure data transfer, with applications spanning finance, healthcare, and defense. Quantum cryptography, a core subset, uses principles like entanglement for unbreakable encryption, addressing the "harvest now, decrypt later" threats from quantum computers.</p>
+            
+            <div class="applications">
+                <h3>Real-World Applications</h3>
+                <img src="images/Quantum-Communication--Enabling-Secure-Data-Transfer-with-QIP--Real-world-Applications-of-Quantum-Communication.webp" 
+                     alt="Quantum Communication Applications" 
+                     class="applications-image"
+                     loading="lazy">
+                <ul>
+                    <li><strong>Financial Services:</strong> Ultra-secure transaction processing and trading systems with QKD to prevent quantum attacks on sensitive data.</li>
+                    <li><strong>Healthcare:</strong> Encrypted patient data sharing and telemedicine, ensuring absolute privacy via quantum-secure channels.</li>
+                    <li><strong>National Security:</strong> Protected military communications resistant to quantum decryption, using entanglement-based networks.</li>
+                    <li><strong>Critical Infrastructure:</strong> Quantum-secured power grids and transportation systems with repeater networks for global coverage.</li>
+                    <li><strong>Cloud Computing:</strong> Post-quantum cryptography (PQC) integration for data centers, combining QKD with classical encryption.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Developments Section -->
+    <section class="developments-section">
+        <div class="container">
+            <h2>Current Developments</h2>
+            <p class="intro">Quantum communication is advancing rapidly, with commercial pilots and global initiatives paving the way for mainstream adoption. From satellite networks to fiber-optic integrations, these breakthroughs are making quantum-secure communication a reality today.</p>
+            
+            <div class="developments-grid">
+                <div class="development-item">
+                    <img src="images/satelite.webp" 
+                         alt="Satellite Quantum Networks" 
+                         class="development-image"
+                         loading="lazy">
+                    <h3>Satellite Quantum Networks</h3>
+                    <p>Systems like Lux Quanta's NOVA LQ achieve 100km range with multi-receiver capabilities, enabling global infrastructure.</p>
+                </div>
+                <div class="development-item">
+                    <img src="images/Deutsche-Telekom-and-Qunnect-Sustain-High-Fidelity-Entanglement-Over-30-km-Fiber-for-17-Days-1280x720.jpg" 
+                         alt="Field-Tested QKD" 
+                         class="development-image"
+                         loading="lazy">
+                    <h3>Field-Tested QKD</h3>
+                    <p>T-Labs and Qunnect's 30km photon transmission at 99% fidelity proves real-world viability for urban networks.</p>
+                </div>
+                <div class="development-item">
+                    <img src="images/cisco_quantum_networking_entanglement1.webp" 
+                         alt="Quantum Networking Chips" 
+                         class="development-image"
+                         loading="lazy">
+                    <h3>Quantum Networking Chips</h3>
+                    <p>Cisco's prototype integrates quantum communication hardware for enterprise deployment in hybrid systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section class="challenges-section">
+        <div class="container">
+            <h2>Challenges & Preparation</h2>
+            <p class="intro">While promising, quantum communication faces hurdles like long-distance transmission and integration with existing infrastructure. Organizations must prepare now, as quantum attacks are imminent ("when, not if"). Start with quantum-safe assessments and build expert teams.</p>
+            
+            <img src="images/Quantum-Cryptanalysis--Breaking-Codes-with-QIP--Challenges-in-Implementing-Quantum-Cryptanalysis.jpg" 
+                 alt="Quantum Communication Challenges" 
+                 class="section-image"
+                 loading="lazy">
+            
+            <div class="challenges-grid">
+                <div class="challenge-item">
+                    <img src="images/40507_2025_350_Fig1_HTML.jpg" 
+                         alt="Distance Limitations" 
+                         class="challenge-image"
+                         loading="lazy">
+                    <h3>Distance Limitations</h3>
+                    <p>Secure transmission over long distances requires "trusted nodes"; ongoing research in quantum repeaters addresses this.</p>
+                </div>
+                <div class="challenge-item">
+                    <img src="images/63fd5edb40d99ece07c6b323_softbank-quantum-safe-hybrid-key.png" 
+                         alt="Integration Challenges" 
+                         class="challenge-image"
+                         loading="lazy">
+                    <h3>Integration Challenges</h3>
+                    <p>Hybrid systems combining QKD with post-quantum cryptography (PQC) ensure compatibility with classical networks.</p>
+                </div>
+                <div class="challenge-item">
+                    <img src="images/Beyond-PQC.jpg" 
+                         alt="Preparation Advice" 
+                         class="challenge-image"
+                         loading="lazy">
+                    <h3>Preparation Advice</h3>
+                    <p>Conduct security audits, protect critical data with QKD/PQC, and partner with providers—lead times can exceed 2 years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="publications-section">
+        <div class="container">
+            <h2>Key Publications</h2>
+            <p class="intro">Foundational research papers and reports that shaped quantum communication technology and continue to guide its development.</p>
+            
+            <!-- Update the publications-grid section -->
+<div class="publications-grid">
+    <div class="publication-card">
+        <h3>Non-Iterative Disentangled Unitary Coupled-Cluster based on Lie-algebraic structure</h3>
+        <div class="authors">Mohammad Haidar, et al.</div>
+        <div class="year">2025</div>
+        <p>Novel approach to unitary coupled-cluster theory using Lie-algebraic structures for quantum chemistry calculations.</p>
+        <a href="https://doi.org/10.1088/2058-9565/adb3c5" target="_blank" rel="noopener noreferrer" class="link-btn">Read Paper</a>
+    </div>
+
+    <div class="publication-card">
+        <h3>Extension of the Trotterized Unitary Coupled Cluster to Triple Excitations</h3>
+        <div class="authors">Mohammad Haidar, et al.</div>
+        <div class="year">2024</div>
+        <p>Extension of the Trotterized UCC method to include triple excitations for quantum chemistry simulations.</p>
+        <a href="https://doi.org/10.1021/acs.jpca.3c01753" target="_blank" rel="noopener noreferrer" class="link-btn">Read Paper</a>
+    </div>
+
+    <div class="publication-card">
+        <h3>Post-Quantum Cryptography Standardization</h3>
+        <div class="authors">NIST</div>
+        <div class="year">2024</div>
+        <p>Overview of PQC algorithms complementing QKD for quantum-resistant encryption.</p>
+        <a href="https://csrc.nist.gov/projects/post-quantum-cryptography" target="_blank" rel="noopener noreferrer" class="link-btn">Read Paper</a>
+    </div>
+</div>
+            
+            <div class="footer-citation">
+                Insights adapted from Capgemini Research Institute's 'Quantum Technologies' report (2022). For full details, visit <a href="https://www.capgemini.com/insights/research-library/quantum-technologies/" target="_blank">Capgemini Report</a>.
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Secure Your Future with Quantum Communication</h2>
+                <p>Partner with WYWQ to implement quantum-secure solutions tailored to your needs. From QKD networks to PQC integration, we're ready to help you lead in the quantum era.</p>
+                <a href="contact.html" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WYWQ. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- FIXED JavaScript for Video Handling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Video handling
+            const video = document.querySelector('.hero-video-bg');
+            const fallbackBg = document.querySelector('.hero-fallback-bg');
+            const overlay = document.querySelector('.hero-overlay');
+            
+            if (!video) {
+                console.error('Video element not found!');
+                return;
+            }
+            
+            console.log('Video element found:', video);
+            
+            // Check if video can play
+            function checkVideoStatus() {
+                if (video.readyState >= 3) { // HAVE_FUTURE_DATA or higher
+                    video.classList.add('playing');
+                    if (fallbackBg) fallbackBg.style.display = 'none';
+                    console.log('Video is ready to play');
+                } else {
+                    console.log('Video not ready, showing fallback');
+                    if (fallbackBg) fallbackBg.style.display = 'block';
+                }
+            }
+            
+            // Video events
+            video.addEventListener('loadedmetadata', function() {
+                console.log('Video metadata loaded');
+                checkVideoStatus();
+            });
+            
+            video.addEventListener('canplay', function() {
+                console.log('Video can play');
+                checkVideoStatus();
+            });
+            
+            video.addEventListener('play', function() {
+                console.log('Video is playing');
+                video.classList.add('playing');
+                if (fallbackBg) fallbackBg.style.display = 'none';
+            });
+            
+            video.addEventListener('pause', function() {
+                console.log('Video paused');
+                video.classList.remove('playing');
+                if (fallbackBg) fallbackBg.style.display = 'block';
+            });
+            
+            video.addEventListener('error', function(e) {
+                console.error('Video error:', e);
+                console.log('Error details:', video.error);
+                console.log('Current source:', video.currentSrc);
+                video.classList.remove('playing');
+                if (fallbackBg) fallbackBg.style.display = 'block';
+                
+                // Log which source failed
+                const sources = video.querySelectorAll('source');
+                sources.forEach((source, index) => {
+                    console.log(`Source ${index}: ${source.src} - ${source.type}`);
+                });
+            });
+            
+            video.addEventListener('loadstart', function() {
+                console.log('Video load started');
+            });
+            
+            // Try to play the video
+            function attemptPlay() {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Video autoplay started successfully');
+                    }).catch(error => {
+                        console.log('Autoplay prevented:', error);
+                        // Try playing on first interaction
+                        const playOnInteraction = function() {
+                            video.play().then(() => {
+                                console.log('Video started after user interaction');
+                                document.removeEventListener('click', playOnInteraction);
+                                document.removeEventListener('touchstart', playOnInteraction);
+                            }).catch(console.error);
+                        };
+                        
+                        document.addEventListener('click', playOnInteraction, { once: true });
+                        document.addEventListener('touchstart', playOnInteraction, { once: true });
+                    });
+                }
+            }
+            
+            // Initial check and play attempt
+            setTimeout(function() {
+                checkVideoStatus();
+                attemptPlay();
+            }, 100);
+            
+            // Fallback: Force video visibility
+            video.style.display = 'block';
+            video.style.visibility = 'visible';
+            
+            // Debug: Log video status every 2 seconds for first 10 seconds
+            let debugCount = 0;
+            const debugInterval = setInterval(function() {
+                console.log(`Video status after ${debugCount * 2}s:`, {
+                    paused: video.paused,
+                    readyState: video.readyState,
+                    duration: video.duration,
+                    currentSrc: video.currentSrc,
+                    networkState: video.networkState,
+                    error: video.error
+                });
+                debugCount++;
+                if (debugCount > 5) {
+                    clearInterval(debugInterval);
+                }
+            }, 2000);
+        });
+        
+        // Particle animation script
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', createParticles);
+        } else {
+            createParticles();
+        }
+    </script>
+    
+    <!-- External scripts -->
+    <script src="js/navigation.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

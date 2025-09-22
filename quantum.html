@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Technologies - WYWQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --quantum-purple: #6A1B9A;
+            --electric-blue: #007BFF;
+            --deep-navy: #001F3F;
+            --cyber-cyan: #00D4FF;
+            --neon-green: #39FF14;
+            --bright-white: #F8FAFC;
+            --light-silver: #E2E8F0;
+            --soft-blue: #E0F2FE;
+            --gradient-primary: linear-gradient(135deg, #001F3F 0%, #6A1B9A 50%, #007BFF 100%);
+            --gradient-secondary: linear-gradient(45deg, #00D4FF, #39FF14);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--bright-white);
+            background: #000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        /* Quantum Particle Background Animation */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 80%, #001F3F 0%, #000 50%), 
+                        radial-gradient(circle at 80% 20%, #6A1B9A 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #007BFF 0%, transparent 50%);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--neon-green);
+            animation-duration: 8s;
+            animation-delay: -2s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--electric-blue);
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--bright-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: heroTextReveal 1.2s ease-out;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: var(--light-silver);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: heroTextReveal 1.2s ease-out 0.3s both;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+            animation: heroTextReveal 1.2s ease-out 0.6s both;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--bright-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+            color: var(--bright-white);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--cyber-cyan);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--cyber-cyan);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cyber-cyan);
+            color: #000;
+            box-shadow: 0 0 30px var(--cyber-cyan);
+            transform: translateY(-3px);
+        }
+
+        @keyframes heroTextReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--cyber-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+        }
+
+        .section p.intro {
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            color: var(--light-silver);
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Benefits Grid */
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .benefit-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .benefit-item:hover::before {
+            opacity: 0.08;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 123, 255, 0.25);
+            border-color: var(--cyber-cyan);
+        }
+
+        .benefit-item h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .benefit-item p {
+            color: var(--light-silver);
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Applications Section */
+        .applications {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .applications::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(0,212,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(57,255,20,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .applications h3 {
+            color: var(--neon-green);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(57, 255, 20, 0.3);
+        }
+
+        .applications ul {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .applications li {
+            margin-bottom: 1.2rem;
+            color: var(--bright-white);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            padding-left: 2rem;
+            position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .applications li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--cyber-cyan);
+            font-size: 1.2rem;
+            top: 0;
+            text-shadow: none;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            background: var(--glass-bg);
+            border: 2px solid var(--electric-blue);
+            color: var(--cyber-cyan);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+            color: var(--bright-white);
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link span {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.95), rgba(106, 27, 154, 0.95));
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 4rem auto;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            text-align: center;
+            color: var(--bright-white);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-section h2 {
+            background: linear-gradient(135deg, #00ffff, #ff66ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--light-silver);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--glass-border);
+            color: var(--light-silver);
+            text-align: center;
+            padding: 3rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .footer a {
+            color: var(--cyber-cyan);
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 10px var(--cyber-cyan), 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Section Image Styling */
+        .section-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .benefits-list {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-section,
+            .applications {
+                padding: 4rem 2rem;
+                margin: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 6rem 0;
+            }
+
+            .section-image {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Smooth scroll offset for fixed navbar */
+        html {
+            scroll-padding-top: 100px;
+        }
+        .logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: -20px;
+}
+
+.logo-img {
+    height: 46px; /* Adjust this value to match the previous text size */
+    width: auto;
+    display: block;
+}
+
+/* Adjust logo size for mobile devices */
+@media screen and (max-width: 768px) {
+    .logo-img {
+        height: 38px; /* Smaller size for mobile */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="quantum-bg">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" class="logo">
+                <img src="images/wywq-logo.png" alt="WYWQ Logo" class="logo-img">
+            </a></div>
+            <!-- Update the navigation section -->
+<ul class="nav-menu" id="navMenu">
+    <li class="nav-item"><a href="index.html">Home</a></li>
+    <li class="nav-item"><a href="about.html">About Dr. Haidar</a></li>
+    <li class="nav-item">
+        <a href="communication.html">Quantum Communication</a>
+    </li>
+    <li class="nav-item active">
+        <a href="quantum.html">Quantum Technologies</a>
+    </li>
+    <li class="nav-item"><a href="market.html">Market Insights</a></li>
+    <li class="nav-item"><a href="publications.html">Publications</a></li>
+    <li class="nav-item"><a href="contact.html">Contact</a></li>
+</ul>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Quantum Technologies</h1>
+            <p>Discover why quantum sensors, education, communication, and computing are essential for innovation, security, and solving humanity's greatest challenges in 2025 and beyond.</p>
+            <div class="hero-cta">
+                <a href="#sensors" class="btn-primary">Explore Technologies</a>
+                <a href="#computing" class="btn-secondary">View Applications</a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Quantum Sensors Section -->
+    <section id="sensors" class="section">
+        <div class="container">
+            <!-- Section Image -->
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop" loading="lazy" alt="Quantum Sensor Technology" loading="lazy">
+            </div>
+            
+            <h2>Why We Need Quantum Sensors</h2>
+            <p class="intro">Quantum sensors leverage quantum phenomena for unprecedented precision in measuring physical properties, entering a pivotal phase in 2025 where real-world applications drive breakthroughs in multiple industries.</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h3>Ultra-High Sensitivity</h3>
+                    <p>Detect changes far beyond classical sensors, enabling precise measurements of time, electric fields, and magnetic properties with quantum-enhanced precision.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Enhanced Accuracy</h3>
+                    <p>Reduce errors in harsh environments, making them ideal for aerospace applications and medical diagnostics where precision is critical.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Compact & Efficient</h3>
+                    <p>Smaller form factors with lower power consumption requirements, perfect for portable technology and field deployments.</p>
+                </div>
+            </div>
+            
+            <div class="applications">
+                <h3>Key Applications</h3>
+                <ul>
+                    <li>Medical diagnostics: Early disease detection via biomolecular sensing with quantum-enhanced precision</li>
+                    <li>Navigation: GPS-independent positioning systems for submarines and urban canyon environments</li>
+                    <li>Environmental monitoring: Tracking climate changes with atomic-level precision for research</li>
+                    <li>Aerospace: Improved aircraft stability systems and enhanced space exploration capabilities</li>
+                    <li>Fundamental physics: Gravitational wave detection and dark matter research applications</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2>Why We Need Quantum Education</h2>
+            <p class="intro">The quantum skills gap is a critical barrier to innovation, with job postings requiring quantum expertise tripling from 2011 to 2024, demanding modular learning pathways to build a diverse, adaptable workforce by 2025.</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h3>Bridge the Talent Shortage</h3>
+                    <p>Prepare professionals from varied backgrounds for emerging quantum roles, avoiding delays and cost overruns in technology development projects.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Foster Innovation</h3>
+                    <p>Expose students and educators to quantum concepts early in their careers to accelerate breakthrough discoveries and applications.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Global Competitiveness</h3>
+                    <p>Equip nations with skilled talent pools to lead in quantum revolutions across multiple industries and maintain technological sovereignty.</p>
+                </div>
+            </div>
+            
+            <div class="applications">
+                <h3>Key Focus Areas</h3>
+                <ul>
+                    <li>Modular curricula: Online courses and professional certifications for continuous upskilling programs</li>
+                    <li>Hands-on laboratories: Quantum simulators and NISQ device access for practical training experiences</li>
+                    <li>Industry partnerships: Internship programs bridging academia and quantum technology firms</li>
+                    <li>Diversity initiatives: Inclusive programs designed to widen the talent pool and encourage participation</li>
+                    <li>Educator training: Professional development for teachers and professors in quantum technologies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Communication Section -->
+    <section id="communication" class="section">
+        <div class="container">
+            <!-- Section Image -->
+            <div class="section-image">
+                <img src="https://spaceinafrica.com/wp-content/uploads/2023/07/QUANTUM-COMM.jpg" alt="Quantum Communication Network" loading="lazy">
+            </div>
+            
+            <h2>Why We Need Quantum Communication</h2>
+            <p class="intro">Quantum communication offers unhackable networks via quantum key distribution (QKD), essential for global security strategies as quantum threats loom, with the market surging within the $1.17B quantum tech sector in 2025.</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h3>Unbreakable Security</h3>
+                    <p>Detects eavesdropping attempts instantly through quantum mechanics, providing immunity to both classical and quantum computer attacks.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>High-Speed Data Transfer</h3>
+                    <p>Enables secure, ultra-fast communication channels with seamless integration into 5G and future 6G network infrastructures.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Scalable Networks</h3>
+                    <p>Supports the development of global quantum internet infrastructure for distributed quantum computing applications.</p>
+                </div>
+            </div>
+            
+            <div class="applications">
+                <h3>Key Applications</h3>
+                <ul>
+                    <li>National security: Protected military and government communications resistant to quantum computer attacks</li>
+                    <li>Financial services: Ultra-secure transaction processing and trading systems with quantum encryption</li>
+                    <li>Healthcare: Encrypted patient data sharing and telemedicine with absolute privacy guarantees</li>
+                    <li>Cloud computing: Quantum-secured data centers with repeater networks for global coverage</li>
+                    <li>Critical infrastructure: Power grid and transportation system security with quantum protocols</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Computing Section -->
+    <section id="computing" class="section">
+        <div class="container">
+            <h2>Why We Need Quantum Computing</h2>
+            <p class="intro">Quantum computing excels at exponential parallelism (2^N operations vs. classical N), revolutionizing complex simulations in 2025 without replacing classical systems, but enhancing hybrid architectures for finance, logistics, and drug discovery.</p>
+            
+            <!-- Section Image -->
+            <div class="section-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4OzAWEUBsji4-Apxx4G_W5-Thznr2WxyBA&s" loading="lazy" alt="Quantum Computing" loading="lazy">
+            </div>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h3>Exponential Speed</h3>
+                    <p>Solves computationally intractable problems like molecular modeling and optimization in minutes rather than years of classical computing.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Optimization Power</h3>
+                    <p>Dramatically improves algorithms for complex logistics, supply chain management, and artificial intelligence training processes.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Simulation Accuracy</h3>
+                    <p>Models quantum systems naturally for breakthrough applications in chemistry, materials science, and fundamental physics research.</p>
+                </div>
+            </div>
+            
+            <div class="applications">
+                <h3>Key Applications</h3>
+                <ul>
+                    <li>Drug discovery: Accelerating personalized medicine through protein folding simulations and molecular interactions</li>
+                    <li>Financial modeling: Real-time risk analysis, portfolio optimization, and fraud detection with quantum algorithms</li>
+                    <li>Climate modeling: Precise weather predictions and carbon capture optimization for environmental solutions</li>
+                    <li>Cryptography: Developing post-quantum secure systems and breaking current encryption methods</li>
+                    <li>Artificial intelligence: Quantum machine learning algorithms for pattern recognition and data analysis</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Unlock Quantum Potential with WYWQ</h2>
+                <p>Partner with Dr. Haidar for tailored solutions in quantum software development and cutting-edge innovation that transforms industries.</p>
+                <div class="cta-buttons">
+                    <a href="innovations.html" class="btn-primary">View Our Projects</a>
+                    <a href="contact.html" class="btn-secondary">Contact Us Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WYWQ. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        // Create dynamic particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Optimized SPA-like Hash Navigation
+        function handleHashNavigation() {
+            const hash = window.location.hash || '#sensors';
+            const target = document.querySelector(hash);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Initial Load
+        window.addEventListener('load', handleHashNavigation);
+
+        // Hash Change Listener
+        window.addEventListener('hashchange', handleHashNavigation);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections for animation
+        document.querySelectorAll('.benefit-item, .applications, .section h2, .section-image').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize particles
+        createParticles();
+
+        // Recreate particles on window resize
+        window.addEventListener('resize', () => {
+            document.getElementById('particles').innerHTML = '';
+            createParticles();
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

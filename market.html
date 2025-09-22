@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Insights - WYWQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --quantum-purple: #6A1B9A;
+            --electric-blue: #007BFF;
+            --deep-navy: #001F3F;
+            --cyber-cyan: #00D4FF;
+            --neon-green: #39FF14;
+            --gradient-primary: linear-gradient(135deg, #001F3F 0%, #6A1B9A 50%, #007BFF 100%);
+            --gradient-secondary: linear-gradient(45deg, #00D4FF, #39FF14);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Quantum Particle Background Animation */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 80%, #001F3F 0%, #000 50%), 
+                        radial-gradient(circle at 80% 20%, #6A1B9A 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #007BFF 0%, transparent 50%);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--neon-green);
+            animation-duration: 8s;
+            animation-delay: -2s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--electric-blue);
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: heroTextReveal 1.2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: heroTextReveal 1.2s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+            animation: heroTextReveal 1.2s ease-out 0.6s both;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--cyber-cyan);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--cyber-cyan);
+            color: #000;
+            box-shadow: 0 0 30px var(--cyber-cyan);
+            transform: translateY(-3px);
+        }
+
+        @keyframes heroTextReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: 4rem;
+    background: linear-gradient(135deg, var(--cyber-cyan), #39FF14);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 212, 255, 0.3);
+}
+
+        .section p {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Market Table */
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem auto;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .market-table th, .market-table td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .market-table th {
+            background: linear-gradient(135deg, #007BFF 0%, #6A1B9A 100%);
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .market-table td {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .market-table tr:hover {
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        /* Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 0.05;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+            border-color: var(--cyber-cyan);
+        }
+
+        .card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Company Card Enhancements */
+        .company-card {
+            text-align: center;
+        }
+
+        .company-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+            filter: brightness(1.2);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 4rem 0;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* References Section */
+        .references {
+            padding: 4rem 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .references h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--cyber-cyan);
+        }
+
+        .references ol {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+        }
+
+        .references li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .references a {
+            color: var(--cyber-cyan);
+            text-decoration: none;
+        }
+
+        .references a:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, #001F3F 0%, #6A1B9A 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .cta-section h2 {
+    background: linear-gradient(135deg, #00ffff, #ff66ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 255, 255, 0.3);
+}
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--glass-border);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .footer a {
+            color: var(--cyber-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 10px var(--cyber-cyan);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .card {
+                padding: 2rem 1.5rem;
+            }
+
+            .stats-section {
+                padding: 4rem 2rem;
+            }
+
+            .market-table {
+                font-size: 0.9rem;
+            }
+
+            .market-table th, .market-table td {
+                padding: 1rem;
+            }
+
+            .company-logo {
+                width: 60px;
+            }
+        }
+
+        /* Smooth scroll offset for fixed navbar */
+        html {
+            scroll-padding-top: 100px;
+        }
+        .logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: -20px;
+}
+
+.logo-img {
+    height: 46px; /* Adjust this value to match the previous text size */
+    width: auto;
+    display: block;
+}
+
+/* Adjust logo size for mobile devices */
+@media screen and (max-width: 768px) {
+    .logo-img {
+        height: 38px; /* Smaller size for mobile */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="quantum-bg">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/wywq-logo.png" alt="WYWQ Logo" class="logo-img">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="about.html">About Dr. Haidar</a></li>
+                <li class="nav-item">
+                    <a href="communication.html" class="nav-link">Quantum Communication</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <span>Quantum Technologies</span>
+                    <ul class="dropdown">
+                        <li><a href="quantum.html#sensors" class="nav-link">Quantum Sensors</a></li>
+                        <li><a href="quantum.html#education" class="nav-link">Quantum Education</a></li>
+                        <li><a href="quantum.html#communication" class="nav-link">Quantum Communication</a></li>
+                        <li><a href="quantum.html#computing" class="nav-link">Quantum Computing</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item active"><a href="market.html">Market Insights</a></li>
+                <li class="nav-item"><a href="publications.html">Publications</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Quantum Market Intelligence</h1>
+            <p>Explore the explosive growth of quantum communication markets, driven by cybersecurity demands and technological breakthroughs. Discover opportunities aligned with WYWQ's cutting-edge innovations.</p>
+            <div class="hero-cta">
+                <a href="#overview" class="btn-primary">View Market Data</a>
+                <a href="#trends" class="btn-secondary">Explore Trends</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2>Market Overview</h2>
+            <p>The quantum communication market is experiencing unprecedented growth, projected to expand from USD 1.1 billion in 2025 to USD 10.5 billion by 2034, reflecting surging investments in quantum-secure technologies amid escalating cyber threats.<sup><a href="#cite1">[1]</a></sup></p>
+            
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">$1.1B</div>
+                        <div class="stat-label">2025 Market Size<sup><a href="#cite1">[1]</a></sup></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$10.5B</div>
+                        <div class="stat-label">2034 Projection<sup><a href="#cite1">[1]</a></sup></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">28.3%</div>
+                        <div class="stat-label">CAGR (2025-2034)<sup><a href="#cite1">[1]</a></sup></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$10.5T</div>
+                        <div class="stat-label">Global Cybercrime Cost by 2025<sup><a href="#cite2">[2]</a></sup></div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="market-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Market Size (USD Billion)</th>
+                        <th>CAGR (%)</th>
+                        <th>Key Drivers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025</td>
+                        <td>1.1</td>
+                        <td>N/A</td>
+                        <td>Surge in Cyber-Attacks<sup><a href="#cite1">[1]</a></sup></td>
+                    </tr>
+                    <tr>
+                        <td>2030</td>
+                        <td>~5.4</td>
+                        <td>28.3</td>
+                        <td>Government Investments & QKD Advancements<sup><a href="#cite1">[1]</a></sup></td>
+                    </tr>
+                    <tr>
+                        <td>2034</td>
+                        <td>10.5</td>
+                        <td>28.3</td>
+                        <td>Satellite Networks & Post-Quantum Crypto<sup><a href="#cite1">[1]</a></sup></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Key Players in Quantum Communication</h2>
+            <p>Leading companies and organizations are driving innovation in QKD, quantum-safe encryption, and network infrastructure. Explore these pioneers shaping the quantum era.<sup><a href="#cite4">[4]</a></p>
+            <div class="grid">
+                <div class="card company-card">
+                    <img src="https://media.licdn.com/dms/image/v2/C4D0BAQGPxMD8MHZyIg/company-logo_200_200/company-logo_200_200/0/1630550715657/id_quantique_sa_logo?e=2147483647&v=beta&t=9mOPv6lqTMkU0J89erRPHTlF1YqGmBn7vgaVc4dl5VM" alt="ID Quantique Logo" loading="lazy" class="company-logo">
+                    <h3>ID Quantique (Switzerland)</h3>
+                    <p>World leader in QKD and quantum-safe cryptography, offering secure solutions for finance, government, and telecom. Recently launched a multi-vendor quantum-safe ecosystem.</p>
+                </div>
+                <div class="card company-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgyHK1x5FuvrUjeSePMV5OwpPEXjtHVXJXaQ&s" alt="Toshiba Logo" class="company-logo">
+                    <h3>Toshiba (Japan)</h3>
+                    <p>Develops advanced QKD systems for ultra-secure data exchange over long distances, supporting critical sectors like defense and telecommunications.</p>
+                </div>
+                <div class="card company-card">
+                    <img src="https://c8.alamy.com/comp/PJ0YJ1/valence-france-july-1-2018-thales-logo-on-a-wall-thales-is-a-french-multinational-company-and-an-electronics-group-specializing-in-aerospace-PJ0YJ1.jpg" alt="Thales Logo" loading="lazy" class="company-logo">
+                    <h3>Thales (France)</h3>
+                    <p>Provides QKD technology for robust encryption in defense, finance, and government, focusing on secure data transmission against quantum threats.</p>
+                </div>
+                <div class="card company-card">
+                    <img src="https://amcham.am/wp-content/uploads/2020/03/IDEMIA-Website-logo.png" alt="IDEMIA Logo" loading="lazy" class="company-logo">
+                    <h3>IDEMIA (France)</h3>
+                    <p>Specializes in quantum-safe solutions for telecommunications, enhancing cybersecurity infrastructure for the post-quantum era.</p>
+                </div>
+                <div class="card company-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQijast9wBsok6rTqNCFkiCK4WrF6NOZ0i2PA&s" alt="QuintessenceLabs Logo" loading="lazy" class="company-logo">
+                    <h3>QuintessenceLabs (Australia)</h3>
+                    <p>Leads in quantum encryption and QKD technologies, delivering resilient data protection for enterprises and governments.</p>
+                </div>
+                <div class="card company-card">
+                    <img src="https://www.luxquanta.com/share.jpg" alt="Lux Quanta Logo" loading="lazy" class="company-logo" onerror="this.src='https://via.placeholder.com/80x80/00D4FF/FFFFFF?text=LQ';">
+                    <h3>Lux Quanta (Spain)</h3>
+                    <p>Integrates QKD systems into telecom infrastructures, with innovations like the NOVA LQ for multi-receiver quantum networks.</p>
+                </div>
+                <div class="card company-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXgWJNvwlPCgrErTsPLObFRSRPSI0GCE1bkw&s" alt="Qunnect Logo" loading="lazy" class="company-logo" onerror="this.src='https://via.placeholder.com/80x80/39FF14/000000?text=QN';">
+                    <h3>Qunnect (USA)</h3>
+                    <p>Pioneers entanglement-based quantum networking hardware for scalable, room-temperature quantum communications over fiber.</p>
+                </div>
+                <div class="card company-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHJhvsub_gaskGPgA3Vtha9yhLR95BF7826g&s" alt="Cisco Logo" loading="lazy" class="company-logo">
+                    <h3>Cisco (USA)</h3>
+                    <p>Develops prototype quantum networking chips and invests in quantum-secure infrastructure for enterprise deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Drivers Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Growth Drivers</h2>
+            <p>Rising cyber threats, government initiatives, and technological advancements in quantum key distribution (QKD) and satellite networks are fueling demand for secure communication solutions.<sup><a href="#cite1">[1]</a><sup><a href="#cite3">[3]</a></sup></p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Cybersecurity Crisis</h3>
+                    <p>Global cybercrime costs are projected to hit USD 10.5 trillion annually by 2025, driving urgent adoption of QKD for unhackable networks and protection against quantum computing threats.<sup><a href="#cite2">[2]</a><sup><a href="#cite3">[3]</a></sup></p>
+                </div>
+                <div class="card">
+                    <h3>Government Initiatives</h3>
+                    <p>Substantial public sector investments, such as the US National Quantum Initiative Act and China's Micius satellite project, are accelerating quantum communication infrastructure worldwide.<sup><a href="#cite1">[1]</a></p>
+                </div>
+                <div class="card">
+                    <h3>Technological Breakthroughs</h3>
+                    <p>Advances in QKD systems, photonic integrated circuits, and quantum repeaters are enabling practical deployment of quantum-secure communications in defense, finance, and telecom.<sup><a href="#cite1">[1]</a><sup><a href="#cite3">[3]</a></sup></p>
+                </div>
+                <div class="card">
+                    <h3>Regulatory Compliance</h3>
+                    <p>Stringent regulations like GDPR and emerging quantum-safe standards are compelling enterprises to adopt post-quantum cryptography for long-term data protection.<sup><a href="#cite3">[3]</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Trends Section -->
+    <section id="trends" class="section">
+        <div class="container">
+            <h2>2025 Breakthrough Trends</h2>
+            <p>Key developments include regional quantum networks, integration of QKD with post-quantum cryptography, and scalable quantum interconnects for distributed computing, positioning quantum communication for mainstream adoption.<sup><a href="#cite3">[3]</a></p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Satellite Quantum Networks</h3>
+                    <p>Projects like China's Micius and emerging global networks are enabling long-distance secure transmission, with Lux Quanta's NOVA LQ achieving 100km multi-receiver capabilities.<sup><a href="#cite1">[1]</a></p>
+                </div>
+                <div class="card">
+                    <h3>Field-Tested QKD Solutions</h3>
+                    <p>Qunnect and T-Labs demonstrate 30km photon transmission at 99% fidelity over commercial fiber, proving viability for real-world quantum networks.<sup><a href="#cite3">[3]</a></p>
+                </div>
+                <div class="card">
+                    <h3>Quantum Networking Chips</h3>
+                    <p>Cisco's prototype quantum networking chip and similar innovations are paving the way for integrated hardware in enterprise quantum communications.<sup><a href="#cite3">[3]</a></p>
+                </div>
+                <div class="card">
+                    <h3>Post-Quantum Integration</h3>
+                    <p>Toshiba's 254km quantum-encrypted messaging over fiber optics combines QKD with post-quantum crypto, making security accessible to existing infrastructure.<sup><a href="#cite3">[3]</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Players Section -->
+    
+
+    <!-- Regional Analysis Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Global Market Landscape</h2>
+            <p>North America dominates with significant US funding, while Asia-Pacific exhibits the fastest growth through ambitious national programs.<sup><a href="#cite1">[1]</a></p>
+            <div class="grid">
+                <div class="card">
+                    <h3>North America</h3>
+                    <p>Leads with 82% US market share (USD 284.2M in 2024), bolstered by the National Quantum Initiative Act and private investments.<sup><a href="#cite1">[1]</a></p>
+                </div>
+                <div class="card">
+                    <h3>Europe</h3>
+                    <p>28.6% CAGR, driven by EuroQCI and national programs in Germany and the UK for collaborative quantum projects.<sup><a href="#cite1">[1]</a></p>
+                </div>
+                <div class="card">
+                    <h3>Asia-Pacific</h3>
+                    <p>Fastest growth at ~31% CAGR, led by China's satellite initiatives and programs in India, Japan, and South Korea.<sup><a href="#cite1">[1]</a></p>
+                </div>
+                <div class="card">
+                    <h3>Emerging Markets</h3>
+                    <p>Latin America (26.2% CAGR) via Brazil/Chile efforts; MEA (6% share) through Saudi Arabia's Vision 2030 quantum focus.<sup><a href="#cite1">[1]</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Lead the Quantum Revolution with WYWQ</h2>
+            <p>Partner with Dr. Mohammad Haidar to capitalize on the quantum communication market's explosive growth and secure your organization's future in the quantum era.</p>
+            <div class="cta-buttons">
+                <a href="innovations.html" class="btn-primary">Explore Our Innovations</a>
+                <a href="contact.html" class="btn-secondary">Start Your Quantum Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section class="references">
+        <div class="container">
+            <h3>References</h3>
+            <ol>
+                <li id="cite1"><a href="https://www.gminsights.com/industry-analysis/quantum-communications-market" target="_blank">Global Market Insights: Quantum Communications Market Size, Statistics Report 2034</a></li>
+                <li id="cite2"><a href="https://cybersecurityventures.com/official-cybercrime-report-2025/" target="_blank">Cybersecurity Ventures: Cybercrime To Cost The World $10.5 Trillion Annually By 2025</a></li>
+                <li id="cite3"><a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/quantum-communication-growth-drivers-cybersecurity-and-quantum-computing" target="_blank">McKinsey: Quantum Communication Trends and Outlook</a></li>
+                <li id="cite4"><a href="https://www.marketsandmarkets.com/ResearchInsight/quantum-communication-market.asp" target="_blank">MarketsandMarkets: Top Companies in Quantum Communication</a></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WYWQ. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

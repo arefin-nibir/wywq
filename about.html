@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Dr. Haidar - WYWQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --quantum-purple: #6A1B9A;
+            --electric-blue: #007BFF;
+            --deep-navy: #001F3F;
+            --cyber-cyan: #00D4FF;
+            --neon-green: #39FF14;
+            --gradient-primary: linear-gradient(135deg, #001F3F 0%, #6A1B9A 50%, #007BFF 100%);
+            --gradient-secondary: linear-gradient(45deg, #00D4FF, #39FF14);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        /* Quantum Particle Background Animation */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 80%, #001F3F 0%, #000 50%), 
+                        radial-gradient(circle at 80% 20%, #6A1B9A 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #007BFF 0%, transparent 50%);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--neon-green);
+            animation-duration: 8s;
+            animation-delay: -2s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--electric-blue);
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #39FF14, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            animation: heroTextReveal 1.2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: heroTextReveal 1.2s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+            animation: heroTextReveal 1.2s ease-out 0.6s both;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--cyber-cyan);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-secondary:hover {
+            background: var(--cyber-cyan);
+            color: #000;
+            box-shadow: 0 0 30px var(--cyber-cyan);
+            transform: translateY(-3px);
+        }
+
+        @keyframes heroTextReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #00ffff, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Bio Section */
+        .bio-section {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
+            border-radius: 32px;
+            margin: 4rem auto;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            padding: 6rem 4rem;
+        }
+
+        .bio-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            color: white;
+        }
+
+        .headshot-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .headshot {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--cyber-cyan);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .headshot-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: var(--gradient-secondary);
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            z-index: 1;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.2; }
+        }
+
+        .bio-text h2 {
+            background: linear-gradient(135deg, #00ffff, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 255, 255, 0.3);
+            text-align: left;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .bio-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 8rem 0;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 4rem 0;
+            width: 50%;
+            padding: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            border: 3px solid #000;
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+            border-color: var(--cyber-cyan);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 2rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 2rem;
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            color: var(--cyber-cyan);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            padding: 8rem 0;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .expertise-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .expertise-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+            border-color: var(--cyber-cyan);
+        }
+
+        .expertise-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .expertise-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .impact-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .impact-item {
+            background: var(--glass-bg);
+            border: 2px solid var(--electric-blue);
+            color: var(--cyber-cyan);
+            padding: 1.5rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.3s ease;
+        }
+
+        .impact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.3);
+            color: white;
+        }
+
+        .impact-item:hover::before {
+            left: 0;
+        }
+
+        .impact-item span {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 4rem auto;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #66ffff, #ff66ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(102, 255, 255, 0.3);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--glass-border);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .footer a {
+            color: var(--cyber-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 10px var(--cyber-cyan);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .bio-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .bio-text h2 {
+                text-align: center;
+            }
+
+            .timeline-container::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+            }
+
+            .timeline-item .timeline-content {
+                margin-left: 3rem !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(0);
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .bio-section,
+            .cta-section {
+                padding: 4rem 2rem;
+                margin: 2rem;
+            }
+
+            .impact-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 6rem 0;
+            }
+        }
+
+        /* Smooth scroll offset for fixed navbar */
+        html {
+            scroll-padding-top: 100px;
+        }
+
+        /* Timeline Image Styles */
+        .timeline-image {
+            width: 300px;
+            height: 200px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 2px solid var(--cyber-cyan);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-image-container {
+            position: absolute;
+            right: -350px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) .timeline-image-container {
+            position: absolute;
+            left: -350px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 1200px) {
+            .timeline-image-container {
+                display: none;
+            }
+        }
+        .logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: -20px;
+}
+
+.logo-img {
+    height: 46px; /* Adjust this value to match the previous text size */
+    width: auto;
+    display: block;
+}
+
+/* Adjust logo size for mobile devices */
+@media screen and (max-width: 768px) {
+    .logo-img {
+        height: 38px; /* Smaller size for mobile */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="quantum-bg">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/wywq-logo.png" alt="WYWQ Logo" class="logo-img">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="about.html" class="nav-link">About Dr. Haidar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="communication.html" class="nav-link">Quantum Communication</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <span>Quantum Technologies</span>
+                    <ul class="dropdown">
+                        <li><a href="quantum.html#sensors">Quantum Sensors</a></li>
+                        <li><a href="quantum.html#education">Quantum Education</a></li>
+                        <li><a href="quantum.html#communication">Quantum Communication</a></li>
+                        <li><a href="quantum.html#computing">Quantum Computing</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="market.html" class="nav-link">Market Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="publications.html" class="nav-link">Publications</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Dr. Mohammad Haidar</h1>
+            <p>A visionary leader in quantum technologies, driving innovation in computing, chemistry, and metrology through groundbreaking research and global collaboration.</p>
+            <div class="hero-cta">
+                <a href="#timeline" class="btn-primary">Career Timeline</a>
+                <a href="#expertise" class="btn-secondary">View Expertise</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section class="section">
+        <div class="container">
+            <div class="bio-section">
+                <div class="bio-content">
+                    <div class="headshot-container">
+                        <img src="images/profile.jpg" alt="Dr. Mohammad Haidar" loading="lazy" class="headshot">
+                    </div>
+                    <div class="bio-text">
+                        <h2>Senior Quantum Scientist & Innovator</h2>
+                        <p>Dr. Mohammad Haidar holds a PhD in Physics from the University of Strasbourg (2012) and completed his postdoctoral research at Sorbonne University (2021-2023). As Founder and Lead of OpenVQA, and Senior Researcher at Qubit Pharmaceuticals, he mentors Master's students and spearheads projects in quantum chemistry and NISQ devices.</p>
+                        <p>With over 325 citations, his work bridges theory and application in quantum software and metrology, establishing him as a global leader in the quantum revolution.</p>
+                        <a href="#expertise" class="btn-secondary">Discover Expertise</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section timeline-section">
+        <div class="container">
+            <h2>Career Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        
+                        <div class="timeline-title">Founding & Leading OpenVQA Hub</div>
+                        <p>Built a growing platform with 40+ engineers and 10 international advisors.</p>
+                    </div>
+                    <div class="timeline-image-container">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E22AQEGWnKQI59U7w/feedshare-shrink_2048_1536/B4EZjUgiUvGcA0-/0/1755911958891?e=1761177600&v=beta&t=6bYiytC6cCNYkmr1JWfRfQazTw3q_CAsFlqbdW7Kkhw" alt="PhD Research" loading="lazy" class="timeline-image">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        
+                        <div class="timeline-title">Senior Researcher at Qubit Pharmaceuticals</div>
+                        <p>Took a leadership role in algorithm development for real-world use cases in healthcare & chemistry.</p>
+                    </div>
+                    <div class="timeline-image-container">
+                        <img src="images/professor-leadership.png" alt="Postdoctoral Research" loading="lazy" class="timeline-image">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        
+                        <div class="timeline-title">Postdoctoral Researcher</div>
+                        <p>Sorbonne Université – Applied quantum computing in chemistry and materials science.</p>
+                    </div>
+                    <div class="timeline-image-container">
+                        <img src="images/phenikaa-university.png" alt="Senior Research" loading="lazy" class="timeline-image">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        
+                        <div class="timeline-title">Creating OpenVQE & OpenVQA</div>
+                        <p>Developed open-source platforms supporting VQE (variational quantum eigensolver) for quantum chemistry & optimization.</p>
+                    </div>
+                    <div class="timeline-image-container">
+                        <img src="images/seminars-webinars.jpg" alt="Dubai Workshop" loading="lazy" class="timeline-image">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        
+                        <div class="timeline-title">Keynote Speaker</div>
+                        <p>"Quantum and the Future of Computing" Seminar – Discussing NISQ advancements and quantum algorithm optimization for real-world applications.</p>
+                    </div>
+                    <div class="timeline-image-container">
+                        <img src="images/vsaiqc-conference.png" alt="Keynote Speech" loading="lazy" class="timeline-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="section expertise-section">
+        <div class="container">
+            <h2>Core Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>Quantum Chemistry</h3>
+                    <p>Developing revolutionary simulations and software like OpenVQE for molecular modeling on quantum hardware, advancing drug discovery and materials science.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Quantum Metrology</h3>
+                    <p>Precision measurements using quantum sensors and entanglement for breakthrough applications in navigation, healthcare, and fundamental physics research.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>NISQ Devices</h3>
+                    <p>Optimizing noisy intermediate-scale quantum computers for real-world chemistry and physics problems, bridging the gap between theory and practice.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Quantum Software</h3>
+                    <p>Building cutting-edge open-source tools for quantum electrodynamics, spectroscopy, and laser-matter interactions with global research impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Impact Section -->
+    <section class="section impact-section">
+        <div class="container">
+            <h2>Global Impact & Seminars</h2>
+            <p style="max-width: 800px; margin: 0 auto 4rem; color: rgba(255, 255, 255, 0.8); font-size: 1.2rem;">Dr. Haidar's contributions extend worldwide through seminars, European projects, and collaborations in quantum innovation.</p>
+            <div class="impact-list">
+                <div class="impact-item">
+                    <span>Paris, France (Sorbonne Research)</span>
+                </div>
+                <div class="impact-item">
+                    <span>Dubai, UAE (QIS 2025)</span>
+                </div>
+                <div class="impact-item">
+                    <span>Global Online Seminars (2024)</span>
+                </div>
+                <div class="impact-item">
+                    <span>European Quantum Projects</span>
+                </div>
+                <div class="impact-item">
+                    <span>325+ Research Citations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Ready to Collaborate on Quantum Innovation?</h2>
+                <p>Connect with Dr. Haidar for software developments, consulting, or joint research projects that push the boundaries of quantum technology.</p>
+                <a href="contact.html" class="btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WYWQ. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        // Create dynamic particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections for animation
+        document.querySelectorAll('.expertise-card, .timeline-content, .section h2').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize particles
+        createParticles();
+
+        // Recreate particles on window resize
+        window.addEventListener('resize', () => {
+            document.getElementById('particles').innerHTML = '';
+            createParticles();
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
