@@ -493,75 +493,169 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            /* Improved Container Spacing */
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            /* Hero Section Optimization */
+            .hero {
+                min-height: 100vh;
+                padding: 6rem 1rem 4rem;
+            }
+
             .hero h1 {
-                font-size: clamp(2.5rem, 8vw, 4rem);
+                font-size: clamp(2rem, 7vw, 3.5rem);
+                margin-bottom: 1.5rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
             }
 
             .hero-cta {
                 flex-direction: column;
-                align-items: center;
+                width: 100%;
                 gap: 1rem;
             }
 
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Section Improvements */
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section h2 {
+                font-size: clamp(1.8rem, 6vw, 2.8rem);
+                margin-bottom: 2rem;
+                padding: 0 1rem;
+            }
+
+            .section p.intro {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+                padding: 0 0.5rem;
+            }
+
+            /* Benefits Grid Optimization */
             .benefits-list {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
+                margin: 2.5rem 0;
             }
 
-            .cta-section,
+            .benefit-item {
+                padding: 2rem 1.5rem;
+            }
+
+            .benefit-item h3 {
+                font-size: 1.3rem;
+            }
+
+            /* Applications Section Adjustment */
             .applications {
-                padding: 4rem 2rem;
-                margin: 2rem;
+                padding: 2rem 1.5rem;
+                margin: 2rem 0.5rem;
+                border-radius: 20px;
             }
 
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+            .applications h3 {
+                font-size: 1.5rem;
+            }
+
+            .applications li {
+                font-size: 1rem;
+                padding-left: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            /* Image Optimization */
+            .section-image {
+                margin: 2rem auto;
+                border-radius: 16px;
+            }
+
+            /* CTA Section Mobile Layout */
+            .cta-section {
+                padding: 3rem 1.5rem;
+                margin: 2rem 0.5rem;
+                border-radius: 20px;
+            }
+
+            .cta-section h2 {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
             }
 
             .cta-buttons {
                 flex-direction: column;
-                align-items: center;
+                width: 100%;
                 gap: 1rem;
+            }
+
+            .cta-buttons .btn-primary,
+            .cta-buttons .btn-secondary {
+                width: 100%;
+            }
+        }
+
+        /* Small Screen Optimization */
+        @media (max-width: 360px) {
+            html {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .benefit-item, 
+            .applications,
+            .cta-section {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Tablet Optimization */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .benefits-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
 
             .section {
                 padding: 6rem 0;
             }
 
-            .section-image {
-                margin-bottom: 2rem;
+            .container {
+                padding: 0 2rem;
             }
         }
 
-        /* Smooth scroll offset for fixed navbar */
-        html {
-            scroll-padding-top: 100px;
+        /* Performance Optimization */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
-        .logo {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    margin-left: -20px;
-}
-
-.logo-img {
-    height: 46px; /* Adjust this value to match the previous text size */
-    width: auto;
-    display: block;
-}
-
-/* Adjust logo size for mobile devices */
-@media screen and (max-width: 768px) {
-    .logo-img {
-        height: 38px; /* Smaller size for mobile */
-    }
-}
     </style>
 </head>
 <body>

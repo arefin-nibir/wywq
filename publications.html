@@ -32,6 +32,8 @@
             background: #000;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Quantum Particle Background Animation */
@@ -89,19 +91,22 @@
             color: white;
             position: relative;
             overflow: hidden;
-            padding-top: 100px;
+            padding: 120px 1rem 2rem;
+            min-height: 80vh;
         }
 
         .hero-content {
             max-width: 900px;
             z-index: 2;
             position: relative;
+            width: 100%;
+            padding: 0 1rem;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2rem, 6vw, 4rem);
             font-weight: 900;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #39FF14, #00ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -113,36 +118,40 @@
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 2.5rem;
             opacity: 0.9;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
             animation: heroTextReveal 1.2s ease-out 0.3s both;
+            padding: 0 0.5rem;
         }
 
         .hero-cta {
-            display: inline-flex;
-            gap: 1.5rem;
+            display: flex;
+            gap: 1rem;
             animation: heroTextReveal 1.2s ease-out 0.6s both;
             justify-content: center;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .btn-primary {
             background: var(--gradient-primary);
             color: white;
-            padding: 1rem 2.5rem;
+            padding: clamp(0.8rem, 2.5vw, 1rem) clamp(1.5rem, 5vw, 2.5rem);
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
             transition: all 0.3s ease;
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
             white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary:hover {
@@ -153,13 +162,15 @@
         .btn-secondary {
             background: transparent;
             color: white;
-            padding: 1rem 2.5rem;
+            padding: clamp(0.8rem, 2.5vw, 1rem) clamp(1.5rem, 5vw, 2.5rem);
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
             border: 2px solid var(--cyber-cyan);
             transition: all 0.3s ease;
             white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-secondary:hover {
@@ -182,26 +193,28 @@
 
         /* Section Styling */
         .section {
-            padding: 8rem 0;
+            padding: clamp(4rem, 8vw, 8rem) 0;
             position: relative;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+            width: 100%;
         }
 
         .section h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(1.8rem, 4vw, 3rem);
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             background: linear-gradient(135deg, #00ffff, #39FF14);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 800;
             text-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+            line-height: 1.2;
         }
 
         /* Special styling for seminars section title */
@@ -227,21 +240,24 @@
         /* Publications Grid */
         .publications-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 90vw, 350px), 1fr));
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            margin-top: 3rem;
         }
 
         .paper-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
             backdrop-filter: blur(20px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
         }
 
         .paper-card::before {
@@ -268,7 +284,7 @@
 
         .paper-card h3 {
             color: var(--cyber-cyan);
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
             font-weight: 700;
             margin-bottom: 1rem;
             position: relative;
@@ -279,7 +295,7 @@
         .paper-card .authors {
             color: var(--neon-green);
             font-style: italic;
-            font-size: 0.95rem;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
             margin-bottom: 0.8rem;
             position: relative;
             z-index: 2;
@@ -288,26 +304,31 @@
         .paper-card .year {
             color: var(--electric-blue);
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            margin-bottom: 1rem;
             position: relative;
             z-index: 2;
         }
 
         .paper-card p {
             color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-            margin-bottom: 2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .paper-card .meta {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.85rem;
+            gap: 0.8rem;
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
             color: rgba(255, 255, 255, 0.6);
             margin-bottom: 1.5rem;
             position: relative;
@@ -317,15 +338,18 @@
         .paper-card .link-btn {
             background: linear-gradient(135deg, #007BFF 0%, #6A1B9A 100%);
             color: white;
-            padding: 0.8rem 2rem;
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.2rem, 4vw, 2rem);
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             transition: all 0.3s ease;
             position: relative;
             z-index: 2;
             display: inline-block;
+            text-decoration: none;
             box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            margin-top: auto;
+            align-self: flex-start;
         }
 
         .paper-card .link-btn:hover {
@@ -336,9 +360,9 @@
         /* Seminars Timeline */
         .seminars-section {
             background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
-            border-radius: 32px;
-            padding: 6rem 4rem;
-            margin: 4rem 0;
+            border-radius: 24px;
+            padding: clamp(2rem, 5vw, 6rem) clamp(1rem, 3vw, 4rem);
+            margin: clamp(2rem, 4vw, 4rem) 0;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
         }
@@ -352,7 +376,7 @@
         .seminars-timeline::before {
             content: '';
             position: absolute;
-            left: 50%;
+            left: clamp(15px, 3vw, 50%);
             top: 0;
             bottom: 0;
             width: 2px;
@@ -362,40 +386,33 @@
 
         .seminar-item {
             position: relative;
-            margin: 3rem 0;
-            width: 50%;
-            padding: 1rem;
-        }
-
-        .seminar-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .seminar-item:nth-child(even) {
-            left: 50%;
+            margin: clamp(1.5rem, 3vw, 3rem) 0;
+            width: 100%;
+            padding: 1rem 0;
         }
 
         .seminar-dot {
             position: absolute;
-            left: 50%;
-            top: 1rem;
-            width: 20px;
-            height: 20px;
+            left: clamp(10px, 2vw, 50%);
+            top: 1.5rem;
+            width: clamp(14px, 2.5vw, 20px);
+            height: clamp(14px, 2.5vw, 20px);
             background: var(--cyber-cyan);
             border-radius: 50%;
             transform: translateX(-50%);
             z-index: 1;
-            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.9), 0 0 20px var(--cyber-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.9), 0 0 15px var(--cyber-cyan);
         }
 
         .seminar-content {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            padding: 2rem;
+            padding: clamp(1rem, 3vw, 2rem);
             border-radius: 16px;
             backdrop-filter: blur(20px);
             position: relative;
             transition: all 0.3s ease;
+            margin-left: clamp(30px, 5vw, 60px);
         }
 
         .seminar-content:hover {
@@ -404,52 +421,53 @@
             border-color: var(--cyber-cyan);
         }
 
-        .seminar-item:nth-child(odd) .seminar-content {
-            margin-left: 2rem;
-        }
-
-        .seminar-item:nth-child(even) .seminar-content {
-            margin-right: 2rem;
-        }
-
         .seminar-date {
             font-weight: 600;
             color: var(--neon-green);
             margin-bottom: 0.5rem;
+            font-size: clamp(0.85rem, 2vw, 1rem);
         }
 
         .seminar-title {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             color: var(--cyber-cyan);
             margin-bottom: 0.8rem;
             font-weight: 600;
+            line-height: 1.3;
         }
 
         .seminar-desc {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
             line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* Resources Grid */
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 85vw, 300px), 1fr));
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            margin-top: 3rem;
         }
 
         .resource-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
             backdrop-filter: blur(20px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             text-align: center;
             cursor: pointer;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
         }
 
         .resource-card::before {
@@ -476,33 +494,42 @@
 
         .resource-card h3 {
             color: var(--cyber-cyan);
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             position: relative;
             z-index: 2;
+            line-height: 1.3;
         }
 
         .resource-card p {
             color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-            margin-bottom: 2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .resource-card .link-btn {
             background: linear-gradient(135deg, #007BFF 0%, #6A1B9A 100%);
             color: white;
-            padding: 0.8rem 2rem;
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.2rem, 4vw, 2rem);
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             transition: all 0.3s ease;
             position: relative;
             z-index: 2;
             display: inline-block;
+            text-decoration: none;
             box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            margin-top: auto;
+            align-self: center;
         }
 
         .resource-card .link-btn:hover {
@@ -513,9 +540,9 @@
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
-            border-radius: 32px;
-            padding: 6rem 4rem;
-            margin: 4rem 0;
+            border-radius: 24px;
+            padding: clamp(2rem, 5vw, 6rem) clamp(1rem, 3vw, 4rem);
+            margin: clamp(2rem, 4vw, 4rem) 0;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
             text-align: center;
@@ -523,32 +550,41 @@
 
         .cta-section h2 {
             color: white;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #00ffff, #ff66ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 800;
             text-shadow: 0 2px 8px rgba(0, 255, 255, 0.3);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
         }
 
         .cta-section p {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 2.5rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
 
         .cta-section .cta-btn {
             background: white;
             color: var(--deep-navy);
             font-weight: 700;
+            padding: clamp(0.8rem, 2.5vw, 1rem) clamp(1.5rem, 5vw, 2.5rem);
+            border-radius: 50px;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
 
         .cta-section .cta-btn:hover {
             color: var(--electric-blue);
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -557,24 +593,101 @@
             border-top: 1px solid var(--glass-border);
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            padding: clamp(2rem, 5vw, 3rem) 0;
             backdrop-filter: blur(20px);
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
         .footer a {
             color: var(--cyber-cyan);
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .footer a:hover {
             text-shadow: 0 0 10px var(--cyber-cyan);
         }
 
-        /* Mobile Responsive */
+        /* View All Publications */
+        .view-all-publications {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 0 1rem;
+        }
+
+        .view-all-publications .btn-primary {
+            background: linear-gradient(135deg, var(--cyber-cyan), var(--electric-blue));
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            padding: clamp(0.8rem, 2.5vw, 1.2rem) clamp(1.5rem, 5vw, 3rem);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .view-all-publications .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Logo */
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-left: 0px;
+        }
+
+        .logo-img {
+            height: 46px;
+            width: auto;
+            display: block;
+        }
+
+        /* Enhanced Mobile Responsive */
         @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 70vh;
+                padding: 100px 1rem 2rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding: 0 0.5rem;
+            }
+
+            .hero h1 {
+                margin-bottom: 1rem;
+                line-height: 1.1;
+            }
+
+            .hero p {
+                padding: 0 0.25rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
             .publications-grid, .resources-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .paper-card, .resource-card {
+                padding: 1.5rem;
+                min-height: auto;
             }
 
             .seminars-timeline::before {
@@ -583,11 +696,11 @@
 
             .seminar-item {
                 width: 100%;
-                left: 0 !important;
+                padding: 0.5rem 0;
             }
 
-            .seminar-item .seminar-content {
-                margin-left: 3rem !important;
+            .seminar-content {
+                margin-left: 45px !important;
                 margin-right: 0 !important;
             }
 
@@ -596,43 +709,145 @@
             }
 
             .seminars-section, .cta-section {
-                padding: 4rem 2rem;
+                padding: 2rem 1.5rem;
                 margin: 2rem 0;
             }
 
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .paper-card, .resource-card {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero p {
-                font-size: 1.1rem;
-                padding: 0 1rem;
-            }
-            
-            .btn-primary, .btn-secondary {
-                padding: 0.9rem 2rem;
-                font-size: 1rem;
-            }
-            
             .section {
-                padding: 6rem 0;
+                padding: 4rem 0;
             }
-            
-            .hero {
-                padding-top: 120px;
+
+            .container {
+                padding: 0 1rem;
             }
 
             .paper-card .meta {
                 flex-direction: column;
                 gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .paper-card p, .resource-card p {
+                -webkit-line-clamp: 3;
+            }
+
+            .view-all-publications {
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 90px 0.5rem 1.5rem;
+                min-height: 65vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                padding: 0 0.25rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+
+            .seminars-section, .cta-section {
+                padding: 1.5rem 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .paper-card, .resource-card {
+                padding: 1.25rem;
+                border-radius: 16px;
+            }
+
+            .paper-card h3, .resource-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .paper-card p, .resource-card p {
+                font-size: 0.9rem;
+                -webkit-line-clamp: 2;
+            }
+
+            .seminar-content {
+                margin-left: 40px !important;
+                padding: 1rem;
+            }
+
+            .seminar-title {
+                font-size: 1rem;
+            }
+
+            .seminar-desc {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 2;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer {
+                padding: 2rem 1rem;
+            }
+
+            .logo-img {
+                height: 38px;
+            }
+
+            /* Reduce particle animation complexity on mobile */
+            .particle {
+                animation-duration: 4s;
+            }
+
+            .particle:nth-child(odd) {
+                animation-duration: 5s;
+            }
+
+            .particle:nth-child(3n) {
+                animation-duration: 6s;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .hero {
+                padding: 80px 0.25rem 1rem;
+            }
+
+            .paper-card, .resource-card {
+                padding: 1rem;
+            }
+
+            .seminar-content {
+                margin-left: 35px !important;
+            }
+
+            .seminar-dot {
+                left: 15px;
+                width: 12px;
+                height: 12px;
             }
         }
 
@@ -640,43 +855,26 @@
         html {
             scroll-padding-top: 100px;
         }
-        .logo {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    margin-left: -20px;
-}
 
-.logo-img {
-    height: 46px; /* Adjust this value to match the previous text size */
-    width: auto;
-    display: block;
-}
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
 
-/* Adjust logo size for mobile devices */
-@media screen and (max-width: 768px) {
-    .logo-img {
-        height: 38px; /* Smaller size for mobile */
-    }
-}
-
-/* Add to your existing style section */
-.view-all-publications {
-    text-align: center;
-    margin-top: 4rem;
-}
-
-.view-all-publications .btn-primary {
-    background: linear-gradient(135deg, var(--cyber-cyan), var(--electric-blue));
-    font-size: 1.1rem;
-    padding: 1.2rem 3rem;
-    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
-}
-
-.view-all-publications .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
-}
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .glass-bg {
+                background: rgba(255, 255, 255, 0.2) !important;
+            }
+            
+            .glass-border {
+                border-color: rgba(255, 255, 255, 0.5) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -736,28 +934,28 @@
             <h2>Dr. Haidar's Publications</h2>
             <div class="publications-grid">
                 <div class="paper-card">
-        <h3>Non-Iterative Disentangled Unitary Coupled-Cluster based on Lie-algebraic structure</h3>
-        <div class="authors">Mohammad Haidar, et al.</div>
-        <div class="year">2025</div>
-        <p>Novel approach to unitary coupled-cluster theory using Lie-algebraic structures, providing efficient non-iterative implementation for quantum chemistry calculations...</p>
-        <div class="meta">
-            <span>Citations: Recent Publication</span>
-            <span>Journal: Quantum Science and Technology</span>
-        </div>
-        <a href="https://doi.org/10.1088/2058-9565/adb3c5" target="_blank" class="link-btn">Read Paper</a>
-    </div>
+                    <h3>Non-Iterative Disentangled Unitary Coupled-Cluster based on Lie-algebraic structure</h3>
+                    <div class="authors">Mohammad Haidar, et al.</div>
+                    <div class="year">2025</div>
+                    <p>Novel approach to unitary coupled-cluster theory using Lie-algebraic structures, providing efficient non-iterative implementation for quantum chemistry calculations...</p>
+                    <div class="meta">
+                        <span>Citations: Recent Publication</span>
+                        <span>Journal: Quantum Science and Technology</span>
+                    </div>
+                    <a href="https://doi.org/10.1088/2058-9565/adb3c5" target="_blank" class="link-btn">Read Paper</a>
+                </div>
 
-    <div class="paper-card">
-        <h3>Extension of the Trotterized Unitary Coupled Cluster to Triple Excitations</h3>
-        <div class="authors">Mohammad Haidar, et al.</div>
-        <div class="year">2024</div>
-        <p>Comprehensive extension of the Trotterized UCC method to include triple excitations, enhancing accuracy in quantum chemistry simulations...</p>
-        <div class="meta">
-            <span>Citations: High Impact</span>
-            <span>Journal: The Journal of Physical Chemistry A</span>
-        </div>
-        <a href="https://doi.org/10.1021/acs.jpca.3c01753" target="_blank" class="link-btn">Read Paper</a>
-    </div>
+                <div class="paper-card">
+                    <h3>Extension of the Trotterized Unitary Coupled Cluster to Triple Excitations</h3>
+                    <div class="authors">Mohammad Haidar, et al.</div>
+                    <div class="year">2024</div>
+                    <p>Comprehensive extension of the Trotterized UCC method to include triple excitations, enhancing accuracy in quantum chemistry simulations...</p>
+                    <div class="meta">
+                        <span>Citations: High Impact</span>
+                        <span>Journal: The Journal of Physical Chemistry A</span>
+                    </div>
+                    <a href="https://doi.org/10.1021/acs.jpca.3c01753" target="_blank" class="link-btn">Read Paper</a>
+                </div>
 
                 <div class="paper-card">
                     <h3>Open Source Variational Quantum Eigensolver Extension of the Quantum Learning Machine</h3>
@@ -808,10 +1006,10 @@
                 </div>
             </div>
             <div class="view-all-publications">
-        <a href="https://www.researchgate.net/profile/Mohammad-Haidar-14" target="_blank" class="btn-primary">
-            View All Publications on ResearchGate
-        </a>
-    </div>
+                <a href="https://www.researchgate.net/profile/Mohammad-Haidar-14" target="_blank" class="btn-primary">
+                    View All Publications on ResearchGate
+                </a>
+            </div>
         </div>
     </section>
 
