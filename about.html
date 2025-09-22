@@ -551,16 +551,98 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            /* Hero adjustments */
+            .hero h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+                line-height: 1.1;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+
+            .hero-cta {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            /* Section padding */
+            .section {
+                padding: 5rem 0;
+            }
+
+            /* Bio Section - FIXED FOR MOBILE */
+            .bio-section {
+                padding: 3rem 1.5rem;
+                margin: 2rem 0;
+                border-radius: 24px;
+            }
+
             .bio-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2.5rem;
+                text-align: center;
+                padding: 0 0.5rem;
+            }
+
+            .headshot-container {
+                margin-bottom: 1rem;
+            }
+
+            .headshot {
+                width: 220px;
+                height: 220px;
+                max-width: 80vw;
+            }
+
+            .headshot-container::before {
+                width: 240px;
+                height: 240px;
+            }
+
+            .bio-text {
                 text-align: center;
             }
 
             .bio-text h2 {
                 text-align: center;
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.2;
             }
 
+            .bio-text p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+                text-align: justify;
+                hyphens: auto;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .bio-text .btn-secondary {
+                padding: 0.75rem 2rem;
+                font-size: 0.95rem;
+                display: inline-block;
+                margin-top: 1rem;
+            }
+
+            /* Timeline adjustments */
             .timeline-container::before {
                 left: 20px;
             }
@@ -568,75 +650,19 @@
             .timeline-item {
                 width: 100%;
                 left: 0 !important;
+                padding: 1rem 0;
             }
 
             .timeline-item .timeline-content {
                 margin-left: 3rem !important;
                 margin-right: 0 !important;
+                padding: 1.5rem;
+                max-width: calc(100% - 3rem);
             }
 
             .timeline-dot {
                 left: 20px;
                 transform: translateX(0);
-            }
-
-            .hero h1 {
-                font-size: clamp(2.5rem, 8vw, 4rem);
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .expertise-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .bio-section,
-            .cta-section {
-                padding: 4rem 2rem;
-                margin: 2rem;
-            }
-
-            .impact-list {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section {
-                padding: 6rem 0;
-            }
-
-            /* Optimized headshot for mobile */
-            .headshot {
-                width: 250px;
-                height: 250px;
-            }
-
-            .headshot-container::before {
-                width: 270px;
-                height: 270px;
-            }
-
-            /* Smaller buttons on mobile */
-            .btn-primary, .btn-secondary {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
-
-            .hero-cta {
-                gap: 1rem;
-            }
-
-            /* Adjust bio text for better readability */
-            .bio-text p {
-                font-size: 1rem;
-            }
-
-            /* Timeline content padding adjustment */
-            .timeline-content {
-                padding: 1.5rem;
             }
 
             .timeline-title {
@@ -645,37 +671,96 @@
 
             .timeline-content p {
                 font-size: 0.95rem;
+                line-height: 1.5;
             }
 
-            /* Expertise card adjustments */
+            /* Expertise adjustments */
+            .expertise-section {
+                padding: 5rem 0;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 0.5rem;
+            }
+
             .expertise-card {
-                padding: 2.5rem 2rem;
+                padding: 2rem 1.5rem;
+                border-radius: 20px;
             }
 
             .expertise-card h3 {
                 font-size: 1.4rem;
+                margin-bottom: 1rem;
             }
 
             .expertise-card p {
                 font-size: 0.95rem;
+                line-height: 1.6;
             }
 
-            /* CTA adjustments */
-            .cta-section p {
-                font-size: 1rem;
+            /* Impact adjustments */
+            .impact-section {
+                padding: 5rem 0;
             }
 
-            /* Impact item adjustments */
+            .impact-list {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+
             .impact-item {
-                padding: 1.2rem 2rem;
+                padding: 1rem 1.5rem;
                 font-size: 0.95rem;
-                width: 80%;
+                width: 90%;
+                max-width: 300px;
                 text-align: center;
             }
 
-            /* Container padding */
-            .container {
-                padding: 0 1.5rem;
+            /* CTA adjustments */
+            .cta-section {
+                padding: 3rem 1.5rem;
+                margin: 2rem 0;
+                border-radius: 24px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+
+            .cta-section .btn-primary {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                display: inline-block;
+            }
+
+            /* Footer adjustments */
+            .footer {
+                padding: 2rem 0;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Tablet responsive */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .bio-content {
+                gap: 3rem;
+            }
+            
+            .headshot {
+                width: 280px;
+                height: 280px;
             }
         }
 
@@ -719,25 +804,25 @@
                 display: none;
             }
         }
+
         .logo {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    margin-left: -20px;
-}
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-left: -20px;
+        }
 
-.logo-img {
-    height: 46px; /* Adjust this value to match the previous text size */
-    width: auto;
-    display: block;
-}
+        .logo-img {
+            height: 46px;
+            width: auto;
+            display: block;
+        }
 
-/* Adjust logo size for mobile devices */
-@media screen and (max-width: 768px) {
-    .logo-img {
-        height: 38px; /* Smaller size for mobile */
-    }
-}
+        @media screen and (max-width: 768px) {
+            .logo-img {
+                height: 38px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -828,7 +913,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        
                         <div class="timeline-title">Founding & Leading OpenVQA Hub</div>
                         <p>Built a growing platform with 40+ engineers and 10 international advisors.</p>
                     </div>
@@ -840,7 +924,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        
                         <div class="timeline-title">Senior Researcher at Qubit Pharmaceuticals</div>
                         <p>Took a leadership role in algorithm development for real-world use cases in healthcare & chemistry.</p>
                     </div>
@@ -852,7 +935,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        
                         <div class="timeline-title">Postdoctoral Researcher</div>
                         <p>Sorbonne Université – Applied quantum computing in chemistry and materials science.</p>
                     </div>
@@ -864,7 +946,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        
                         <div class="timeline-title">Creating OpenVQE & OpenVQA</div>
                         <p>Developed open-source platforms supporting VQE (variational quantum eigensolver) for quantum chemistry & optimization.</p>
                     </div>
@@ -876,7 +957,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        
                         <div class="timeline-title">Keynote Speaker</div>
                         <p>"Quantum and the Future of Computing" Seminar – Discussing NISQ advancements and quantum algorithm optimization for real-world applications.</p>
                     </div>
