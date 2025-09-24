@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://wywq.net/sitemap.xml
+
+# Block access to admin/private directories (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: *.zip$
+Disallow: *.pdf$
+
+# Allow all CSS and JS files
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Crawl-delay (optional - remove if not needed)
+Crawl-delay: 1
