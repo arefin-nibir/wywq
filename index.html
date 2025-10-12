@@ -620,6 +620,105 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* News & Updates Section */
+        .news-carousel {
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .carousel-item {
+                flex: 0 0 33.333%;
+            }
+        }
+
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(25px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+            border-color: var(--bright-cyan);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--bright-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .news-date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .news-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-nav:hover {
+            background: var(--bright-cyan);
+            color: #000;
+        }
+
+        .prev {
+            left: 1rem;
+        }
+
+        .next {
+            right: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -677,6 +776,59 @@
             <div class="hero-cta">
                 <a href="about.html" class="btn-primary">Explore Expertise</a>
                 <a href="quantum.html" class="btn-secondary">View Technologies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Updates Section -->
+    <section class="section fade-in" id="news-updates">
+        <div class="container">
+            <h2>News & Updates</h2>
+            <div class="news-carousel">
+                <button class="carousel-nav prev">&lt;</button>
+                <div class="carousel-track">
+                    <div class="carousel-item">
+                        <div class="news-card">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E22AQHiSHdEXHuBKQ/feedshare-shrink_1280/B4EZnM0iU_J0As-/0/1760077958368?e=1762992000&v=beta&t=iYEPxn4dEHjVk9pzGd03C-fGGZ8sJ50amHrLsUX2gSM" class="news-image">
+                            <h3 class="news-title">Dr. Haidar with Nobel prize in quantum physics(2012) winner Serge Haroche</h3>
+                            <p class="news-date">October 10, 2025</p>
+                            <p class="news-desc">In honor of Prof. Serge Haroche, Nobel Laureate in Physics (2012), a remarkable conference was held in ICISE Quy Nhon Vietnam, celebrating 100 years of quantum physics. The event brought together many distinguished scientists and professors from around the world</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="news-card">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E22AQH-cCLFIcId7A/feedshare-shrink_1280/B4EZmaGUGfKYAs-/0/1759226971614?e=1762992000&v=beta&t=HM_HuWG2qieWV6WBu-33U-mBkHI32breAAQ-h7s8hI8" alt="Quantum Innovation Summit Dubai 2025" class="news-image">
+                            <h3 class="news-title">Speaker at conference organized by Brin (Quantum Physics) at Indonesia</h3>
+                            <p class="news-date">October 6, 2025</p>
+                            <p class="news-desc">Dr. Haidar Had a great time (1 hour and 1/2) at the conference organized by Brin (Quantum Physics) for Indonesia Brin</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="news-card">
+                            <img src="https://i.ytimg.com/vi/iWhHCB6eBv0/maxresdefault.jpg" alt="Variational Quantum Algorithms Seminar" class="news-image">
+                            <h3 class="news-title">Variational Quantum Algorithms for Molecular Simulations</h3>
+                            <p class="news-date">September 30, 2025</p>
+                            <p class="news-desc">Dr. Haidar presented advances in variational quantum algorithms and open tools for molecular simulations at the Kolokium Fisika Kuantum.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="news-card">
+                            <img src="https://vietnamtimes.thoidai.com.vn/stores/news_dataimages/2025/082025/19/15/967bbe82cf9add04847fb3f28ca61742.jpg?rt=20250819153639" alt="Quantum AI Summer School Vietnam 2025" class="news-image">
+                            <h3 class="news-title">First Quantum AI Summer School in Vietnam</h3>
+                            <p class="news-date">August 2025</p>
+                            <p class="news-desc">Dr. Haidar led the inaugural VSAIQC 2025, a groundbreaking event bringing together students and experts in AI and quantum computing in Southeast Asia.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="news-card">
+                            <img src="https://i1.rgstatic.net/publication/270570686_Quantum_Computing/links/54ad92600cf2828b29fcadc6/largepreview.png" alt="Quantum Computing Research Publication" class="news-image">
+                            <h3 class="news-title">New Publication: NI-DUCC-VQE</h3>
+                            <p class="news-date">2025</p>
+                            <p class="news-desc">Dr. Haidar's latest research introduces the Non-Iterative Disentangled Unitary Coupled Cluster method, enhancing molecular simulation accuracy with lower computational demands.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav next">&gt;</button>
             </div>
         </div>
     </section>
@@ -1022,6 +1174,57 @@
             title.style.opacity = '0.9'; // Start slightly faded
             titleObserver.observe(title);
         });
+
+        // News Carousel Functionality
+        const carousel = document.querySelector('.news-carousel');
+        if (carousel) {
+            const track = carousel.querySelector('.carousel-track');
+            const items = track.querySelectorAll('.carousel-item');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
+            let currentIndex = 0;
+
+            const moveCarousel = () => {
+                const isMobile = window.innerWidth < 768;
+                const visibleItems = isMobile ? 1 : 3;
+                const itemWidth = 100 / visibleItems;
+                track.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
+            };
+
+            prevBtn.addEventListener('click', () => {
+                const isMobile = window.innerWidth < 768;
+                const visibleItems = isMobile ? 1 : 3;
+                const totalPositions = items.length - visibleItems + 1;
+                currentIndex = (currentIndex - 1 + totalPositions) % totalPositions;
+                moveCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const isMobile = window.innerWidth < 768;
+                const visibleItems = isMobile ? 1 : 3;
+                const totalPositions = items.length - visibleItems + 1;
+                currentIndex = (currentIndex + 1) % totalPositions;
+                moveCarousel();
+            });
+
+            // Auto slide every 5 seconds
+            setInterval(() => {
+                const isMobile = window.innerWidth < 768;
+                const visibleItems = isMobile ? 1 : 3;
+                const totalPositions = items.length - visibleItems + 1;
+                currentIndex = (currentIndex + 1) % totalPositions;
+                moveCarousel();
+            }, 5000);
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                currentIndex = 0; // Reset to start on resize
+                moveCarousel();
+            });
+
+            // Initial call
+            moveCarousel();
+        }
     </script>
 </body>
 </html>
