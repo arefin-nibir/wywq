@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://wywq.net/about_wyw.html">
+    <title>About WYW - WYWQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --quantum-purple: #6A1B9A;
+            --electric-blue: #007BFF;
+            --deep-navy: #001F3F;
+            --cyber-cyan: #00D4FF;
+            --neon-green: #39FF14;
+            --gradient-primary: linear-gradient(135deg, #001F3F 0%, #6A1B9A 50%, #007BFF 100%);
+            --gradient-secondary: linear-gradient(45deg, #00D4FF, #39FF14);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-light: rgba(255, 255, 255, 0.95);
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: #000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        /* Quantum Particle Background Animation */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 80%, #001F3F 0%, #000 50%), 
+                        radial-gradient(circle at 80% 20%, #6A1B9A 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #007BFF 0%, transparent 50%);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--neon-green);
+            animation-duration: 8s;
+            animation-delay: -2s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--electric-blue);
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #39FF14, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            animation: heroTextReveal 1.2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: heroTextReveal 1.2s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+            animation: heroTextReveal 1.2s ease-out 0.6s both;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--cyber-cyan);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-secondary:hover {
+            background: var(--cyber-cyan);
+            color: #000;
+            box-shadow: 0 0 30px var(--cyber-cyan);
+            transform: translateY(-3px);
+        }
+
+        .btn-linkedin {
+            background: transparent;
+            color: var(--cyber-cyan);
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 2px solid var(--cyber-cyan);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .btn-linkedin:hover {
+            background: var(--cyber-cyan);
+            color: #000;
+            box-shadow: 0 0 20px var(--cyber-cyan);
+            transform: translateY(-2px);
+        }
+
+        @keyframes heroTextReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00ffff, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Vision Mission Section */
+        .vm-section {
+            padding: 4rem 0;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .vm-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vm-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .vm-card:hover::before {
+            opacity: 0.06;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .vm-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .vm-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 6rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3.5rem;
+            justify-items: center;
+        }
+
+        .team-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(25px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 0 6px 25px rgba(0, 123, 255, 0.12);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 25px 60px rgba(0, 123, 255, 0.25);
+            border-color: var(--cyber-cyan);
+        }
+
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--cyber-cyan);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-photo {
+            transform: scale(1.08);
+        }
+
+        .team-card h3 {
+            color: var(--neon-green);
+            font-size: 1.7rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .team-card p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Advisors Section */
+        .advisors-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 6rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.8rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.08;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.2);
+        }
+
+        .service-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Capabilities Section */
+        .capabilities-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+        }
+
+        .capability-sub {
+            margin-bottom: 3rem;
+        }
+
+        .capability-sub h3 {
+            color: var(--neon-green);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 1px 4px rgba(57, 255, 20, 0.2);
+        }
+
+        .capability-sub p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .capability-img {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 1.5rem auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
+        }
+
+        .capabilities-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1.5rem;
+            color: var(--text-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.1);
+        }
+
+        .capabilities-table th, .capabilities-table td {
+            padding: 1rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .capabilities-table th {
+            background: var(--gradient-secondary);
+            color: #001F3F;
+            font-weight: 600;
+        }
+
+        .capabilities-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .capabilities-table a {
+            color: var(--cyber-cyan);
+            transition: color 0.3s ease;
+        }
+
+        .capabilities-table a:hover {
+            color: var(--neon-green);
+        }
+
+        /* Innovation Section */
+        .innovation-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+        }
+
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .innovation-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.1);
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.2);
+        }
+
+        .innovation-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .innovation-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .innovation-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);
+        }
+
+        /* Applications Section */
+        .applications-section {
+            padding: 6rem 0;
+        }
+
+        .applications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .applications-list li {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .applications-list li::before {
+            content: '•';
+            color: var(--neon-green);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 1.5rem;
+        }
+
+        .applications-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        /* Markets Section */
+        .markets-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+        }
+
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .market-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.1);
+        }
+
+        .market-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.2);
+        }
+
+        .market-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .market-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .markets-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 1.5rem auto 0;
+            display: block;
+        }
+
+        /* Funding Section */
+        .funding-section {
+            padding: 6rem 0;
+        }
+
+        .funding-content p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* YouTube Section */
+        .youtube-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+        }
+
+        .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .youtube-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .youtube-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.2);
+        }
+
+        .youtube-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .youtube-thumbnail {
+            position: relative;
+            display: block;
+        }
+
+        .youtube-thumbnail img {
+            width: 100%;
+            border-radius: 12px;
+            transition: opacity 0.3s ease;
+        }
+
+        .youtube-thumbnail:hover img {
+            opacity: 0.8;
+        }
+
+        .youtube-thumbnail::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--cyber-cyan);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .youtube-thumbnail:hover::after {
+            opacity: 1;
+        }
+
+        /* Collaboration Section */
+        .collab-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+        }
+
+        /* References Section */
+        .references-section {
+            padding: 6rem 0;
+        }
+
+        .references-list li {
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            border-radius: 32px;
+            padding: 4rem 3rem;
+            margin: 3rem auto;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            text-align: center;
+            color: white;
+            max-width: 900px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #66ffff, #ff66ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(102, 255, 255, 0.3);
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--glass-border);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .footer a {
+            color: var(--cyber-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 10px var(--cyber-cyan);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .vm-grid, .team-grid, .services-grid, .innovation-grid, .applications-list, .youtube-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-photo {
+                width: 140px;
+                height: 140px;
+            }
+
+            .capabilities-table, .collab-table {
+                font-size: 0.9rem;
+            }
+
+            .youtube-thumbnail img {
+                height: 160px;
+            }
+
+            .cta-section {
+                padding: 3rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quantum-bg">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/wywq-logo.png" alt="WYWQ Logo" class="logo-img">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="about_wyw.html" class="nav-link active">About WYW</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <span>Quantum Technologies</span>
+                    <ul class="dropdown">
+                        <li><a href="communication.html" class="nav-link">Quantum Communication</a></li>
+                        <li><a href="sensors.html" class="nav-link">Quantum Sensors</a></li>
+                        <li><a href="computing.html" class="nav-link">Quantum Computing</a></li>
+                        <li><a href="education.html" class="nav-link">Quantum Education</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="market.html" class="nav-link">Market Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="publications.html" class="nav-link">Publications</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay loop muted playsinline class="hero-bg-video">
+            <source src="videos/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>About WYW</h1>
+            <p>A French startup pioneering innovation in Quantum Technologies, Post-Quantum Cryptography, and Artificial Intelligence, bridging science, technology, and industry.</p>
+            <div class="hero-cta">
+                <a href="#team" class="btn-primary">Meet the Team</a>
+                <a href="#capabilities" class="btn-secondary">Core Capabilities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision and Mission Section -->
+    <section class="section vm-section">
+        <div class="container">
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <h3>Our Mission</h3>
+                    <p>To pioneer innovation in Quantum Technologies, Post-Quantum Cryptography, and AI by building a global network to accelerate quantum-secure and AI-driven infrastructures through open-source platforms and partnerships.</p>
+                </div>
+                <div class="vm-card">
+                    <h3>Our Vision</h3>
+                    <p>To bridge science, technology, and industry, empowering secure quantum technologies via collaborative research and openness for global impact in cybersecurity, optimization, and innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team-section">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="images/profile.jpg" alt="Dr. Mohammad Haidar" class="team-photo">
+                    <h3>Dr. Mohammad Haidar</h3>
+                    <p>Senior Quantum Scientist,<br>Founder & CEO of WYW</p>
+                    <a href="https://www.linkedin.com/in/mohammad-haidar-phd-quantum-3930041a4/" target="_blank" class="btn-linkedin">Connect</a>
+                </div>
+                <div class="team-card">
+                    <img src="images/nibir12.jpg" alt="Shams Ul Arefin Nibir" class="team-photo">
+                    <h3>Shams Ul Arefin Nibir</h3>
+                    <p>Lead Software Developer,<br>Quantum Engineer, WYW</p>
+                    <a href="https://www.linkedin.com/in/shams-ul-arefin-nibir-5b601228a/" target="_blank" class="btn-linkedin">Connect</a>
+                </div>
+                <div class="team-card">
+                    <img src="images/dave12.jpg" alt="Kshitij Dave" class="team-photo">
+                    <h3>Kshitij Dave</h3>
+                    <p>Quantum Application Engineer,<br>Quantum Engineer, WYW</p>
+                    <a href="https://www.linkedin.com/in/kshitij-dave-aaab77241/" target="_blank" class="btn-linkedin">Connect</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advisors Section -->
+    <section class="section advisors-section">
+        <div class="container">
+            <h2>Our Advisors</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://media.licdn.com/dms/image/v2/C4E03AQEmElaUI1oNKQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1598641903162?e=1764201600&v=beta&t=S_3wmmV80FscM7eZ6JxpHp3JXTfVg7W2Z4zIBcnpij0" alt="Rahul Maitra" class="team-photo">
+                    <h3>Rahul Maitra</h3>
+                    <p>Associate Professor at Indian Institute of Technology Bombay<br>Researcher in Quantum Chemistry, Quantum Computing</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQG-H3sq9DTRgA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1714521855131?e=1764201600&v=beta&t=oNF82MwEhzoqvkrqUszN4OZfYgtqZZK-i3BevxBE0As" alt="Prof Tien Kieu" class="team-photo">
+                    <h3>Prof Tien Kieu</h3>
+                    <p>Professor in Physics, Swinburne University of Technology<br>Researcher in Adiabatic Quantum Computation, Quantum Optimization, Quantum Finance & QKD</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services-section">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Quantum Algorithm Development</h3>
+                    <p>Design variational and hybrid quantum algorithms for optimization, chemistry, AI, and PQC. Platforms: OpenVQE, OpenVQA, OpenHybrid.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Post-Quantum Cryptography (PQC) Solutions</h3>
+                    <p>Develop, benchmark, and validate quantum-resistant cryptographic algorithms (ML-KEM, ML-DSA) with integrated AI-based fault detection.</p>
+                </div>
+                <div class="service-card">
+                    <h3>AI Automation & Security Tools</h3>
+                    <p>Build AI-driven validation frameworks for automated PQC testing, anomaly detection, and side-channel resilience.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Research & Technical Consulting</h3>
+                    <p>Provide expert consulting in quantum technologies, PQC migration, and hybrid system integration, supported by strong industrial partnerships.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Education & Training</h3>
+                    <p>Deliver hands-on workshops, online courses, and mentoring through the OpenVQA Hub, engaging 40+ engineers and global advisors.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Conferences & Hackathons</h3>
+                    <p>Organize and participate in international quantum events, innovation hackathons, and research conferences across Europe, Asia, and the Middle East.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Industry Collaborations</h3>
+                    <p>Collaborate with Eviden (Atos Group), Zanasi & Partners, and academic institutions on European and global quantum innovation projects.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Open-Source Development</h3>
+                    <p>Maintain active open repositories on GitHub for PQC, quantum chemistry, and AI–quantum hybrid tools.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Strategic Advisory & Policy Support</h3>
+                    <p>Advise on quantum adoption strategies, governance, and regulatory frameworks for public and private sectors.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Future Expansion (OpenHybrid)</h3>
+                    <p>Develop integrated AI–Quantum simulation environments, PQC verification pipelines, and hybrid cloud-based SDKs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Capabilities Section -->
+    <section id="capabilities" class="section capabilities-section">
+        <div class="container">
+            <h2>Core Capabilities</h2>
+            <div class="capability-sub">
+                <h3>Algorithm Design & Quantum Software Development</h3>
+                <p>WYW specializes in variational and hybrid quantum algorithms for optimization, chemistry, AI, and secure computation. Our in-house platforms include:</p>
+                <table class="capabilities-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Focus Area</th>
+                            <th>Key Features</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>OpenVQA Hub</td>
+                            <td>Quantum Education & Algorithmic Research</td>
+                            <td>40+ engineers and 10 advisors developing VQE/VQA-based hybrid algorithms.</td>
+                            <td><a href="http://www.openvqa.com" target="_blank">www.openvqa.com</a></td>
+                        </tr>
+                        <tr>
+                            <td>OpenVQE</td>
+                            <td>Variational Quantum Eigensolver Framework</td>
+                            <td>Open-source toolkit for chemistry and optimization simulations.</td>
+                            <td><a href="https://github.com/OpenVQE/OpenVQE" target="_blank">GitHub – OpenVQE</a></td>
+                        </tr>
+                        <tr>
+                            <td>OpenHybrid</td>
+                            <td>AI–Quantum Hybrid Development</td>
+                            <td>Upcoming integrated suite combining AI, PQC validation, and variational algorithms.</td>
+                            <td><a href="http://openhybrid.net" target="_blank">openhybrid.net</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>These platforms provide foundational infrastructure for PACT-PQC: scalable testing, algorithm integration, and hybrid AI-assisted PQC validation.</p>
+            </div>
+            <div class="capability-sub">
+                <h3>PQC Algorithm Implementation and Validation</h3>
+                <p>WYW’s PQC division has implemented NIST PQC standard algorithms, focusing on ML-KEM (CRYSTALS-Kyber) and ML-DSA (Dilithium), both lattice-based and quantum-resistant mechanisms.</p>
+                <p>Example: The “ML-KEM Wrapper” developed at WYW provides a Python interface for Kyber variants (512/768/1024) using liboqs. It includes benchmarking, security validation, and integration utilities for PQC simulation and performance testing.</p>
+                <p>📦 GitHub Repository: <a href="https://github.com/WYW-PQC/Post-Quantum-Cryptography" target="_blank">https://github.com/WYW-PQC/Post-Quantum-Cryptography</a></p>
+                <p>Capabilities include: Implementation and benchmarking of PQC algorithms. Automated validation pipelines (encapsulation/decapsulation correctness, performance profiling). Leakage and side-channel analysis using dudect, valgrind, and ct-verif integration. Generation of reproducible datasets for PQC analysis. Hybrid deployment strategies: combining classical + quantum backends.</p>
+                <p>These efforts promise resilience against quantum adversaries, ensuring that PQC solutions remain robust in the era of NISQ (Noisy Intermediate-Scale Quantum) and Fault-Tolerant Quantum Computing (FTQC).</p>
+            </div>
+            <div class="capability-sub">
+                <h3>Artificial Intelligence and Automation</h3>
+                <p>WYW actively develops AI-driven automation tools for post-quantum cryptographic validation and side-channel mitigation. Within the context of PACT-PQC, WYW proposes to lead AI-related components such as: AI-assisted Fault Attack Detection (ALFA) using deep learning and signal classification. Automated Benchmarking Framework (CAT-PoC) integrating AI for anomaly detection and pattern recognition. Development of explainable AI modules to ensure transparency in PQC verification workflows.</p>
+            </div>
+            <div class="capability-sub">
+                <h3>Quantum Machine Learning</h3>
+                <p>WYW is demonstrating real quantum advantage across high-impact computational domains, starting with finance and expanding toward complex industrial and climate applications.</p>
+                <p>Proven Achievements Our hybrid and fully quantum models have consistently outperformed classical AI systems in precision, recall, and F1 score benchmarks.</p>
+                <p>Key demonstrations include: Fraud Detection — detecting anomalies with higher precision under noisy, imbalanced datasets Credit Scoring — improving risk classification accuracy over classical models Time Series Forecasting — capturing chaotic patterns for more reliable financial trend predictions</p>
+                <p>Experiments show 5–10% accuracy improvements using hybrid quantum architectures, validated across multiple public datasets and simulation environments. Even modest accuracy lifts translate to measurable operational and financial gains at scale.</p>
+                <p>Core Capabilities The developed models are adaptable to multiple sectors: Climate and Weather Systems: applying quantum-enhanced forecasting for temperature, rainfall, and extreme event prediction Energy and IIoT Optimization: reducing computational cost in carbon-efficient systems through low-energy quantum circuits Sentiment and Behavioral Modeling: leveraging quantum neuro-fuzzy architectures for market and social sentiment analysis</p>
+                <p>Our approach integrates quantum feature engineering, noise-resilient ansatz design, and other techniques to maintain model robustness and consistent performance across diverse datasets.</p>
+                <p>Academic Validation:- The research team has established peer-reviewed credibility through IEEE Journal publications in 2025, providing independent validation of their quantum advantage claims: 1. Optimizing low-energy carbon IIoT systems with quantum algorithms: Performance evaluation and noise robustness. 🔗 https://arxiv.org/pdf/2503.00888 2. SentiQNF: A novel approach to sentiment analysis using quantum algorithms and neuro-fuzzy systems. 🔗 https://arxiv.org/pdf/2412.12731</p>
+            </div>
+            <div class="capability-sub">
+                <h3>Research and Global Expertise</h3>
+                <p>Led by Dr. Mohammad Haidar, WYW combines a strong academic foundation with global scientific impact.</p>
+                <table class="capabilities-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Publications</td>
+                            <td>28+ peer-reviewed papers (Quantum Computing, PQC, QED, Spectroscopy, Quantum Chemistry)</td>
+                        </tr>
+                        <tr>
+                            <td>Citations</td>
+                            <td>352+ citations across journals and conferences</td>
+                        </tr>
+                        <tr>
+                            <td>Research Focus</td>
+                            <td>Variational Quantum Algorithms, PQC, Hybrid Systems, Spectroscopy, Quantum Field Theory</td>
+                        </tr>
+                        <tr>
+                            <td>Education & Mentorship</td>
+                            <td>Supervision of MSc and PhD students, international collaboration across Europe, Middle East, and Asia</td>
+                        </tr>
+                        <tr>
+                            <td>Invited Talks / Keynotes</td>
+                            <td>Spain, France, Dubai, Vietnam, USA, Saudi Arabia</td>
+                        </tr>
+                        <tr>
+                            <td>YouTube Lectures (Educational Outreach)</td>
+                            <td>Talk 1 • Talk 2 • Talk 3 • Talk 4</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>This combination of research leadership and open educational outreach positions WYW as an AI–Quantum connector between academia, startups, and enterprise.</p>
+            </div>
+            <div class="capability-sub">
+                <h3>Technical Expertise Overview</h3>
+                <table class="capabilities-table">
+                    <thead>
+                        <tr>
+                            <th>Expertise Domain</th>
+                            <th>Key Capabilities</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Quantum Computing</td>
+                            <td>Quantum chemistry simulation, hybrid algorithms, error mitigation, NISQ to FTQC transition analysis.</td>
+                        </tr>
+                        <tr>
+                            <td>Post-Quantum Cryptography</td>
+                            <td>Lattice-based cryptography (ML-KEM, ML-DSA), side-channel hardening, AI validation of PQC algorithms.</td>
+                        </tr>
+                        <tr>
+                            <td>AI for Security</td>
+                            <td>Automated anomaly detection, signal classification for leakage analysis, explainable AI pipelines.</td>
+                        </tr>
+                        <tr>
+                            <td>Software Development</td>
+                            <td>Open-source toolkits (Python, Qiskit, Cirq, liboqs), GitHub-based CI/CD for research deployment.</td>
+                        </tr>
+                        <tr>
+                            <td>Quantum–AI Integration</td>
+                            <td>Hybrid learning models combining quantum circuits with classical AI layers.</td>
+                        </tr>
+                        <tr>
+                            <td>Education & Training</td>
+                            <td>Online courses, workshops, technical documentation, mentoring next-gen quantum engineers.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section class="section innovation-section">
+        <div class="container">
+            <h2>Innovation</h2>
+            <div class="innovation-grid">
+                <div class="innovation-card">
+                    <img src="https://www.shutterstock.com/image-illustration/image-atom-model-spinning-data-260nw-2486228659.jpg" alt="Quantum Chemistry" class="innovation-img">
+                    <h3>Quantum Chemistry</h3>
+                    <p>WYW explores quantum chemistry simulations using variational and hybrid algorithms to model complex molecular systems efficiently on near-term quantum devices. Under the scientific guidance of Professor Rahul Maitra, a leading expert in quantum chemistry and quantum computing, we are developing next-generation Variational Quantum Eigensolver (VQE) frameworks within OpenVQE and OpenHybrid. This work enables high-accuracy energy calculations, reaction modeling, and chemical property prediction — essential tools for quantum-assisted materials and drug discovery.</p>
+                </div>
+                <div class="innovation-card">
+                    <img src="https://www.researchgate.net/publication/344622095/figure/fig4/AS:946019474866187@1602560027584/Functional-diagram-of-the-Quantum-Approximate-Optimization-Algorithm-QAOA-19-proposed.png" alt="Quantum Optimization" class="innovation-img">
+                    <h3>Quantum Optimization</h3>
+                    <p>WYW focuses on designing quantum optimization algorithms that solve large-scale industrial and scientific problems more efficiently than classical counterparts. Working alongside Professor Rahul Maitra, we are integrating Quantum Approximate Optimization Algorithm (QAOA) and hybrid adaptive approaches into real-world use cases such as logistics, scheduling, and machine learning optimization. These methods form the foundation for quantum-enhanced AI systems capable of addressing complex combinatorial problems in PQC, data security, and resource management.</p>
+                </div>
+                <div class="innovation-card">
+                    <img src="https://substackcdn.com/image/fetch/$s_!8lDj!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe47311e2-45d1-4b07-af73-85b008b6972b.heic" alt="Adiabatic Quantum Computation" class="innovation-img">
+                    <h3>Adiabatic Quantum Computation</h3>
+                    <p>With the support of Professor Tien Kieu, a distinguished physicist renowned for his work on Quantum Adiabatic algorithms and the foundations of quantum computation, WYW is exploring the use of adiabatic quantum processes for secure computation and cryptographic resilience. AQC is a quantum computing model that solves problems by leveraging the principles of quantum annealing and adiabatic processes. It is an analogue approach but can be tailored to quantum circuits. It is a powerful specialised tool for optimization and sampling, constrained by the need for slow operation and susceptibility to noise, but with a clear and valuable pathway to near-term practical applications, especially when used in hybrid systems. Development and applications include: Hybrid Quantum-Classical Solvers, Material and Molecular Simulations, Feature Selection and Hyperparameter Tuning in ML and AI, Logistics Optimisation, Drug Discovery and Development, Financial Modeling (portfolio optimisation and arbitrage), etc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="section applications-section">
+        <div class="container">
+            <h2>Applications</h2>
+            <ul class="applications-list">
+                <li>
+                    <img src="https://www.researchgate.net/publication/327325042/figure/fig1/AS:685551401308160@1540459599439/Quantum-Computing-Industries-and-Applications.ppm" alt="Quantum Applications" class="applications-img">
+                    OpenVQE: VQE for chemistry, materials, drug discovery on near-term hardware.
+                </li>
+                <li>
+                    <img src="https://utimaco.com/sites/default/files/2023-05/leveraging-quantum-computers-chart.png" alt="Quantum in Manufacturing" class="applications-img">
+                    OpenVQA: Tools for ML, optimization, finance like routing, portfolio management.
+                </li>
+                <li>
+                    <img src="https://www.techtarget.com/rms/onlineimages/industry_applications_for_quantum_computing-f_mobile.png" alt="Industry Applications" class="applications-img">
+                    OpenHybrid: AI-PQC for hybrid models, secure crypto systems.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Target Markets Section -->
+    <section class="section markets-section">
+        <div class="container">
+            <h2>Target Markets</h2>
+            <div class="markets-grid">
+                <div class="market-card">
+                    <h3>Defense and Cybersecurity</h3>
+                    <p>Post-Quantum Cryptography, encryption resilience, and secure communication systems.</p>
+                </div>
+                <div class="market-card">
+                    <h3>Pharmaceuticals and Healthcare</h3>
+                    <p>Quantum chemistry applications for molecular modeling and drug optimization.</p>
+                </div>
+                <div class="market-card">
+                    <h3>Finance and Banking</h3>
+                    <p>Quantum optimization and quantum finance models for portfolio management, risk assessment, and high-speed trading.</p>
+                </div>
+                <div class="market-card">
+                    <h3>Industrial and Material Design</h3>
+                    <p>Simulation of new materials, superconductors, and nanostructures using variational quantum algorithms.</p>
+                </div>
+                <div class="market-card">
+                    <h3>Education and Research</h3>
+                    <p>Universities and training institutions adopting OpenVQA and OpenVQE for hands-on learning, certification, and workshops.</p>
+                </div>
+                <div class="market-card">
+                    <h3>Technology and Hardware Providers</h3>
+                    <p>Collaborations with Eviden (Atos Group), NVIDIA, D-Wave, and other hardware manufacturers for benchmarking and hybrid algorithm testing.</p>
+                </div>
+            </div>
+            <img src="https://thequantuminsider.com/wp-content/uploads/image001.png" alt="Quantum Market Map" class="markets-img">
+        </div>
+    </section>
+
+    <!-- Funding and Clients Section -->
+    <section class="section funding-section">
+        <div class="container">
+            <h2>Funding and Clients</h3>
+            <div class="funding-content">
+                <p>WYW is a new and growing company, actively building partnerships and funding pipelines across Europe, the Middle East, and Asia. Our activities are currently supported through a combination of research grants, workshops, consulting services, and industry collaborations.</p>
+                <p>Funding and Collaboration Channels: Applied for European innovation funding under PQC and Quantum Technology calls. Active collaborations with Zanasi & Partners, Eviden, and academic partners in France and the Gulf region. Engagement with governmental and institutional funding ecosystems, including Horizon Europe and national quantum programs. Ongoing consultancy and advisory projects in Saudi Arabia on Quantum Technology adoption and national strategy.</p>
+                <p>Clients and Activities: Conducting paid workshops and summer schools, such as the Quantum Summer School in Paris (December 3), offering participation at €200 per professional and €80 per student. Delivering consultation sessions for research institutions, banks, and defense-related organizations interested in PQC and quantum readiness. Collaborating with financial institutions and startups exploring Quantum Finance and Optimization with platforms such as D-Wave. Developing strategic partnerships in Asia and the Middle East, including ongoing discussions for joint educational and research programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube & Media Section -->
+    <section class="section youtube-section">
+        <div class="container">
+            <h2>YouTube & Media</h2>
+            <div class="youtube-grid">
+                <div class="youtube-card">
+                    <h3>OpenVQA – A Bridge to Quantum Learning</h3>
+                    <a href="https://youtu.be/fenVTKUNLdQ" target="_blank" class="youtube-thumbnail">
+                        <img src="https://img.youtube.com/vi/fenVTKUNLdQ/hqdefault.jpg" alt="Thumbnail">
+                    </a>
+                </div>
+                <div class="youtube-card">
+                    <h3>Quantum Education</h3>
+                    <a href="https://youtu.be/4RiBP1MvCcA" target="_blank" class="youtube-thumbnail">
+                        <img src="https://img.youtube.com/vi/4RiBP1MvCcA/hqdefault.jpg" alt="Thumbnail">
+                    </a>
+                </div>
+                <div class="youtube-card">
+                    <h3>OpenVQE for QML By Dr. Haidar</h3>
+                    <a href="https://youtu.be/NkRFcn4LuNs" target="_blank" class="youtube-thumbnail">
+                        <img src="https://img.youtube.com/vi/NkRFcn4LuNs/hqdefault.jpg" alt="Thumbnail">
+                    </a>
+                </div>
+                <div class="youtube-card">
+                    <h3>Conference on 100 years of Quantum Physics</h3>
+                    <a href="https://youtu.be/GD2-s1FJhvQ" target="_blank" class="youtube-thumbnail">
+                        <img src="https://img.youtube.com/vi/GD2-s1FJhvQ/hqdefault.jpg" alt="Thumbnail">
+                    </a>
+                </div>
+                <div class="youtube-card">
+                    <h3>VQA for Molecular simulation</h3>
+                    <a href="https://www.youtube.com/live/iWhHCB6eBv0" target="_blank" class="youtube-thumbnail">
+                        <img src="https://img.youtube.com/vi/iWhHCB6eBv0/hqdefault.jpg" alt="Thumbnail">
+                    </a>
+                </div>
+                <div class="youtube-card">
+                    <h3>Quantum Africa- Quantum Optimization across global industries</h3>
+                    <a href="https://www.youtube.com/live/nzUaZw41Rk4" target="_blank" class="youtube-thumbnail">
+                        <img src="https://img.youtube.com/vi/nzUaZw41Rk4/hqdefault.jpg" alt="Thumbnail">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration and Sponsorship Section -->
+    <section class="section collab-section">
+        <div class="container">
+            <h2>Collaboration and Sponsorship Network</h2>
+            <table class="capabilities-table">
+                <thead>
+                    <tr>
+                        <th>Partner / Sponsor</th>
+                        <th>Area of Collaboration</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Eviden (Atos Group)</td>
+                        <td>Sponsor of OpenVQA; partner for HPC, cybersecurity, and quantum tool integration.</td>
+                        <td><a href="https://eviden.com" target="_blank">https://eviden.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sorbonne Université & TotalEnergies</td>
+                        <td>Quantum simulation collaboration (2021–2023).</td>
+                        <td><a href="https://wires.onlinelibrary.wiley.com/doi/10.1002/wcms.1664" target="_blank">https://wires.onlinelibrary.wiley.com/doi/10.1002/wcms.1664</a></td>
+                    </tr>
+                    <tr>
+                        <td>OpenVQA & OpenVQE Communities</td>
+                        <td>Open research collaboration, 40+ engineers contributing to hybrid quantum research.</td>
+                        <td><a href="http://www.openvqa.com" target="_blank">www.openvqa.com</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section class="section references-section">
+        <div class="container">
+            <h2>References and Links</h2>
+            <ul class="references-list">
+                <li>GitHub (OpenVQE): <a href="https://github.com/OpenVQE/OpenVQE" target="_blank">https://github.com/OpenVQE/OpenVQE</a></li>
+                <li>GitHub (PQC): <a href="https://github.com/WYW-PQC/Post-Quantum-Cryptography" target="_blank">https://github.com/WYW-PQC/Post-Quantum-Cryptography</a></li>
+                <li>OpenVQA Hub: <a href="http://www.openvqa.com" target="_blank">www.openvqa.com</a></li>
+                <li>Sponsor: Eviden – Atos Group</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Ready to Collaborate on Quantum Innovation?</h2>
+                <p>Connect with WYW for software developments, consulting, or joint research projects that push the boundaries of quantum technology.</p>
+                <a href="contact.html" class="btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WYWQ. All rights reserved. | Developed by <a href="https://sites.google.com/view/shamsnibir/" target="_blank" style="color:#aaa;">Shams Nibir</a></p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        // Create dynamic particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.vm-card, .team-card, .service-card, .capability-sub, .innovation-card, .applications-list li, .market-card, .youtube-card, .section h2').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize particles
+        createParticles();
+
+        // Recreate particles on resize
+        window.addEventListener('resize', () => {
+            document.getElementById('particles').innerHTML = '';
+            createParticles();
+        });
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

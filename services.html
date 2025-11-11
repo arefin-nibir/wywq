@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://wywq.net/services.html">
+    <title>Services - WYWQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --quantum-purple: #6A1B9A;
+            --electric-blue: #007BFF;
+            --deep-navy: #001F3F;
+            --cyber-cyan: #00D4FF;
+            --neon-green: #39FF14;
+            --gradient-primary: linear-gradient(135deg, #001F3F 0%, #6A1B9A 50%, #007BFF 100%);
+            --gradient-secondary: linear-gradient(45deg, #00D4FF, #39FF14);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        /* Quantum Particle Background Animation */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 80%, #001F3F 0%, #000 50%), 
+                        radial-gradient(circle at 80% 20%, #6A1B9A 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #007BFF 0%, transparent 50%);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--cyber-cyan);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--neon-green);
+            animation-duration: 8s;
+            animation-delay: -2s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--electric-blue);
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #39FF14, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            animation: heroTextReveal 1.2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: heroTextReveal 1.2s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+            animation: heroTextReveal 1.2s ease-out 0.6s both;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--cyber-cyan);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-secondary:hover {
+            background: var(--cyber-cyan);
+            color: #000;
+            box-shadow: 0 0 30px var(--cyber-cyan);
+            transform: translateY(-3px);
+        }
+
+        @keyframes heroTextReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #00ffff, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 8rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none; /* <-- allow clicks through the overlay */
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
+            border-color: var(--cyber-cyan);
+        }
+
+        .service-card h3 {
+            color: var(--cyber-cyan);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 2rem;
+        }
+
+        .service-card .btn-book {
+            background: var(--gradient-secondary);
+            color: #001F3F;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            white-space: nowrap;
+            position: relative; /* ensure it's above the pseudo-element */
+            z-index: 2;
+        }
+
+        .service-card .btn-book:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(57, 255, 20, 0.4);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.9), rgba(106, 27, 154, 0.9));
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 4rem auto;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #66ffff, #ff66ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(102, 255, 255, 0.3);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--glass-border);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .footer a {
+            color: var(--cyber-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 10px var(--cyber-cyan);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-card {
+                padding: 2.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quantum-bg">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/wywq-logo.png" alt="WYWQ Logo" class="logo-img">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="aboutwyw.html" class="nav-link">About WYW</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <span>Quantum Technologies</span>
+                    <ul class="dropdown">
+                        <li><a href="communication.html" class="nav-link">Quantum Communication</a></li>
+                        <li><a href="sensors.html" class="nav-link">Quantum Sensors</a></li>
+                        <li><a href="computing.html" class="nav-link">Quantum Computing</a></li>
+                        <li><a href="education.html" class="nav-link">Quantum Education</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="market.html" class="nav-link">Market Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="publications.html" class="nav-link">Publications</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="services.html" class="nav-link active">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay loop muted playsinline class="hero-bg-video">
+            <source src="videos/services.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Our Services</h1>
+            <p>Delivering a complete ecosystem connecting Quantum Technologies, Post-Quantum Cryptography, AI, and Education through innovation, consulting, and collaboration.</p>
+            <div class="hero-cta">
+                <a href="#services" class="btn-primary">Explore Services</a>
+                <a href="contact.html" class="btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <h2>Our Core Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Quantum Algorithm Development</h3>
+                    <p>Design and implement advanced variational and hybrid quantum algorithms for optimization, chemistry, AI, and PQC using platforms like OpenVQE, OpenVQA, OpenHybrid.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>Post-Quantum Cryptography (PQC) Solutions</h3>
+                    <p>Develop, benchmark, and validate quantum-resistant cryptographic algorithms (ML-KEM, ML-DSA) with integrated AI-based fault detection.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>AI Automation & Security Tools</h3>
+                    <p>Build AI-driven validation frameworks for automated PQC testing, anomaly detection, and side-channel resilience.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>Research & Technical Consulting</h3>
+                    <p>Provide expert consulting in quantum technologies, PQC migration, and hybrid system integration, supported by strong industrial partnerships.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>Education & Training</h3>
+                    <p>Deliver hands-on workshops, online courses, and mentoring through the OpenVQA Hub, engaging 40+ engineers and global advisors.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>Conferences & Hackathons</h3>
+                    <p>Organize and participate in international quantum events, innovation hackathons, and research conferences across Europe, Asia, and the Middle East.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>Industry Collaborations</h3>
+                    <p>Collaborate with Eviden (Atos Group), Zanasi & Partners, and academic institutions on European and global quantum innovation projects.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>Open-Source Development</h3>
+                    <p>Maintain active open repositories on GitHub for PQC, quantum chemistry, and AI–quantum hybrid tools.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>Strategic Advisory & Policy Support</h3>
+                    <p>Advise on quantum adoption strategies, governance, and regulatory frameworks for public and private sectors.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+                <div class="service-card">
+                    <h3>Future Expansion (OpenHybrid)</h3>
+                    <p>Develop integrated AI–Quantum simulation environments, PQC verification pipelines, and hybrid cloud-based SDKs.</p>
+                    <a href="contact.html" class="btn-book">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Partner with Us for Quantum Excellence</h2>
+                <p>Whether you're seeking education, software development, or consulting, let's collaborate to unlock quantum potential.</p>
+                <a href="contact.html" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WYWQ. All rights reserved. | Developed by <a href="https://sites.google.com/view/shamsnibir/" target="_blank" style="color:#aaa;">Shams Nibir</a></p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        // Create dynamic particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections for animation
+        document.querySelectorAll('.service-card, .section h2').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize particles
+        createParticles();
+
+        // Recreate particles on window resize
+        window.addEventListener('resize', () => {
+            document.getElementById('particles').innerHTML = '';
+            createParticles();
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
