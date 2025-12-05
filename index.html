@@ -3,44 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta Description -->
     <meta name="description" content="WYWQ - What You Want in Quantum. Explore quantum computing concepts, tutorials, and resources to understand the fascinating world of quantum technology.">
     <link rel="canonical" href="https://wywq.net/">
-    <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="manifest" href="/images/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
     <title>WYWQ - What You Want in Quantum</title>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navigation.css">
-    <!-- CSS Variables for consistent theming -->
+    
     <style>
         :root {
-            /* Enhanced color palette */
             --primary-white: #FFFFFF;
             --bright-cyan: #00D4FF;
             --electric-blue: #1E90FF;
             --neon-green: #00FF88;
             --quantum-purple: #8A2BE2;
             --accent-gold: #FFD700;
+            --deep-purple: #6B46C1;
             --text-primary: #FFFFFF;
             --text-secondary: #E0E6FF;
             --text-accent: #00D4FF;
             --text-muted: #B0C4DE;
-            --card-bg: rgba(255, 255, 255, 0.12);
-            --card-border: rgba(255, 255, 255, 0.2);
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --card-border: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.05);
             --gradient-primary: linear-gradient(135deg, #00D4FF, #1E90FF, #8A2BE2);
-            --gradient-secondary: linear-gradient(135deg, #FFD700, #00FF88, #00D4FF);
-            --gradient-accent: linear-gradient(135deg, #FF6B6B, #4ECDC4, #45B7D1);
+            --gradient-hero: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(138, 43, 226, 0.1));
         }
 
         * {
@@ -58,7 +46,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Quantum Background - Original Dark Style */
+        /* Enhanced Quantum Background with Mesh Gradient */
         .quantum-bg {
             position: fixed;
             top: 0;
@@ -66,668 +54,714 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 20% 80%, #001F3F 0%, #000 50%), 
-                        radial-gradient(circle at 80% 20%, #6A1B9A 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, #007BFF 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 31, 63, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(106, 27, 154, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 123, 255, 0.4) 0%, transparent 50%),
+                #000;
+        }
+
+        .mesh-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(125deg, transparent 0%, rgba(0, 212, 255, 0.05) 40%, transparent 100%),
+                linear-gradient(235deg, transparent 0%, rgba(138, 43, 226, 0.05) 40%, transparent 100%);
+            animation: meshMove 20s ease-in-out infinite;
+        }
+
+        @keyframes meshMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(50px, -50px) rotate(120deg); }
+            66% { transform: translate(-50px, 50px) rotate(240deg); }
         }
 
         .particles {
             position: absolute;
             width: 100%;
             height: 100%;
+            overflow: hidden;
         }
 
         .particle {
             position: absolute;
             background: var(--bright-cyan);
             border-radius: 50%;
-            opacity: 0.6;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0.4;
+            animation: float 8s ease-in-out infinite;
+            filter: blur(1px);
         }
 
-        .particle:nth-child(odd) {
-            background: var(--neon-green);
-            animation-duration: 8s;
-            animation-delay: -2s;
-        }
-
-        .particle:nth-child(3n) {
-            background: var(--electric-blue);
-            animation-duration: 10s;
-            animation-delay: -4s;
-        }
+        .particle:nth-child(odd) { background: var(--neon-green); animation-duration: 10s; }
+        .particle:nth-child(3n) { background: var(--electric-blue); animation-duration: 12s; }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(120deg); }
-            66% { transform: translateY(20px) rotate(240deg); }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-30px, 30px) rotate(240deg); }
         }
 
-        /* Enhanced Hero Section */
+        /* Revolutionary Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: var(--text-primary);
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
+            padding: 140px 2rem 6rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 6rem;
+            max-width: 1400px;
+            width: 100%;
+            align-items: center;
         }
 
         .hero-content {
-            max-width: 1000px;
             z-index: 2;
-            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+            color: var(--bright-cyan);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-badge::before {
+            content: '⚡';
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
-            font-weight: 900;
-            margin-bottom: 2rem;
-            background: var(--gradient-secondary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 5.5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            animation: heroTextReveal 1.5s ease-out;
-            text-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+            display: block;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
+            font-size: 1.15rem;
             color: var(--text-secondary);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-            animation: heroTextReveal 1.5s ease-out 0.3s both;
-            font-weight: 400;
+            margin-bottom: 2rem;
+            line-height: 1.75;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+            max-width: 580px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            line-height: 1.1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.95rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
             display: inline-flex;
-            gap: 2rem;
-            animation: heroTextReveal 1.5s ease-out 0.6s both;
-            justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
             background: var(--gradient-primary);
-            color: var(--text-primary);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-            white-space: nowrap;
-            text-decoration: none;
-            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
+            background: transparent;
+            color: var(--bright-cyan);
             border: 2px solid var(--bright-cyan);
-            transition: all 0.4s ease;
-            white-space: nowrap;
-            text-decoration: none;
             backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
             background: var(--bright-cyan);
             color: #000;
-            box-shadow: 0 0 40px var(--bright-cyan);
-            transform: translateY(-5px) scale(1.05);
+            transform: translateY(-2px);
         }
 
-        @keyframes heroTextReveal {
-            from {
-                opacity: 0;
-                transform: translateY(60px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        /* 3D Quantum Visualization */
+        .hero-visual {
+            position: relative;
+            height: 550px;
+            animation: fadeIn 1s ease-out 0.5s both;
         }
 
-        /* Compact Section Styling */
+        .quantum-sphere {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.15), transparent 70%);
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            animation: rotate3d 20s linear infinite;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .quantum-sphere::before,
+        .quantum-sphere::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(138, 43, 226, 0.4);
+        }
+
+        .quantum-sphere::before {
+            width: 100%;
+            height: 50%;
+            top: 25%;
+            left: 0;
+        }
+
+        .quantum-sphere::after {
+            width: 50%;
+            height: 100%;
+            left: 25%;
+            top: 0;
+        }
+
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(0, 255, 136, 0.4);
+            border-radius: 50%;
+            animation: rotate3d 15s linear infinite reverse;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+        }
+
+        .orbit:nth-child(1) { 
+            width: 350px; 
+            height: 350px; 
+            left: calc(50% - 175px); 
+            top: calc(50% - 175px); 
+        }
+        
+        .orbit:nth-child(2) { 
+            width: 400px; 
+            height: 400px; 
+            left: calc(50% - 200px); 
+            top: calc(50% - 200px); 
+            animation-duration: 20s; 
+        }
+
+        .quantum-dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 25px var(--neon-green);
+            animation: orbitDot 8s linear infinite;
+            left: 50%;
+            top: 50%;
+        }
+
+        @keyframes rotate3d {
+            from { transform: translate(-50%, -50%) rotateY(0deg) rotateX(20deg); }
+            to { transform: translate(-50%, -50%) rotateY(360deg) rotateX(20deg); }
+        }
+
+        @keyframes orbitDot {
+            from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section Styling */
         .section {
-            padding: 6rem 0;
+            padding: 6rem 2rem;
             position: relative;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--glass-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--bright-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .section h2 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-primary);
-            font-weight: 800;
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-        }
-
-        /* Enhanced Cards Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            backdrop-filter: blur(25px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card:hover::before {
-            opacity: 0.1;
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
-            border-color: var(--bright-cyan);
-        }
-
-        .card h3 {
-            color: var(--bright-cyan);
-            font-size: 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .card h3::before {
-            content: '●';
-            color: var(--neon-green);
-            font-size: 0.8rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            position: relative;
-            z-index: 2;
-            font-size: 0.95rem;
-            font-weight: 400;
-        }
-
-        /* Compact Bio Section */
-        .bio-section {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(0, 212, 255, 0.08));
-            border-radius: 32px;
-            padding: 5rem 3rem;
-            margin: 4rem 0;
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(30px);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .bio-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-accent);
-            opacity: 0.05;
-            z-index: 1;
-        }
-
-        .bio-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .bio-content h2 {
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
-        }
-
-        .bio-description {
+        .section-desc {
             font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-weight: 400;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* Compact Links Section */
-        .links-section {
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .links-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .link-card {
-            background: var(--glass-bg);
-            border: 2px solid var(--electric-blue);
-            color: var(--bright-cyan);
-            padding: 1.5rem 2.5rem;
-            border-radius: 16px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(25px);
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            box-shadow: 0 6px 24px rgba(30, 144, 255, 0.15);
-        }
-
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            transition: left 0.4s ease;
-        }
-
-        .link-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(30, 144, 255, 0.3);
-            color: var(--text-primary);
-        }
-
-        .link-card:hover::before {
-            left: 0;
-        }
-
-        .link-card span {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Enhanced Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.98);
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            text-align: center;
-            padding: 4rem 0;
-            backdrop-filter: blur(25px);
-        }
-
-        .footer a {
-            color: var(--bright-cyan);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .footer a:hover {
-            color: var(--text-primary);
-            text-shadow: 0 0 15px var(--bright-cyan);
-        }
-
-        /* Elegant Image Integration */
-        .hero-image {
-            position: absolute;
-            right: -200px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 500px;
-            height: 500px;
-            opacity: 0.1;
-            z-index: 1;
-            background: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=500&fit=crop&crop=center') center/cover;
-            border-radius: 50%;
-            filter: blur(1px) brightness(1.2);
-        }
-
-        .feature-image {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: var(--gradient-primary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=80&h=80&fit=crop&crop=center') center/cover;
-            opacity: 0.3;
-            border-radius: 20px;
-        }
-
-        .quantum-icon {
-            position: relative;
-            z-index: 2;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* REMOVED: Professional Enhancement Elements - These were causing the dark circles */
-        /* .professional-accent - DELETED */
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(1.1); opacity: 0.2; }
-        }
-        @media (max-width: 1024px) {
-            .grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 2.5rem;
-            }
-            
-            .bio-section {
-                padding: 6rem 3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-image {
-                display: none;
-            }
-            
-            .section {
-                padding: 3rem 0;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: rgba(0, 0, 0, 0.98);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                padding: 2rem 0;
-                backdrop-filter: blur(20px);
-                border-top: 1px solid var(--glass-border);
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .hero {
-                padding-top: 100px;
-            }
-            
-            .bio-section {
-                padding: 3rem 2rem;
-                margin: 3rem 0;
-            }
-            
-            .links-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .link-card {
-                width: 100%;
-                max-width: 280px;
-                padding: 1.2rem 2rem;
-            }
-
-            .logo-img {
-                height: 38px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding-top: 90px;
-            }
-            
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .section {
-                padding: 2.5rem 0;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .card {
-                padding: 2rem 1.5rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 250px;
-                padding: 1rem 2rem;
-            }
-
-            .bio-section {
-                padding: 2.5rem 1.5rem;
-            }
-        }
-
-        /* Enhanced Loading Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* News & Updates Section */
+        /* Enhanced News Carousel */
         .news-carousel {
             position: relative;
-            overflow: hidden;
             margin-top: 3rem;
+            overflow: visible;
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.5s ease;
+            gap: 2rem;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .carousel-item {
-            flex: 0 0 100%;
-            padding: 0 1rem;
-            box-sizing: border-box;
-        }
-
-        @media (min-width: 768px) {
-            .carousel-item {
-                flex: 0 0 33.333%;
-            }
+            flex: 0 0 calc(33.333% - 1.5rem);
+            min-width: 350px;
         }
 
         .news-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 2rem;
-            backdrop-filter: blur(25px);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
         }
 
         .news-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 123, 255, 0.2);
             border-color: var(--bright-cyan);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
         }
 
         .news-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease;
         }
 
-        .news-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--bright-cyan);
-            margin-bottom: 0.5rem;
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-date {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--bright-cyan);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .news-date::before {
+            content: '📅';
+        }
+
+        .news-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 1rem;
+            line-height: 1.4;
         }
 
         .news-desc {
             color: var(--text-secondary);
+            font-size: 0.95rem;
             line-height: 1.6;
             flex-grow: 1;
-            font-size: 0.95rem;
         }
 
         .carousel-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
+            width: 50px;
+            height: 50px;
+            background: var(--glass-bg);
             border: 1px solid var(--card-border);
-            padding: 0.5rem 1rem;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            z-index: 10;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            z-index: 10;
+            color: var(--text-primary);
+            font-size: 1.5rem;
         }
 
         .carousel-nav:hover {
             background: var(--bright-cyan);
             color: #000;
+            border-color: var(--bright-cyan);
         }
 
-        .prev {
-            left: 1rem;
+        .prev { left: -25px; }
+        .next { right: -25px; }
+
+        /* Technology Cards Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .next {
-            right: 1rem;
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .tech-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--bright-cyan);
+            box-shadow: 0 20px 40px rgba(0, 123, 255, 0.2);
+        }
+
+        .tech-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .tech-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Links Section */
+        .links-section {
+            background: var(--gradient-hero);
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .link-card {
+            background: var(--glass-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--bright-cyan);
+            background: var(--card-bg);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .link-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .link-card span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--card-border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footer a {
+            color: var(--bright-cyan);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-grid {
+                gap: 4rem;
+            }
+
+            .quantum-sphere {
+                width: 380px;
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero {
+                padding: 120px 2rem 4rem;
+            }
+
+            .hero-visual {
+                height: 400px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .quantum-sphere {
+                width: 350px;
+                height: 350px;
+            }
+
+            .orbit:nth-child(1) { 
+                width: 300px; 
+                height: 300px; 
+                left: calc(50% - 150px); 
+                top: calc(50% - 150px); 
+            }
+            
+            .orbit:nth-child(2) { 
+                width: 330px; 
+                height: 330px; 
+                left: calc(50% - 165px); 
+                top: calc(50% - 165px); 
+            }
+
+            .carousel-item {
+                flex: 0 0 calc(50% - 1rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 1.5rem 3rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .carousel-item {
+                flex: 0 0 100%;
+                min-width: 280px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .prev { left: -10px; }
+            .next { right: -10px; }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Quantum Background -->
     <div class="quantum-bg">
+        <div class="mesh-gradient"></div>
         <div class="particles" id="particles"></div>
     </div>
 
-    <!-- Enhanced Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -750,7 +784,8 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="market.html" class="nav-link">Market Insights</a></li>
+                    <a href="market.html" class="nav-link">Market Insights</a>
+                </li>
                 <li class="nav-item">
                     <a href="publications.html" class="nav-link">Publications</a>
                 </li>
@@ -770,110 +805,154 @@
         </div>
     </nav>
 
-    <!-- Enhanced Hero Section with Image -->
-    <section id="home" class="hero">
-        <div class="hero-image"></div>
-        <div class="hero-content">
-            <h1>What You Want in Quantum</h1>
-            <p>Experience the future of quantum technology with Dr. Mohammad Haidar, a visionary leader delivering revolutionary innovations in quantum sensors, secure communication, and next-generation computing solutions.</p>
-            <div class="hero-cta">
-                <a href="about.html" class="btn-primary">Explore Expertise</a>
-                <a href="quantum.html" class="btn-secondary">View Technologies</a>
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">Pioneering Quantum Innovation</div>
+                <h1>
+                    What You Want in<br>
+                    <span class="gradient-text">Quantum</span>
+                </h1>
+                <p>Revolutionizing the future through quantum sensors, secure communication, and next-generation computing solutions that transcend classical limitations.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Research Papers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Global Partners</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="aboutwyw.html" class="btn-primary">
+                        Explore Expertise →
+                    </a>
+                    <a href="services.html" class="btn-secondary">
+                        Our Services
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="quantum-sphere">
+                    <div class="quantum-dot"></div>
+                </div>
+                <div class="orbit"></div>
+                <div class="orbit"></div>
             </div>
         </div>
     </section>
 
-    <!-- News & Updates Section -->
-    <section class="section fade-in" id="news-updates">
+    <section class="section fade-in" id="news">
         <div class="container">
-            <h2>News & Updates</h2>
+            <div class="section-header">
+                <div class="section-badge">Latest Updates</div>
+                <h2>News & Achievements</h2>
+                <p class="section-desc">Stay informed about our latest breakthroughs, publications, and contributions to the quantum technology landscape.</p>
+            </div>
+            
             <div class="news-carousel">
-                <button class="carousel-nav prev">&lt;</button>
-                <div class="carousel-track">
+                <button class="carousel-nav prev">‹</button>
+                <div class="carousel-track" id="carouselTrack">
                     <div class="carousel-item">
                         <div class="news-card">
-                            <img src="images/paper.jpg" class="news-image">
-                            <h3 class="news-title">High-Precision Quantum Simulations Achieved with Non-Iterative DUCC-VQE Method by Dr. Haidar’s Team</h3>
-                            <p class="news-date">October 20, 2025</p>
-                            <p class="news-desc">They presented high-precision quantum computing simulations of three-body atoms using the Non-Iterative Disentangled Unitary Coupled Cluster Variational Quantum Eigensolver</p>
+                            <img src="images/paper.jpg" alt="DUCC-VQE Research" class="news-image">
+                            <div class="news-content">
+                                <div class="news-date">October 20, 2025</div>
+                                <h3 class="news-title">High-Precision Quantum Simulations with NI-DUCC-VQE</h3>
+                                <p class="news-desc">Dr. Haidar's team achieved breakthrough results in quantum computing simulations of three-body atoms using the innovative Non-Iterative method.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="news-card">
-                            <img src="images/serge.jpeg" class="news-image">
-                            <h3 class="news-title">Dr. Haidar with Nobel prize in quantum physics(2012) winner Serge Haroche</h3>
-                            <p class="news-date">October 10, 2025</p>
-                            <p class="news-desc">In honor of Prof. Serge Haroche, Nobel Laureate in Physics (2012), a remarkable conference was held in ICISE Quy Nhon Vietnam, celebrating 100 years of quantum physics. The event brought together many distinguished scientists and professors from around the world</p>
+                            <img src="images/serge.jpeg" alt="Nobel Laureate Meeting" class="news-image">
+                            <div class="news-content">
+                                <div class="news-date">October 10, 2025</div>
+                                <h3 class="news-title">Meeting with Nobel Laureate Serge Haroche</h3>
+                                <p class="news-desc">Dr. Haidar attended a prestigious conference in ICISE Quy Nhon celebrating 100 years of quantum physics alongside world-renowned scientists.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="news-card">
-                            <img src="images/brin.jpeg" alt="Quantum Innovation Summit Dubai 2025" class="news-image">
-                            <h3 class="news-title">Speaker at conference organized by Brin (Quantum Physics) at Indonesia</h3>
-                            <p class="news-date">October 6, 2025</p>
-                            <p class="news-desc">Dr. Haidar Had a great time (1 hour and 1/2) at the conference organized by Brin (Quantum Physics) for Indonesia Brin</p>
+                            <img src="images/brin.jpeg" alt="BRIN Conference Indonesia" class="news-image">
+                            <div class="news-content">
+                                <div class="news-date">October 6, 2025</div>
+                                <h3 class="news-title">Keynote at BRIN Quantum Conference</h3>
+                                <p class="news-desc">Dr. Haidar delivered an extensive 90-minute presentation on quantum physics applications at the BRIN conference in Indonesia.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="news-card">
-                            <img src="https://i.ytimg.com/vi/iWhHCB6eBv0/maxresdefault.jpg" alt="Variational Quantum Algorithms Seminar" class="news-image">
-                            <h3 class="news-title">Variational Quantum Algorithms for Molecular Simulations</h3>
-                            <p class="news-date">September 30, 2025</p>
-                            <p class="news-desc">Dr. Haidar presented advances in variational quantum algorithms and open tools for molecular simulations at the Kolokium Fisika Kuantum.</p>
+                            <img src="https://i.ytimg.com/vi/iWhHCB6eBv0/maxresdefault.jpg" alt="VQA Seminar" class="news-image">
+                            <div class="news-content">
+                                <div class="news-date">September 30, 2025</div>
+                                <h3 class="news-title">Variational Quantum Algorithms Seminar</h3>
+                                <p class="news-desc">Presented cutting-edge advances in VQA and open-source tools for molecular simulations at Kolokium Fisika Kuantum.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="news-card">
-                            <img src="https://vietnamtimes.thoidai.com.vn/stores/news_dataimages/2025/082025/19/15/967bbe82cf9add04847fb3f28ca61742.jpg?rt=20250819153639" alt="Quantum AI Summer School Vietnam 2025" class="news-image">
-                            <h3 class="news-title">First Quantum AI Summer School in Vietnam</h3>
-                            <p class="news-date">August 2025</p>
-                            <p class="news-desc">Dr. Haidar led the inaugural VSAIQC 2025, a groundbreaking event bringing together students and experts in AI and quantum computing in Southeast Asia.</p>
+                            <img src="https://vietnamtimes.thoidai.com.vn/stores/news_dataimages/2025/082025/19/15/967bbe82cf9add04847fb3f28ca61742.jpg?rt=20250819153639" alt="Quantum AI Summer School" class="news-image">
+                            <div class="news-content">
+                                <div class="news-date">August 2025</div>
+                                <h3 class="news-title">First Quantum AI Summer School in Vietnam</h3>
+                                <p class="news-desc">Dr. Haidar led the inaugural VSAIQC 2025, bringing together students and experts in AI and quantum computing across Southeast Asia.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="news-card">
-                            <img src="https://i1.rgstatic.net/publication/270570686_Quantum_Computing/links/54ad92600cf2828b29fcadc6/largepreview.png" alt="Quantum Computing Research Publication" class="news-image">
-                            <h3 class="news-title">New Publication: NI-DUCC-VQE</h3>
-                            <p class="news-date">2025</p>
-                            <p class="news-desc">Dr. Haidar's latest research introduces the Non-Iterative Disentangled Unitary Coupled Cluster method, enhancing molecular simulation accuracy with lower computational demands.</p>
+                            <img src="https://i1.rgstatic.net/publication/270570686_Quantum_Computing/links/54ad92600cf2828b29fcadc6/largepreview.png" alt="Research Publication" class="news-image">
+                            <div class="news-content">
+                                <div class="news-date">2025</div>
+                                <h3 class="news-title">New Publication: NI-DUCC-VQE Method</h3>
+                                <p class="news-desc">Latest research introduces the Non-Iterative Disentangled Unitary Coupled Cluster method for enhanced molecular simulations.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-nav next">&gt;</button>
+                <button class="carousel-nav next">›</button>
             </div>
         </div>
     </section>
 
-    <!-- Elegant Technologies Section with Icons -->
-    <section class="section">
+    <section class="section fade-in">
         <div class="container">
-            <h2>Why Quantum Technology Matters</h2>
-            <div class="grid">
-                <div class="card fade-in">
-                    <div class="feature-image">
-                        <span class="quantum-icon">⚛</span>
-                    </div>
+            <div class="section-header">
+                <div class="section-badge">Our Technologies</div>
+                <h2>Why Quantum Technology Matters</h2>
+                <p class="section-desc">Discover how our quantum innovations are transforming industries and pushing the boundaries of what's possible.</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">⚛</div>
                     <h3>Quantum Sensors</h3>
                     <p>Breakthrough precision measurement capabilities that transcend classical limitations, revolutionizing applications in medical diagnostics, navigation systems, and fundamental physics research.</p>
                 </div>
-                <div class="card fade-in">
-                    <div class="feature-image">
-                        <span class="quantum-icon">📚</span>
-                    </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📚</div>
                     <h3>Quantum Education</h3>
                     <p>Comprehensive training ecosystems designed to bridge the critical quantum skills gap, empowering researchers, engineers, and students with cutting-edge knowledge.</p>
                 </div>
-                <div class="card fade-in">
-                    <div class="feature-image">
-                        <span class="quantum-icon">🔐</span>
-                    </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🔐</div>
                     <h3>Quantum Communication</h3>
                     <p>Ultra-secure quantum networks leveraging quantum key distribution protocols to create theoretically unbreakable communication channels for critical applications.</p>
                 </div>
-                <div class="card fade-in">
-                    <div class="feature-image">
-                        <span class="quantum-icon">💻</span>
-                    </div>
+                <div class="tech-card">
+                    <div class="tech-icon">💻</div>
                     <h3>Quantum Computing</h3>
                     <p>Advanced quantum algorithms addressing complex optimization problems in chemistry, materials science, and AI, delivering exponential performance advantages.</p>
                 </div>
@@ -881,284 +960,215 @@
         </div>
     </section>
 
-    <!-- Enhanced Bio Section -->
-    <section class="section">
+    <section class="section links-section fade-in">
         <div class="container">
-            <div class="bio-section fade-in">
-                <div class="bio-content">
-                    <h2>Dr. Mohammad Haidar: Quantum Visionary</h2>
-                    <p class="bio-description">
-                        Distinguished Senior Quantum Scientist with a prestigious PhD from Sorbonne University and Founder of OpenVQA. Leading international research collaborations and delivering groundbreaking contributions to quantum metrology, NISQ algorithms, and next-generation quantum technologies that define the industry's future.
-                    </p>
-                    <div class="grid">
-                        <div class="card">
-                            <h3>Research Excellence</h3>
-                            <p>Pioneering research in quantum metrology protocols, variational quantum algorithms, and fault-tolerant quantum computing architectures that advance the theoretical and practical foundations of quantum science.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Innovation Impact</h3>
-                            <p>Creator of the revolutionary OpenVQE software package with over 300+ academic citations, enabling researchers worldwide to explore quantum chemistry and materials science applications.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Global Leadership</h3>
-                            <p>Internationally recognized speaker and thought leader driving European quantum initiatives, fostering cross-continental collaborations, and shaping quantum technology adoption strategies.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-header">
+                <div class="section-badge">Ecosystem</div>
+                <h2>Explore Our Quantum Ecosystem</h2>
+                <p class="section-desc">Access our open-source platforms and collaborative tools for quantum computing research and development.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Links Section -->
-    <section class="section links-section">
-        <div class="container">
-            <h2>Explore Our Quantum Ecosystem</h2>
+            
             <div class="links-grid">
-                <a href="https://openvqa.com" class="link-card fade-in" target="_blank">
+                <a href="https://openvqa.com" class="link-card" target="_blank">
+                    <div class="link-icon">🔬</div>
                     <span>OpenVQA</span>
                 </a>
-                <a href="https://openhybrid.net" class="link-card fade-in" target="_blank">
+                <a href="https://openhybrid.net" class="link-card" target="_blank">
+                    <div class="link-icon">🌐</div>
                     <span>OpenHybrid</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 WYWQ. All rights reserved. | Developed by <a href="https://sites.google.com/view/shamsnibir/" target="_blank" style="color:#aaa;">Shams Nibir</a></p>
+            <p>&copy; 2025 WYWQ. All rights reserved. | Developed by <a href="https://sites.google.com/view/shamsnibir/" target="_blank">Shams Nibir</a></p>
         </div>
     </footer>
 
     <script src="js/navigation.js"></script>
     <script>
-        // Create particles with original count
+        // Create optimized particles
         function createParticles() {
             const particles = document.getElementById('particles');
             particles.innerHTML = '';
-            const particleCount = window.innerWidth < 768 ? 15 : 30; // Back to original count
+            const particleCount = window.innerWidth < 768 ? 20 : 40;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.width = Math.random() * 3 + 2 + 'px';
                 particle.style.height = particle.style.width;
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDelay = Math.random() * 8 + 's';
                 particles.appendChild(particle);
             }
         }
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const navMenu = document.getElementById('navMenu');
-            const hamburger = document.getElementById('hamburger');
-            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+        // Carousel functionality
+        const track = document.getElementById('carouselTrack');
+        const items = track.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        function getVisibleItems() {
+            if (window.innerWidth < 768) return 1;
+            if (window.innerWidth < 1024) return 2;
+            return 3;
+        }
+
+        function moveCarousel() {
+            const visibleItems = getVisibleItems();
+            const itemWidth = 100 / visibleItems;
+            const maxIndex = Math.max(0, items.length - visibleItems);
+            currentIndex = Math.min(currentIndex, maxIndex);
+            track.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
+        }
+
+        function nextSlide() {
+            const visibleItems = getVisibleItems();
+            const maxIndex = Math.max(0, items.length - visibleItems);
+            currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
+            moveCarousel();
+        }
+
+        function prevSlide() {
+            const visibleItems = getVisibleItems();
+            const maxIndex = Math.max(0, items.length - visibleItems);
+            currentIndex = (currentIndex - 1) < 0 ? maxIndex : currentIndex - 1;
+            moveCarousel();
+        }
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
         });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const navMenu = document.getElementById('navMenu');
-                const hamburger = document.getElementById('hamburger');
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                currentIndex = 0;
+                moveCarousel();
+                createParticles();
+            }, 300);
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            fadeInObserver.observe(el);
         });
 
-        // Enhanced smooth scroll for anchor links
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Enhanced intersection observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const fadeInObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 200);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            fadeInObserver.observe(el);
+        // Mobile menu handling
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.getElementById('hamburger');
+            if (navMenu && hamburger && navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
 
-        // Enhanced card hover effects - Reduced animation
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-12px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Enhanced link card interactions - Reduced animation
-        document.querySelectorAll('.link-card').forEach(linkCard => {
-            linkCard.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-6px) scale(1.02)';
-            });
-            
-            linkCard.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-            
-            linkCard.addEventListener('click', function(e) {
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-6px) scale(1.02)';
-                }, 100);
-            });
-        });
-
-        // Simplified button interactions
-        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                if (this.classList.contains('btn-primary')) {
-                    this.style.boxShadow = '0 20px 50px rgba(0, 212, 255, 0.5)';
-                } else {
-                    this.style.boxShadow = '0 0 35px var(--bright-cyan)';
-                }
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                if (this.classList.contains('btn-primary')) {
-                    this.style.boxShadow = '0 8px 32px rgba(0, 212, 255, 0.3)';
-                } else {
-                    this.style.boxShadow = 'none';
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                const hamburger = document.getElementById('hamburger');
+                if (navMenu && hamburger) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
             });
         });
 
-        // Removed excessive scroll animations - Keep minimal
-        window.addEventListener('scroll', () => {
-            // Only keep essential scroll functionality
-        });
-
-        // Simplified parallax effect - Less intensive
+        // Smooth scroll behavior - removed parallax effect to prevent folding
         let ticking = false;
         window.addEventListener('scroll', () => {
             if (!ticking) {
                 requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-                    const heroContent = document.querySelector('.hero-content');
-                    
-                    if (heroContent && scrolled < 800) {
-                        const parallax = scrolled * 0.1; // Reduced parallax intensity
-                        heroContent.style.transform = `translateY(${parallax}px)`;
-                    }
+                    // Removed parallax transform and opacity changes
+                    // Hero section now remains stable during scroll
                     ticking = false;
                 });
                 ticking = true;
             }
         });
 
-        // Enhanced loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.8s ease';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-                
-                // Trigger initial animations
-                setTimeout(() => {
-                    document.querySelectorAll('.fade-in').forEach((el, index) => {
-                        setTimeout(() => {
-                            el.classList.add('visible');
-                        }, index * 150);
-                    });
-                }, 500);
-            }, 200);
-        });
-
-        // Performance optimization for particles
-        let particleAnimationId;
-        function optimizeParticlePerformance() {
+        // Performance optimization
+        document.addEventListener('visibilitychange', () => {
             const isVisible = document.visibilityState === 'visible';
-            const particles = document.querySelectorAll('.particle');
-            
-            particles.forEach(particle => {
-                particle.style.animationPlayState = isVisible ? 'running' : 'paused';
+            document.querySelectorAll('.particle, .quantum-sphere, .orbit').forEach(el => {
+                el.style.animationPlayState = isVisible ? 'running' : 'paused';
             });
-        }
-
-        document.addEventListener('visibilitychange', optimizeParticlePerformance);
-
-        // Initialize particles with performance monitoring
-        function initializeParticles() {
-            createParticles();
             
-            // Recreate particles on window resize with debouncing
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    createParticles();
-                }, 300);
-            });
-        }
-
-        // Initialize everything when DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeParticles();
-            
-            // Add subtle entrance animations to navigation
-            setTimeout(() => {
-                document.querySelector('.navbar').style.transform = 'translateY(0)';
-                document.querySelector('.navbar').style.opacity = '1';
-            }, 100);
+            if (isVisible) {
+                startAutoSlide();
+            } else {
+                clearInterval(autoSlideInterval);
+            }
         });
 
-        // Add keyboard navigation support
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 const navMenu = document.getElementById('navMenu');
                 const hamburger = document.getElementById('hamburger');
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
+                if (navMenu && hamburger) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             }
         });
 
         // Accessibility enhancements
-        document.querySelectorAll('.card, .link-card').forEach(element => {
+        document.querySelectorAll('.tech-card, .link-card, .news-card').forEach(element => {
             element.setAttribute('tabindex', '0');
-            
-            element.addEventListener('focus', function() {
-                this.style.outline = '2px solid var(--bright-cyan)';
-                this.style.outlineOffset = '4px';
-            });
-            
-            element.addEventListener('blur', function() {
-                this.style.outline = 'none';
-            });
             
             element.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -1168,71 +1178,24 @@
             });
         });
 
-        // Simplified section title animation
-        const titleObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Minimal animation - just fade in
-                    entry.target.style.opacity = '1';
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.section h2').forEach(title => {
-            title.style.opacity = '0.9'; // Start slightly faded
-            titleObserver.observe(title);
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            createParticles();
+            moveCarousel();
+            startAutoSlide();
+            
+            // Fade in body
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
 
-        // News Carousel Functionality
-        const carousel = document.querySelector('.news-carousel');
-        if (carousel) {
-            const track = carousel.querySelector('.carousel-track');
-            const items = track.querySelectorAll('.carousel-item');
-            const prevBtn = carousel.querySelector('.prev');
-            const nextBtn = carousel.querySelector('.next');
-            let currentIndex = 0;
-
-            const moveCarousel = () => {
-                const isMobile = window.innerWidth < 768;
-                const visibleItems = isMobile ? 1 : 3;
-                const itemWidth = 100 / visibleItems;
-                track.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
-            };
-
-            prevBtn.addEventListener('click', () => {
-                const isMobile = window.innerWidth < 768;
-                const visibleItems = isMobile ? 1 : 3;
-                const totalPositions = items.length - visibleItems + 1;
-                currentIndex = (currentIndex - 1 + totalPositions) % totalPositions;
-                moveCarousel();
-            });
-
-            nextBtn.addEventListener('click', () => {
-                const isMobile = window.innerWidth < 768;
-                const visibleItems = isMobile ? 1 : 3;
-                const totalPositions = items.length - visibleItems + 1;
-                currentIndex = (currentIndex + 1) % totalPositions;
-                moveCarousel();
-            });
-
-            // Auto slide every 5 seconds
-            setInterval(() => {
-                const isMobile = window.innerWidth < 768;
-                const visibleItems = isMobile ? 1 : 3;
-                const totalPositions = items.length - visibleItems + 1;
-                currentIndex = (currentIndex + 1) % totalPositions;
-                moveCarousel();
-            }, 5000);
-
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                currentIndex = 0; // Reset to start on resize
-                moveCarousel();
-            });
-
-            // Initial call
-            moveCarousel();
-        }
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
     </script>
 </body>
 </html>
