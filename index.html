@@ -182,13 +182,52 @@
   .chip .tooltip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);background:#0C1226;border:1px solid var(--card-border);border-radius:8px;padding:10px 14px;font-family:var(--font-body);font-size:12.5px;color:var(--text-dim);white-space:nowrap;opacity:0;pointer-events:none;transition:all .25s ease;z-index:10;}
   .chip:hover .tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
 
-  .demo-panel{background:var(--bg-raise);border:1px solid var(--card-border);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.45);}
-  .demo-topbar{display:flex;align-items:center;gap:8px;padding:14px 20px;border-bottom:1px solid var(--card-border);background:#0A0E22;}
-  .demo-topbar .dot{width:9px;height:9px;border-radius:50%;}
-  .demo-topbar .dot:nth-child(1){background:#FF5F57;}
-  .demo-topbar .dot:nth-child(2){background:#FEBC2E;}
-  .demo-topbar .dot:nth-child(3){background:#28C840;}
-  .demo-topbar span.label{margin-left:12px;font-family:var(--font-mono);font-size:12px;color:var(--text-faint);}
+  .mvp-status-card{
+    background:linear-gradient(180deg, rgba(17,24,39,0.94), rgba(8,11,28,0.98));
+    border:1px solid rgba(91,140,255,0.24);
+    border-radius:24px;
+    padding:34px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 24px 80px rgba(0,0,0,0.45);
+  }
+  .mvp-status-card::before{
+    content:'';
+    position:absolute;
+    inset:auto -10% -14% -10%;
+    height:220px;
+    background:radial-gradient(circle, rgba(91,140,255,0.22), transparent 68%);
+    pointer-events:none;
+  }
+  .mvp-status-card .status-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+    padding:10px 14px;
+    border-radius:999px;
+    background:rgba(91,140,255,0.1);
+    border:1px solid rgba(91,140,255,0.28);
+    color:var(--text);
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .mvp-status-card .status-badge strong{color:var(--cyan);font-weight:700;}
+  .mvp-status-card h3{font-size:clamp(24px, 3vw, 36px);margin-bottom:12px;line-height:1.12;}
+  .mvp-status-card p{font-size:17px;color:var(--text-dim);max-width:680px;margin-bottom:14px;}
+  .mvp-status-card .mvp-note{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 14px;
+    border-radius:10px;
+    background:rgba(53,214,255,0.08);
+    border:1px solid rgba(53,214,255,0.24);
+    color:var(--text);
+    font-family:var(--font-head);
+    font-weight:600;
+  }
   .demo-grid{display:grid;grid-template-columns:1fr 1fr 1.1fr;}
   .demo-col{padding:26px;border-right:1px solid var(--card-border);}
   .demo-col:last-child{border-right:none;}
@@ -608,40 +647,16 @@
 
 <section class="wrap reveal" id="demo">
   <div class="section-head">
-    <div class="eyebrow">Preview</div>
-    <h2>Workflow snapshot</h2>
-    <p>A simplified recommendation flow for a molecular problem.</p>
+    <div class="eyebrow">Coming Soon</div>
+    <h2>Our MVP is in progress</h2>
+    <p>We're actively building the core experience and will share more details soon.</p>
   </div>
 
-  <div class="demo-panel">
-    <div class="demo-topbar">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <span class="label">wyw-platform · workflow-recommendation.session</span>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-col">
-        <h4>Input</h4>
-        <div class="field-row"><label>Molecular Structure</label><div class="field-value">Protein–Ligand Complex</div></div>
-        <div class="field-row"><label>Target Interaction</label><div class="field-value">Binding Affinity</div></div>
-        <div class="field-row"><label>Accuracy</label><div class="field-value">Chemical Accuracy (1 kcal/mol)</div></div>
-        <div class="field-row"><label>Available Computing Resources</label><div class="field-value">Hybrid HPC + QPU Access</div></div>
-      </div>
-      <div class="demo-col">
-        <h4>Analysis</h4>
-        <div class="metric-row"><div class="metric-label">Molecular Complexity <b>High</b></div><div class="meter"><div class="meter-fill" data-w="82"></div></div></div>
-        <div class="metric-row"><div class="metric-label">Electronic Structure <b>Strongly Correlated</b></div><div class="meter"><div class="meter-fill" data-w="74"></div></div></div>
-        <div class="metric-row"><div class="metric-label">Computational Cost <b>Moderate</b></div><div class="meter"><div class="meter-fill" data-w="58"></div></div></div>
-        <div class="metric-row"><div class="metric-label">Quantum Readiness <b>Favorable</b></div><div class="meter"><div class="meter-fill" data-w="88"></div></div></div>
-      </div>
-      <div class="demo-col demo-output">
-        <h4>Output</h4>
-        <div class="output-label">Recommended Workflow</div>
-        <div class="output-value">Hybrid QM/MM + SQD</div>
-        <div class="metric-row"><div class="metric-label">Estimated Accuracy <b>96.4%</b></div><div class="meter"><div class="meter-fill" data-w="96"></div></div></div>
-        <div class="metric-row"><div class="metric-label">Estimated Cost <b>Reduced 41%</b></div><div class="meter"><div class="meter-fill" data-w="41"></div></div></div>
-        <div class="metric-row"><div class="metric-label">Quantum Readiness Score <b>8.7 / 10</b></div><div class="meter"><div class="meter-fill" data-w="87"></div></div></div>
-      </div>
-    </div>
+  <div class="mvp-status-card">
+    <div class="status-badge"><strong>Update</strong> MVP under development</div>
+    <h3>Our team is currently working on the MVP.</h3>
+    <p>We’re shaping the core platform experience behind the scenes and will be back with more updates when it’s ready for the next milestone.</p>
+    <div class="mvp-note">We will soon come back to you.</div>
   </div>
 </section>
 
