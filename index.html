@@ -305,14 +305,14 @@
   .team-card .team-meta{padding:0 2px 4px;}
 
   /* SPONSORS */
-  .sponsor-marquee{overflow:hidden;position:relative;mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);-webkit-mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);}
-  .sponsor-track{display:flex;gap:16px;width:max-content;animation:sponsorScroll 24s linear infinite;padding:4px 0;}
-  .sponsor-strip{display:flex;gap:16px;align-items:center;}
+  .sponsor-marquee{overflow:hidden;position:relative;mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);-webkit-mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);contain:layout paint;}
+  .sponsor-track{display:flex;gap:16px;width:max-content;animation:sponsorScroll 30s linear infinite;padding:4px 0;will-change:transform;transform:translate3d(0,0,0);}
+  .sponsor-strip{display:flex;gap:16px;align-items:center;flex-shrink:0;}
   .sponsor-tile{
-    flex:0 0 200px;height:80px;
-    background:var(--card);border:1px solid var(--card-border);border-radius:12px;
+    flex:0 0 min(200px, calc(25vw - 16px));height:82px;
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
     display:flex;align-items:center;justify-content:center;
-    transition:border-color .3s ease, opacity .3s ease, transform .35s ease, box-shadow .3s ease;opacity:0.72;
+    transition:border-color .3s ease, opacity .3s ease, transform .35s ease, box-shadow .3s ease;opacity:0.82;
     will-change:transform, opacity;
     padding:12px;
   }
@@ -323,7 +323,7 @@
   .sponsor-tile span{
     font-family:var(--font-mono);font-size:13px;color:var(--text-dim);letter-spacing:.03em;
   }
-  @keyframes sponsorScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @keyframes sponsorScroll{from{transform:translate3d(0,0,0);}to{transform:translate3d(-50%,0,0);}}
   .sponsor-iit{background:linear-gradient(180deg, rgba(24,35,70,0.95), rgba(12,18,35,0.95));border-color:rgba(91,140,255,0.2);}
   .sponsor-iit .iit-badge{
     display:flex;align-items:center;gap:10px;color:var(--text);font-family:var(--font-head);font-size:14px;
@@ -456,7 +456,11 @@
     .demo-topbar span.label{display:none;}
     .field-value{font-size:12px;}
     .output-value{font-size:18px;}
-    .sponsor-tile{max-width:none;flex-basis:100%;}
+    .sponsor-marquee{overflow:visible;mask-image:none;-webkit-mask-image:none;}
+    .sponsor-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:auto;animation:none;padding:0;}
+    .sponsor-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+    .sponsor-strip[aria-hidden="true"]{display:none;}
+    .sponsor-tile{flex:0 0 auto;width:100%;height:74px;max-width:none;min-width:0;}
     .contact-copy h2{font-size:28px;}
     section{padding:72px 0;}
   }
@@ -770,19 +774,19 @@
     <div class="sponsor-track">
       <div class="sponsor-strip">
         <div class="sponsor-tile sponsor-iit reveal-sponsor" style="--delay: 80ms">
-          <img src="images/iit.jpg" alt="IIT">
-        </img>
-        <div class="sponsor-tile reveal-sponsor" style="--delay: 160ms"><img src="images/images.png" alt="Images"></div>
-        <div class="sponsor-tile reveal-sponsor" style="--delay: 240ms"><img src="images/ovhcloud-logo.png" alt="OVHcloud"></div>
-        <div class="sponsor-tile reveal-sponsor" style="--delay: 320ms"><img src="images/GROUPE LORET.jpg" alt="Groupe Loret"></div>
+          <img src="images/iit.jpg" alt="IIT" loading="lazy" decoding="async">
+        </div>
+        <div class="sponsor-tile reveal-sponsor" style="--delay: 160ms"><img src="images/images.png" alt="Images" loading="lazy" decoding="async"></div>
+        <div class="sponsor-tile reveal-sponsor" style="--delay: 240ms"><img src="images/ovhcloud-logo.png" alt="OVHcloud" loading="lazy" decoding="async"></div>
+        <div class="sponsor-tile reveal-sponsor" style="--delay: 320ms"><img src="images/GROUPE LORET.jpg" alt="Groupe Loret" loading="lazy" decoding="async"></div>
       </div>
       <div class="sponsor-strip" aria-hidden="true">
         <div class="sponsor-tile sponsor-iit reveal-sponsor" style="--delay: 80ms">
-          <img src="images/iit.jpg" alt="IIT">
+          <img src="images/iit.jpg" alt="IIT" loading="lazy" decoding="async">
         </div>
-        <div class="sponsor-tile reveal-sponsor" style="--delay: 160ms"><img src="images/images.png" alt="Images"></div>
-        <div class="sponsor-tile reveal-sponsor" style="--delay: 240ms"><img src="images/ovhcloud-logo.png" alt="OVHcloud"></div>
-        <div class="sponsor-tile reveal-sponsor" style="--delay: 320ms"><img src="images/GROUPE LORET.jpg" alt="Groupe Loret"></div>
+        <div class="sponsor-tile reveal-sponsor" style="--delay: 160ms"><img src="images/images.png" alt="Images" loading="lazy" decoding="async"></div>
+        <div class="sponsor-tile reveal-sponsor" style="--delay: 240ms"><img src="images/ovhcloud-logo.png" alt="OVHcloud" loading="lazy" decoding="async"></div>
+        <div class="sponsor-tile reveal-sponsor" style="--delay: 320ms"><img src="images/GROUPE LORET.jpg" alt="Groupe Loret" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </div>
