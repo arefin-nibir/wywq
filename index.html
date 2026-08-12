@@ -398,6 +398,25 @@
     font-family:var(--font-mono);font-size:13px;color:var(--text-dim);letter-spacing:.03em;
   }
   @keyframes sponsorScroll{from{transform:translate3d(0,0,0);}to{transform:translate3d(-50%,0,0);}}
+  
+  /* Sponsors & collaborators layout */
+  .sponsors-section{display:flex;flex-direction:column;gap:18px;margin-top:18px;}
+  .sponsor-row{display:flex;gap:20px;align-items:flex-start;margin-bottom:8px;}
+  .sponsor-logo{flex:0 0 120px;display:flex;align-items:center;justify-content:center;height:72px;background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:10px}
+  .sponsor-logo img{max-width:100%;max-height:56px;object-fit:contain;display:block}
+  .sponsor-item{flex:1;background:linear-gradient(180deg, rgba(17,24,39,0.76), rgba(8,11,28,0.9));border:1px solid var(--card-border);padding:20px;border-radius:12px;}
+  @media (max-width:768px){
+    .sponsor-row{flex-direction:column;align-items:flex-start;}
+    .sponsor-logo{width:100%;height:64px}
+  }
+  .sponsors-logos{display:none}
+  .sponsor-logo{background:var(--card);border:1px solid var(--card-border);padding:10px;border-radius:12px;display:flex;align-items:center;justify-content:center;height:64px;}
+  .sponsor-logo img{max-width:100%;max-height:48px;object-fit:contain;}
+  .sponsors-info{flex:1;display:flex;flex-direction:column;gap:16px;}
+  .sponsor-item{background:linear-gradient(180deg, rgba(17,24,39,0.76), rgba(8,11,28,0.9));border:1px solid var(--card-border);padding:18px;border-radius:12px;}
+  .sponsor-item h4{font-size:15px;margin-bottom:6px;}
+  .sponsor-item p{color:var(--text-dim);font-size:14px;margin-bottom:8px;}
+  .sponsor-item a{color:var(--cyan);font-family:var(--font-mono);font-size:13px;}
   .sponsor-iit{background:linear-gradient(180deg, rgba(24,35,70,0.95), rgba(12,18,35,0.95));border-color:rgba(91,140,255,0.2);}
   .sponsor-iit .iit-badge{
     display:flex;align-items:center;gap:10px;color:var(--text);font-family:var(--font-head);font-size:14px;
@@ -1040,6 +1059,62 @@
 </section>
 
 
+
+<!-- Sponsors & collaborators (inserted after Team) -->
+<section class="wrap reveal" id="sponsors-collab">
+  <div class="section-head">
+    <div class="eyebrow">Sponsors & collaborators</div>
+    <h2>Our sponsors and collaborators</h2>
+    <p>We gratefully acknowledge the organisations that provide technical access, funding, and scientific collaboration.</p>
+  </div>
+
+  <div class="sponsors-section">
+    <div class="sponsor-row">
+      <div class="sponsor-logo"><img src="images/images.png" alt="Bull" loading="lazy"></div>
+      <div class="sponsor-item">
+        <h4>Bull — Qaptiva access</h4>
+        <p>Bull provides access to the Qaptiva quantum emulation appliance, enabling us to test hybrid workflows on high-fidelity emulated quantum hardware.</p>
+        <a href="https://www.bull.com/en/products/quantum-computing/qaptiva-quantum-emulation-appliance" target="_blank" rel="noopener">https://www.bull.com/en/products/quantum-computing/qaptiva-quantum-emulation-appliance</a>
+      </div>
+    </div>
+
+    <div class="sponsor-row">
+      <div class="sponsor-logo"><img src="images/ovhcloud-logo.png" alt="OVHcloud" loading="lazy"></div>
+      <div class="sponsor-item">
+        <h4>OVHcloud — Innovation startup partner</h4>
+        <p>OVHcloud supports WYW with cloud credits (partnering through the innovation startup program) to accelerate scalable experiments and deployments.</p>
+        <a href="https://manager.eu.ovhcloud.com/" target="_blank" rel="noopener">https://manager.eu.ovhcloud.com/</a>
+      </div>
+    </div>
+
+    <div class="sponsor-row">
+      <div class="sponsor-logo"><img src="images/iit.jpg" alt="IIT Bombay" loading="lazy"></div>
+      <div class="sponsor-item sponsor-iit">
+        <h4>IIT Bombay — Scientific collaboration</h4>
+        <p>Strong scientific collaboration with IIT Bombay on quantum algorithms and computational chemistry research.</p>
+        <a href="https://www.iitb.ac.in/" target="_blank" rel="noopener">https://www.iitb.ac.in/</a>
+      </div>
+    </div>
+
+    <div class="sponsor-row">
+      <div class="sponsor-logo"><img src="images/GROUPE LORET.jpg" alt="Loret Group" loading="lazy"></div>
+      <div class="sponsor-item">
+        <h4>Loret Group — Lead sponsor</h4>
+        <p>Groupe Loret is a lead sponsor supporting strategic initiatives and broader collaboration across industry partners.</p>
+        <a href="https://groupeloret.net/en/" target="_blank" rel="noopener">https://groupeloret.net/en/</a>
+      </div>
+    </div>
+
+    <div class="sponsor-row">
+      <div class="sponsor-logo"><img src="https://cdn.prod.website-files.com/66c5893a2a909c85e474cb1b/66c58d788a5b4267197e455f_QTFT-Logo.svg" alt="QTFT" loading="lazy"></div>
+      <div class="sponsor-item">
+        <h4>QTFT — Academic collaboration</h4>
+        <p>QTFT collaborates with WYW on academic activities in quantum computing, including regional outreach and Quantum Summer School in Thailand.</p>
+        <a href="https://thinkster.co/creator/76" target="_blank" rel="noopener">https://thinkster.co/creator/76</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="reveal">
   <div class="cta-section">
